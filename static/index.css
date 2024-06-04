@@ -96,3 +96,48 @@ button:hover {
     overflow-y: auto;
     margin-top: 10px;
 }
+
+
+
+
+.blocklyDiv {
+  height:calc(100vh - 130px);
+  /* display: none; hide the element by default */
+}
+
+/* Makes our label white. */
+.blocklyTreeLabel {
+  color:black;
+}
+.blocklyToolboxDiv {
+  background-color: whitesmoke;
+}
+/* Adds padding around the group of categories and separators. */
+/* .blocklyToolboxContents {
+  padding: 0.5em;
+} */
+/* Adds space between the categories, rounds the corners and adds space around the label. */
+.blocklyTreeRow {
+  padding: 2px;
+  margin: 0.1em;
+  /* border-radius: 15px; */
+  /* width: 100px; */
+  height: 28px;
+  /* height: initial; */
+  background-color: whitesmoke;
+}
+
+/* Changes color of the icon to white. */
+.customIcon {
+  margin: 0.1em 0.1em 0.1em 0.1em;
+  padding: 2px;
+  color:black;
+  /* width: 30px; */
+  /* color:rgb(0, 0, 0); */
+}
+/* Stacks the icon on top of the label. */
+.blocklyTreeRowContentContainer {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
