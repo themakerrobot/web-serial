@@ -287,44 +287,5 @@ const setLanguage = (langCode) => {
       }
   });
 
-  const langFileVersion = '240110v1';
-  const langFile = `../static/${langCode}.js?ver=${langFileVersion}`;
-  const prevKoScript = document.querySelector(`script[src*="../static/ko.js?ver=${langFileVersion}"]`);
-  if (prevKoScript) {
-    prevKoScript.remove();
-  }
-  const prevEnScript = document.querySelector(`script[src*="../static/en.js?ver=${langFileVersion}"]`);
-  if (prevEnScript) {
-    prevEnScript.remove();
-  }
-  const script = document.createElement('script');
-  script.setAttribute('src', langFile);
-  document.head.appendChild(script);
-  workspace.updateToolbox(langCode=="en"?toolbox_en:toolbox_ko);
-
-  if (langCode == "en") {
-    document.getElementById('add_directory').style.width = '105px';
-    document.getElementById('add_file').style.width = '100px';
-  }
-  else {
-    document.getElementById('add_directory').style.width = '80px';
-    document.getElementById('add_file').style.width = '85px';
-  }
-}
-
-const language = document.getElementById("language");
-language.value = lang;
-setLanguage(lang);
-localStorage.setItem("language", lang);
-
-language.addEventListener("change", () => {
-  lang = language.value;
-  setLanguage(lang);
-  localStorage.setItem("language", lang);
-});
-
-
-
-
-
+ setLanguage('ko');
 }
