@@ -102,7 +102,7 @@ const workspace = Blockly.inject("blocklyDiv", {
   horizontalLayout: false,
   toolboxPosition: "start",
   css: true,
-  media: "./static/",
+  // media: "./static/",
   rtl: false,
   scrollbars: true,
   sounds: false,
