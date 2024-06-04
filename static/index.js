@@ -1,19 +1,19 @@
 window.onload = function() {
     // Codemirror 초기화
-    var editor = CodeMirror.fromTextArea(document.getElementById("python-code"), {
-        mode: { name: "python", version: 3, singleLineStringErrors: false },
-        lineNumbers: true,
-        indentUnit: 4,
-        matchBrackets: true,
-        theme: "monokai"
-    });
-    editor.getWrapperElement().style.fontSize = "20px";
+    // var editor = CodeMirror.fromTextArea(document.getElementById("python-code"), {
+    //     mode: { name: "python", version: 3, singleLineStringErrors: false },
+    //     lineNumbers: true,
+    //     indentUnit: 4,
+    //     matchBrackets: true,
+    //     theme: "monokai"
+    // });
+    // editor.getWrapperElement().style.fontSize = "20px";
 
-    function changeFontSize() {
-        var fontSize = document.getElementById("font-size").value + "px";
-        editor.getWrapperElement().style.fontSize = fontSize;
-        editor.refresh();
-    }
+    // function changeFontSize() {
+    //     var fontSize = document.getElementById("font-size").value + "px";
+    //     editor.getWrapperElement().style.fontSize = fontSize;
+    //     editor.refresh();
+    // }
     
     const textEncoder = new TextEncoderStream();
     const textDecoder = new TextDecoderStream();
