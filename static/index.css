@@ -87,7 +87,7 @@ button:hover {
     font-size: 24px;
 }
 
-#output, #turtle {
+#output, #python-code {
     background: #f8f8f8;
     padding: 10px;
     border: 1px solid #ddd;
