@@ -22,15 +22,21 @@ window.onload = function() {
     const command = document.getElementById('command');
     const result = document.getElementById('result');
     const send = document.getElementById('send');
-    
+    const view = document.getElementById('view');
+
+
+    view.addEventListener('click', async () => {
+        document.getElementById("output-content").innerText = Blockly.Python.workspaceToCode(workspace);
+    });
+   
     send.addEventListener('click', async () => {
-    console.log(editor.getValue())
-    await writer.write(editor.getValue());
-    send.disabled = true;
-    
-    setTimeout(()=> {
-       send.disabled = false;
-    }, 3000);
+        console.log(editor.getValue())
+        await writer.write(editor.getValue());
+        send.disabled = true;
+            
+        setTimeout(()=> {
+           send.disabled = false;
+        }, 3000);
     });
     
     document.getElementById('connect').addEventListener('click', async () => {
