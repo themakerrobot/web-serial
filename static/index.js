@@ -72,7 +72,7 @@ window.onload = function() {
     }
     });
     
-    if ("serial" in navigator) alert("Your browser supports Web Serial API!");
+    if ("serial" in navigator) console.log("Your browser supports Web Serial API!");
     else document.getElementById("output").innerText = alert("Your browser does not support Web Serial API, the latest version of Google Chrome is recommended!");
 
 let CURRENT_DIR;
