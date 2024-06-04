@@ -26,6 +26,7 @@ window.onload = function() {
 
 
     view.addEventListener('click', async () => {
+        console.log(Blockly.Python.workspaceToCode(workspace));
         document.getElementById("output-content").innerText = Blockly.Python.workspaceToCode(workspace);
     });
    
