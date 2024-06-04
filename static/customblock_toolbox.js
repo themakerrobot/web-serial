@@ -819,7 +819,7 @@ let toolbox = (lang) => {
           {
             "kind": "block",
             "type": "audio_record",
-            // "disabled":"true",
+            "disabled":"true",
             "inputs":{
               "filename":{
                 "shadow": {
@@ -889,7 +889,7 @@ let toolbox = (lang) => {
           {
             "kind": "block",
             "type": "device_eye_on",
-            // "disabled":"true",
+            "disabled":"true",
             "inputs":{
               "val0": {
                 "shadow": {
@@ -944,7 +944,7 @@ let toolbox = (lang) => {
           {
             "kind": "block",
             "type": "device_eye_colour_on",
-            // "disabled":"true",
+            "disabled":"true",
             "inputs":{
               "left":{
                 "shadow": {
@@ -961,7 +961,7 @@ let toolbox = (lang) => {
           {
             "kind": "block",
             "type": "device_eye_fade",
-            // "disabled":"true",
+            "disabled":"true",
             "inputs":{
               "left":{
                 "shadow": {
@@ -986,42 +986,42 @@ let toolbox = (lang) => {
           {
             "kind": "block",
             "type": "device_eye_off",
-            // "disabled":"true",
+            "disabled":"true",
           },
           {
             "kind": "block",
             "type": "device_get_dc",
-            // "disabled":"true",
+            "disabled":"true",
           },
           {
             "kind": "block",
             "type": "device_get_battery",
-            // "disabled":"true",
+            "disabled":"true",
           },
           {
             "kind": "block",
             "type": "device_get_system",
-            // "disabled":"true",
+            "disabled":"true",
           },
           {
             "kind": "block",
             "type": "device_get_pir",
-            // "disabled":"true",
+            "disabled":"true",
           },
           {
             "kind": "block",
             "type": "device_get_touch",
-            // "disabled":"true",
+            "disabled":"true",
           },
           {
             "kind": "block",
             "type": "device_get_button",
-            // "disabled":"true",
+            "disabled":"true",
           },
           {
             "kind": "block",
             "type": "device_hat_button",
-            "disabled":"true",
+            // "disabled":"true",
           },
         ],
         "colour": color_type["device"],
@@ -1032,7 +1032,7 @@ let toolbox = (lang) => {
       { // Motion
         "kind": "category",
         "name": translations['motion'][lang],
-        // "hidden":"true",
+        "hidden":"true",
         "contents": [
           {
             "kind": "block",
@@ -1391,6 +1391,7 @@ let toolbox = (lang) => {
           {
             "kind": "block",
             "type": "speech_stt",
+            "disabled":"true",
             "inputs":{
               "timeout": {
                 "shadow": {
@@ -1448,7 +1449,6 @@ let toolbox = (lang) => {
               },
             }
           },
-
           {
             "kind": "block",
             "type": "speech_translate",
@@ -1807,6 +1807,33 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
+            "type": "vision_resize",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              },
+              "w": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "320"
+                  }
+                }
+              },
+              "h": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "240"
+                  }
+                }
+              },
+            }
+          },
+          {
+            "kind": "block",
             "type": "vision_face",
             "inputs":{
               "img":{
@@ -2052,7 +2079,6 @@ let toolbox = (lang) => {
                   "type":"variables_get",
                 }
               },
-
               "img":{
                 "shadow":{
                   "type":"variables_get",
@@ -2235,6 +2261,54 @@ let toolbox = (lang) => {
           {
             "kind": "block",
             "type": "utils_dict_create",
+          },
+          {
+            "kind": "block",
+            "type": "utils_array_slice_set",
+            "inputs":{
+              "arr":{
+                "shadow":{
+                  "type":"variables_get",
+                }
+              },
+              "y1": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "0"
+                  }
+                }
+              },
+              "y2": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "0"
+                  }
+                }
+              },
+              "x1": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "0"
+                  }
+                }
+              },
+              "x2": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "0"
+                  }
+                }
+              },
+              "value":{
+                "shadow":{
+                  "type":"variables_get",
+                }
+              }
+            }
           },
           {
             "kind": "block",
