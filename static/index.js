@@ -68,7 +68,11 @@ window.onload = function() {
     if ("serial" in navigator) alert("Your browser supports Web Serial API!");
     else document.getElementById("output").innerText = alert("Your browser does not support Web Serial API, the latest version of Google Chrome is recommended!");
 
-
+let CURRENT_DIR;
+let CODE_PATH = '';
+let BLOCK_PATH = '';
+let saveCode = "";
+let saveBlock = "{}";
 
 function findBlocks(data) {
   if (data && typeof data === 'object') {
