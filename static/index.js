@@ -27,12 +27,13 @@ window.onload = function() {
 
     view.addEventListener('click', async () => {
         console.log(Blockly.Python.workspaceToCode(workspace));
-        document.getElementById("output-content").innerText = Blockly.Python.workspaceToCode(workspace);
+        document.getElementById("python-code").innerText = Blockly.Python.workspaceToCode(workspace);
     });
    
     send.addEventListener('click', async () => {
-        console.log(editor.getValue())
-        await writer.write(editor.getValue());
+        codetext = Blockly.Python.workspaceToCode(workspace);
+        console.log(codetext)
+        await writer.write(codetext);
         send.disabled = true;
             
         setTimeout(()=> {
