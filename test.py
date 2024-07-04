@@ -1,6 +1,6 @@
 import serial
 import time
-from threading import Timer
+import threading
 import subprocess
 import sys
 
@@ -12,11 +12,19 @@ ser = serial.Serial(
 )
 
 filename = 'aaa.py'
+current_process = None  # 현재 실행 중인 프로세스 저장
 
 def run_code(filename):
-    # filename (python코드) 실행하면서 나오는 로그를 시리얼 포트로 보냄
+    global current_process  # 전역 변수 접근
     try:
-        process = subprocess.Popen(['python', filename], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
+        if current_process is not None:
+            # 이전 프로세스 종료
+            current_process.terminate()
+            current_process.wait()
+            print('Previous process terminated.')
+
+        process = subprocess.Popen(['python3', filename], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1)
+        current_process = process  # 현재 실행 중인 프로세스 업데이트
 
         for line in iter(process.stdout.readline, ''):
             if line:
@@ -33,14 +41,24 @@ def run_code(filename):
 while True:
     lines = ser.readlines()
     print(lines)
+    for line in lines:
+        if '###END###' in line.decode('utf-8'):
+            # 현재 실행 중인 프로세스 종료
+            if current_process is not None:
+                print('Terminating current process.')
+                current_process.terminate()
+                current_process.wait()
+            break  # 다음 라인으로 이동하여 새 코드를 읽지 않도록 함
 
     if len(lines) > 0:
         with open(filename, 'w') as file:
+            file.write('# -*- coding: utf-8 -*-\n')
             for line in lines:
                 decoded_line = line.decode('utf-8')
                 file.write(decoded_line)
-        print('file save ok')
-        
-        timer = Timer(1, run_code, args=(filename,)) 
-        timer.daemon = True
-        timer.start()
+        print('File save ok')
+
+        # 현재 실행 중인 프로세스가 없으면 실행
+        if current_process is None:
+            run_code(filename)
+
