@@ -7,6 +7,7 @@ window.onload = function() {
     const result = document.getElementById('result');
     const send = document.getElementById('send');
     const view = document.getElementById('view');
+    const stop = document.getElementById('stop');
 
     view.addEventListener('click', async () => {
       console.log(Blockly.Python.workspaceToCode(workspace));
@@ -25,7 +26,7 @@ window.onload = function() {
       }, 3000);
     });
     
-    document.getElementById('stop_bt').addEventListener('click', async () => {
+    stop.addEventListener('click', async () => {
         await writer.write('###END###');
         writer.releaseLock();
     });
