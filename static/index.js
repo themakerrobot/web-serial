@@ -65,6 +65,7 @@ window.onload = function() {
       console.error("Error reading from serial port:", error);
     } finally {
       reader.releaseLock();
+      writer.releaseLock();
       await port.close();
     }  
   });
