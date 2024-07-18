@@ -78,49 +78,49 @@ window.onload = function() {
     //     console.log(value);
     //   }
     // }
-    // });
 
 
 
 
-const port = await navigator.serial.requestPort();
-const { productId, vendorId } = port.getInfo();
-console.log(productId, vendorId);
 
-// 포트 열기
-await port.open({ baudRate: 115200 });
-
-const textDecoder = new TextDecoderStream();
-const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-const reader = textDecoder.readable.getReader();
-
-// 쓰기 스트림 설정 (필요한 경우)
-const textEncoder = new TextEncoderStream();
-const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
-
-try {
-  while (true) {
-    const { value, done } = await reader.read();
-    if (done) {
-      // 스트림이 끝났을 때
-      console.log("Serial port closed");
-      break;
+    const port = await navigator.serial.requestPort();
+    const { productId, vendorId } = port.getInfo();
+    console.log(productId, vendorId);
+    
+    // 포트 열기
+    await port.open({ baudRate: 115200 });
+    
+    const textDecoder = new TextDecoderStream();
+    const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
+    const reader = textDecoder.readable.getReader();
+    
+    // 쓰기 스트림 설정 (필요한 경우)
+    const textEncoder = new TextEncoderStream();
+    const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+    
+    try {
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) {
+          // 스트림이 끝났을 때
+          console.log("Serial port closed");
+          break;
+        }
+        // 받은 데이터 처리
+        if (value) {
+          document.getElementById("output").innerText += value;
+          console.log("Received:", value);
+        }
+      }
+    } catch (error) {
+      console.error("Error reading from serial port:", error);
+    } finally {
+      reader.releaseLock();
+      await port.close();
     }
-    // 받은 데이터 처리
-    if (value) {
-      document.getElementById("output").innerText += value;
-      console.log("Received:", value);
-    }
-  }
-} catch (error) {
-  console.error("Error reading from serial port:", error);
-} finally {
-  reader.releaseLock();
-  await port.close();
-}
 
 
-
+});
 
 
 
