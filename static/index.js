@@ -14,22 +14,6 @@ window.onload = function() {
       document.getElementById("python-code").innerText = Blockly.Python.workspaceToCode(workspace);
     });
    
-    send.addEventListener('click', async () => {
-      codetext = Blockly.Python.workspaceToCode(workspace);
-      console.log(codetext)
-      await port.writable.getWriter().write(codetext);
-      send.disabled = true;
-      document.getElementById("output").innerText = '';
-            
-      setTimeout(()=> {
-        send.disabled = false;
-      }, 3000);
-    });
-    
-    stop.addEventListener('click', async () => {
-        await port.writable.getWriter().write('###END###');
-        writer.releaseLock();
-    });
     
     document.getElementById('connect').addEventListener('click', async () => {
     /*
@@ -67,6 +51,25 @@ window.onload = function() {
       reader.releaseLock();
       await port.close();
     }
+
+    send.addEventListener('click', async () => {
+      codetext = Blockly.Python.workspaceToCode(workspace);
+      console.log(codetext)
+      await port.writable.getWriter().write(codetext);
+      send.disabled = true;
+      document.getElementById("output").innerText = '';
+            
+      setTimeout(()=> {
+        send.disabled = false;
+      }, 3000);
+    });
+    
+    stop.addEventListener('click', async () => {
+        await port.writable.getWriter().write('###END###');
+        writer.releaseLock();
+    });
+
+       
   });
 
 if ("serial" in navigator) console.log("Your browser supports Web Serial API!");
