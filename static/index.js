@@ -9,10 +9,28 @@ window.onload = function() {
     const view = document.getElementById('view');
     const stop = document.getElementById('stop');
 
-    view.addEventListener('click', async () => {
-      console.log(Blockly.Python.workspaceToCode(workspace));
-      document.getElementById("python-code").innerText = Blockly.Python.workspaceToCode(workspace);
-    });
+
+let editor;
+
+
+  editor = CodeMirror(document.getElementById("python-code"), {
+    mode: "python",
+    theme: "monokai",
+    lineNumbers: true,
+    readOnly: true
+  });
+
+view.addEventListener('click', async () => {
+  const code = Blockly.Python.workspaceToCode(workspace);
+  console.log(code);
+  editor.setValue(code);
+});
+
+    
+    // view.addEventListener('click', async () => {
+    //   console.log(Blockly.Python.workspaceToCode(workspace));
+    //   document.getElementById("python-code").innerText = Blockly.Python.workspaceToCode(workspace);
+    // });
 
     send.addEventListener('click', async () => {
       codetext = Blockly.Python.workspaceToCode(workspace);
