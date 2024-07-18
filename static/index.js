@@ -25,6 +25,11 @@ window.onload = function() {
       }, 3000);
     });
     
+    document.getElementById('stop_bt').addEventListener('click', async () => {
+        await writer.write('###END###');
+        writer.releaseLock();
+    });
+    
     document.getElementById('connect').addEventListener('click', async () => {
     /*
      const filters = [
