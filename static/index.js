@@ -2,7 +2,7 @@ window.onload = function() {
     const textEncoder = new TextEncoderStream();
     const textDecoder = new TextDecoderStream();
     const reader = textDecoder.readable.getReader();
-    const writer = textEncoder.writable.getWriter();
+    // const writer = textEncoder.writable.getWriter();
     const command = document.getElementById('command');
     const result = document.getElementById('result');
     const send = document.getElementById('send');
@@ -17,7 +17,7 @@ window.onload = function() {
     send.addEventListener('click', async () => {
       codetext = Blockly.Python.workspaceToCode(workspace);
       console.log(codetext)
-      await writer.write(codetext);
+      await textEncoder.writable.getWriter().write(codetext);
       send.disabled = true;
       document.getElementById("output").innerText = '';
             
@@ -27,7 +27,7 @@ window.onload = function() {
     });
     
     stop.addEventListener('click', async () => {
-        await writer.write('###END###');
+        await textEncoder.writable.getWriter().write('###END###');
         writer.releaseLock();
     });
     
