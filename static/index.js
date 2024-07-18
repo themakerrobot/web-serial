@@ -50,12 +50,6 @@ window.onload = function() {
     ];
     const port = await navigator.serial.requestPort({ filters });
     */
-
-
-
-
-
-
         
     // const port = await navigator.serial.requestPort();      
     // const { productId, vendorId } = port.getInfo();
@@ -79,23 +73,9 @@ window.onload = function() {
     //   }
     // }
 
-
-
-
-
-    const port = await navigator.serial.requestPort();
-    const { productId, vendorId } = port.getInfo();
-    console.log(productId, vendorId);
-    
     // 포트 열기
     await port.open({ baudRate: 115200 });
-    
-    const textDecoder = new TextDecoderStream();
     const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-    const reader = textDecoder.readable.getReader();
-    
-    // 쓰기 스트림 설정 (필요한 경우)
-    const textEncoder = new TextEncoderStream();
     const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
     
     try {
@@ -119,30 +99,10 @@ window.onload = function() {
       await port.close();
     }
 
-
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    if ("serial" in navigator) console.log("Your browser supports Web Serial API!");
-    else document.getElementById("output").innerText = alert("Your browser does not support Web Serial API, the latest version of Google Chrome is recommended!");
+if ("serial" in navigator) console.log("Your browser supports Web Serial API!");
+else document.getElementById("output").innerText = alert("Your browser does not support Web Serial API, the latest version of Google Chrome is recommended!");
 
 let CURRENT_DIR;
 let CODE_PATH = '';
