@@ -51,9 +51,9 @@ window.onload = function() {
     const port = await navigator.serial.requestPort({ filters });
     */
         
-    // const port = await navigator.serial.requestPort();      
-    // const { productId, vendorId } = port.getInfo();
-    // console.log(productId, vendorId);
+    const port = await navigator.serial.requestPort();      
+    const { productId, vendorId } = port.getInfo();
+    console.log(productId, vendorId);
     
     // // Wait for the serial port to open.
     // await port.open({ baudRate: 115200 });
