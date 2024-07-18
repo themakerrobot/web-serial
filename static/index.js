@@ -1,20 +1,4 @@
 window.onload = function() {
-    // Codemirror 초기화
-    // var editor = CodeMirror.fromTextArea(document.getElementById("python-code"), {
-    //     mode: { name: "python", version: 3, singleLineStringErrors: false },
-    //     lineNumbers: true,
-    //     indentUnit: 4,
-    //     matchBrackets: true,
-    //     theme: "monokai"
-    // });
-    // editor.getWrapperElement().style.fontSize = "20px";
-
-    // function changeFontSize() {
-    //     var fontSize = document.getElementById("font-size").value + "px";
-    //     editor.getWrapperElement().style.fontSize = fontSize;
-    //     editor.refresh();
-    // }
-    
     const textEncoder = new TextEncoderStream();
     const textDecoder = new TextDecoderStream();
     const reader = textDecoder.readable.getReader();
@@ -24,25 +8,24 @@ window.onload = function() {
     const send = document.getElementById('send');
     const view = document.getElementById('view');
 
-
     view.addEventListener('click', async () => {
-        console.log(Blockly.Python.workspaceToCode(workspace));
-        document.getElementById("python-code").innerText = Blockly.Python.workspaceToCode(workspace);
+      console.log(Blockly.Python.workspaceToCode(workspace));
+      document.getElementById("python-code").innerText = Blockly.Python.workspaceToCode(workspace);
     });
    
     send.addEventListener('click', async () => {
-        codetext = Blockly.Python.workspaceToCode(workspace);
-        console.log(codetext)
-        await writer.write(codetext);
-        send.disabled = true;
+      codetext = Blockly.Python.workspaceToCode(workspace);
+      console.log(codetext)
+      await writer.write(codetext);
+      send.disabled = true;
+      document.getElementById("output").innerText = '';
             
-        setTimeout(()=> {
-           send.disabled = false;
-        }, 3000);
+      setTimeout(()=> {
+        send.disabled = false;
+      }, 3000);
     });
     
     document.getElementById('connect').addEventListener('click', async () => {
-    
     /*
      const filters = [
       { usbVendorId: 0x2341, usbProductId: 0x0043 },
@@ -50,30 +33,10 @@ window.onload = function() {
     ];
     const port = await navigator.serial.requestPort({ filters });
     */
-        
-    const port = await navigator.serial.requestPort();      
+    const port = await navigator.serial.requestPort();
     const { productId, vendorId } = port.getInfo();
-    console.log(productId, vendorId);
-    
-    // // Wait for the serial port to open.
-    // await port.open({ baudRate: 115200 });
-    // const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-    // const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
-    // while (true) {
-    //   const { value, done } = await reader.read();
-    //   if (done) {
-    //     // 나중에 시리얼 포트가 닫힐 수 있도록 해준다.
-    //     reader.releaseLock();
-    //     break;
-    //   }
-    
-    //   if (value) {
-    //     document.getElementById("output").innerText = value;
-    //     console.log(value);
-    //   }
-    // }
+    console.log('Machine:', productId, vendorId);
 
-    // 포트 열기
     await port.open({ baudRate: 115200 });
     const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
     const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
@@ -98,8 +61,7 @@ window.onload = function() {
       reader.releaseLock();
       await port.close();
     }
-
-});
+  });
 
 if ("serial" in navigator) console.log("Your browser supports Web Serial API!");
 else document.getElementById("output").innerText = alert("Your browser does not support Web Serial API, the latest version of Google Chrome is recommended!");
