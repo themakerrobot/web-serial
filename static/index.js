@@ -13,6 +13,7 @@ window.onload = function() {
       console.log(Blockly.Python.workspaceToCode(workspace));
       document.getElementById("python-code").innerText = Blockly.Python.workspaceToCode(workspace);
     });
+
     send.addEventListener('click', async () => {
       codetext = Blockly.Python.workspaceToCode(workspace);
       console.log(codetext)
