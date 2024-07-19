@@ -30,7 +30,7 @@ window.onload = function() {
       editor.setValue(codetext);
       await writer.write(codetext);
       send.disabled = true;
-      document.getElementById("output").innerText = new Date().toString() + '/n/n';
+      document.getElementById("output").innerText = new Date().toString() + '\n\n';
             
       setTimeout(()=> {
         send.disabled = false;
