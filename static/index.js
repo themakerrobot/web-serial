@@ -27,6 +27,7 @@ window.onload = function() {
     send.addEventListener('click', async () => {
       codetext = Blockly.Python.workspaceToCode(workspace);
       console.log(codetext)
+      editor.setValue(codetext);
       await writer.write(codetext);
       send.disabled = true;
       document.getElementById("output").innerText = '';
