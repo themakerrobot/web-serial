@@ -57,7 +57,7 @@ h1 {
 
 .CodeMirror {
     flex: 1;
-    height: calc(50vh - 50px) !important;
+    height: 100% !important;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
