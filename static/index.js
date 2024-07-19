@@ -10,27 +10,19 @@ window.onload = function() {
     const stop = document.getElementById('stop');
 
 
-let editor;
-
-
-  editor = CodeMirror(document.getElementById("python-code"), {
-    mode: "python",
-    theme: "monokai",
-    lineNumbers: true,
-    readOnly: true
-  });
-
-view.addEventListener('click', async () => {
-  const code = Blockly.Python.workspaceToCode(workspace);
-  console.log(code);
-  editor.setValue(code);
-});
-
+    let editor = CodeMirror(document.getElementById("python-code"), {
+      mode: "python",
+      theme: "monokai",
+      lineNumbers: true,
+      readOnly: true
+    });
+    editor.getWrapperElement().style.fontSize = "16px";
     
-    // view.addEventListener('click', async () => {
-    //   console.log(Blockly.Python.workspaceToCode(workspace));
-    //   document.getElementById("python-code").innerText = Blockly.Python.workspaceToCode(workspace);
-    // });
+    view.addEventListener('click', async () => {
+      const code = Blockly.Python.workspaceToCode(workspace);
+      console.log(code);
+      editor.setValue(code);
+    });
 
     send.addEventListener('click', async () => {
       codetext = Blockly.Python.workspaceToCode(workspace);
