@@ -1,12 +1,12 @@
 import asyncio
 import time
 import serial
+import os
 
 ser = serial.Serial('/dev/ttyS0', 115200, timeout=1)
 filename = '/home/pi/tmp.py'
 current_process = None
 record = ''
-
 
 async def run_code(filename):
   global current_process
@@ -54,6 +54,7 @@ async def read_serial():
       
       if len(lines) > 0:
         if any('###END###' in line.decode('utf-8') for line in lines):
+          os.system('python3 /home/pi/openpibo-os/system/network_disp.py')
           if current_process is not None:
             print('정지버튼-start')
             current_process.terminate()
