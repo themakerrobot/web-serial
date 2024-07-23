@@ -77,6 +77,12 @@ button:hover {
     font-weight: bold;
 }
 
+button:active {
+  box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+  position: relative;
+  top:2px;
+}
+
 #font-size-container label {
     margin-right: 10px;
 }
