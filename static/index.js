@@ -55,7 +55,7 @@ window.onload = function() {
     const { productId, vendorId } = port.getInfo();
     console.log('Machine:', productId, vendorId);
 
-    await port.open({ baudRate: 115200 });
+    await port.open({ baudRate: 1000000  });
     const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
     const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
     
