@@ -8,6 +8,7 @@ window.onload = function() {
     const send = document.getElementById('send');
     const view = document.getElementById('view');
     const stop = document.getElementById('stop');
+    const output = document.getElementById("output");
 
 
     let editor = CodeMirror(document.getElementById("python-code"), {
@@ -30,7 +31,7 @@ window.onload = function() {
       editor.setValue(codetext);
       await writer.write(codetext);
       send.disabled = true;
-      document.getElementById("output").innerText = new Date().toString() + '\n\n';
+      output.innerText = new Date().toString() + '\n\n';
             
       setTimeout(()=> {
         send.disabled = false;
@@ -68,7 +69,8 @@ window.onload = function() {
         }
         // 받은 데이터 처리
         if (value) {
-          document.getElementById("output").innerText += value;
+          output.innerText += value;
+          output.scrollTop = output.scrollHeight;
           console.log("Received:", value);
         }
       }
