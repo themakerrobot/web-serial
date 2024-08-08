@@ -300,6 +300,59 @@ $(document).keydown((evt)=> {
   return true;
 });
 
+
+const importBtn = document.getElementById('import_bt');
+const exportBtn = document.getElementById('export_bt');
+
+importBtn.addEventListener('click', () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const json = JSON.parse(e.target.result);
+                    Blockly.serialization.workspaces.load(json, workspace);
+                } catch (error) {
+                    alert('파일이 정상적으로 로드되지 않았습니다.');
+                }
+            };
+            reader.readAsText(file);
+        }
+    };
+    input.click();
+});
+
+exportBtn.addEventListener('click', () => {
+    const fileName = prompt('저장할 파일 이름을 입력하세요:', 'out.json');
+    if (fileName) {
+        const json = Blockly.serialization.workspaces.save(workspace);
+        const blob = new Blob([JSON.stringify(json, null, 2)], {type: 'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = fileName.endsWith('.json') ? fileName : `${fileName}.json`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 const setLanguage = (langCode) => {
   const elements = document.querySelectorAll('[data-key]');
   elements.forEach(element => {
