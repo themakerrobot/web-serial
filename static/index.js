@@ -316,6 +316,11 @@ importBtn.addEventListener('click', () => {
                 try {
                     const json = JSON.parse(e.target.result);
                     Blockly.serialization.workspaces.load(json, workspace);
+                    if(e.target.result != "{}" && 'blocks' in json) {
+                      for(jdata of json["blocks"]["blocks"]) {
+                        findBlocks({block:jdata})
+                      }
+                    }
                 } catch (error) {
                     alert('파일이 정상적으로 로드되지 않았습니다.');
                 }
