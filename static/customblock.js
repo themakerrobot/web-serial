@@ -2520,17 +2520,24 @@ function updateSecondDropdown(folderValue, fileValue) {
   }
 }
 
+
 function getFilesForFolder(folderValue) {
-  return new Promise((resolve, reject) => {
-    $.ajax({
-      url: `http://${location.hostname}:50000/dir?folderName=${folderValue}`,
-      method: 'GET',
-      success: function(data) {
-        resolve(data); // AJAX 요청 성공 시, 데이터를 resolve로 반환
-      },
-      error: function(xhr, status, error) {
-        reject(error); // AJAX 요청 실패 시, 에러를 reject로 반환
-      }
-    });
-  });
+  console.log(folderValue);
 }
+
+
+
+// function getFilesForFolder(folderValue) {
+//   return new Promise((resolve, reject) => {
+//     $.ajax({
+//       url: `http://${location.hostname}:50000/dir?folderName=${folderValue}`,
+//       method: 'GET',
+//       success: function(data) {
+//         resolve(data); // AJAX 요청 성공 시, 데이터를 resolve로 반환
+//       },
+//       error: function(xhr, status, error) {
+//         reject(error); // AJAX 요청 실패 시, 에러를 reject로 반환
+//       }
+//     });
+//   });
+// }
