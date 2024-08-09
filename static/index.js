@@ -338,21 +338,7 @@ exportBtn.addEventListener('click', () => {
         URL.revokeObjectURL(a.href);
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+   
 const setLanguage = (langCode) => {
   const elements = document.querySelectorAll('[data-key]');
   elements.forEach(element => {
