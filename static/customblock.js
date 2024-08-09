@@ -2521,11 +2521,35 @@ function updateSecondDropdown(folderValue, fileValue) {
 }
 
 
-function getFilesForFolder(folderValue) {
-  console.log(folderValue);
+
+const openpibofiledata = {
+  "/home/pi/openpibo-files/audio/animal/":["cat.mp3","chick.mp3","cock.mp3","cow.mp3","dog.mp3","duck.mp3","horse.mp3","lion.mp3","pig.mp3","sheep.mp3"],
+  "/home/pi/openpibo-files/audio/effect/":["Jingle_Bells.mp3","car_key.mp3","car_lock.mp3","clapping.mp3","closing.mp3","despair.mp3","disappointment.mp3","drinking.mp3","fart.mp3","frustration.mp3","hungry.mp3","kid_happy.mp3","kid_laugh.mp3","kid_surprised.mp3","male_clearing_throat.mp3","male_crying.mp3","nop.mp3","opening.mp3","peekaboo.mp3","ridiculous.mp3","sleeping.mp3","sneeze.mp3","space_ship.mp3","stop.mp3","surprised.mp3","ugh.mp3","woman_sigh.mp3","woman_wow.mp3"],
+  "/home/pi/openpibo-files/audio/music/":["ballad.mp3","classic.mp3","exercise.mp3","funk.mp3","nature.mp3","rock.mp3","trot.mp3"],
+  "/home/pi/openpibo-files/audio/voice/":["궁금하다_저건_뭐지.mp3","기분이_참_좋아.mp3","나는_오늘.mp3","너랑_친하게_지내고_싶어.mp3","너무너무_배고파.mp3","너무너무_재미있어_즐거워.mp3","너와_장난_치고_싶어.mp3","당황스러워.mp3","매우_잘했어요.mp3","뭐라고_ 정말_화가_나네.mp3","반짝반짝_청소하고_싶어.mp3","빨리_놀고_싶어.mp3","숙제를_다해서_개운해.mp3","시무룩한_날이야.mp3","아이_기분이_찝찝해.mp3","아이_부끄러워.mp3","안녕하세요.mp3","예쁘고_멋지게_꾸미고_싶어.mp3","으앙_너무_슬퍼.mp3","잘자.mp3","정말_행복한날이야.mp3","정말축하해요.mp3","좀_예민해.mp3","참_상쾌하다.mp3","파이보는_오늘.mp3","힘들지만_재미있어.mp3"],
+  "/home/pi/openpibo-files/audio/piano/":["do.mp3","do2.mp3","fa.mp3","la.mp3","mi.mp3","re.mp3","si.mp3","sol.mp3"],
+  "/home/pi/openpibo-files/image/animal/": ["bear.jpg","bird.jpg","cat.jpg","cow.jpg","dog.jpg","elephant.jpg","giraffe.jpg","horse.jpg","sheep.jpg","zebra.jpg"],
+  "/home/pi/openpibo-files/image/expression/":["angry.jpg","angry2.jpg","delight.jpg","funny.jpg","happy.jpg","happy2.jpg","heart.jpg","joke.jpg","notfunny.jpg","sad.jpg","sad2.jpg","smile.jpg","what.jpg"],
+  "/home/pi/openpibo-files/image/family/":["boy1.jpg","boy2.jpg","family.jpg","father.jpg","girl1.jpg","girl2.jpg","grandfather.jpg","grandmother.jpg","mother.jpg"],
+  "/home/pi/openpibo-files/image/food/":["apple.jpg","banana.jpg","broccoli.jpg","cake.jpg","carrot.jpg","donut.jpg","hotdog.jpg","orange.jpg","pizza.jpg","rice.jpg","sandwich.jpg","tea.jpg"],
+  "/home/pi/openpibo-files/image/furniture/":["bed.jpg","bench.jpg","chair.jpg","couch.jpg","diningtable.jpg","toilet.jpg"],
+  "/home/pi/openpibo-files/image/game/":["paper.jpg","rock.jpg","scissors.jpg"],
+  "/home/pi/openpibo-files/image/goods/":["backpack.jpg","handbag.jpg","sink.jpg","suitcase.jpg","teddybear.jpg","tie.jpg","umbrella.jpg"],
+  "/home/pi/openpibo-files/image/kitchen/":["bottle.jpg","bowl.jpg","cup.jpg","fork.jpg","knife.jpg","spoon.jpg","wineglass.jpg"],
+  "/home/pi/openpibo-files/image/machine/":["cellphone.jpg","clock.jpg","hairdrier.jpg","keyboard.jpg","laptop.jpg","microwave.jpg","mouse.jpg","oven.jpg","refrigerator.jpg","remote.jpg","scissors.jpg","toaster.jpg","tv.jpg"],
+  "/home/pi/openpibo-files/image/recycle/":["can.jpg","glass.jpg","paper.jpg","plastic.jpg","trash.jpg","vinyl.jpg"],
+  "/home/pi/openpibo-files/image/sport/":["baseballbat.jpg","baseballglove.jpg","bicycle.jpg","frisbee.jpg","skateboard.jpg","skis.jpg","snowboard.jpg","sportsball.jpg","surfboard.jpg","tennisracket.jpg"],
+  "/home/pi/openpibo-files/image/transport/":["airplane.jpg","boat.jpg","bus.jpg","car.jpg","motorcycle.jpg","parkingmeter.jpg","road.jpg","stop.jpg","trafficlight.jpg","train.jpg","truck.jpg"],
+  "/home/pi/openpibo-files/image/weather/":["cloud.jpg","lighting.jpg","rain.jpg","snow.jpg","sun.jpg","wind.jpg"],
+  "/home/pi/openpibo-files/image/etc/":["background.jpg","book.jpg","christmas.jpg","direction.jpg","firehydrant.jpg","forest.jpg","heart.jpg","home.jpg","idea.jpg","kite.jpg","none.jpg","nourish.jpg","people.jpg","person.jpg","pibo.jpg","piboface.jpg","pottedplant.jpg","shake_hands.jpg","sprout.jpg","star.jpg","vase.jpg","watch.jpg"],
+  "/home/pi/openpibo-files/image/sample/":["butterfly.jpg","cow.jpg","dove.jpg","earth.jpg","flower.jpg","korea.jpg","livingroom.jpg","mars.jpg","number.jpg","qrcode.png","whale.jpg"]
 }
 
-
+function getFilesForFolder(folderValue) {
+  return new Promise((resolve, reject) => {
+    resolve(openpibofiledata[folderValue]);
+  });
+}
 
 // function getFilesForFolder(folderValue) {
 //   return new Promise((resolve, reject) => {
