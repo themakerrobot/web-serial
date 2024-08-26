@@ -145,3 +145,7 @@ button:active {
   /* flex-direction: column; */
   align-items: center;
 }
+
+.blocklyTreeSelected .customIcon {
+   filter: invert(1);
+}
