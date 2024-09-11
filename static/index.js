@@ -39,10 +39,14 @@ window.onload = function() {
     });
     
     stop.addEventListener('click', async () => {
-      await writer.write('###END###');
+      await writer.write('###EXIT###');
       //writer.releaseLock();
     });
-    
+
+    disp_init.addEventListener('click', async () => {
+      await writer.write('###DISP###');
+      //writer.releaseLock();
+    });
     document.getElementById('connect').addEventListener('click', async () => {
     /*
      const filters = [
