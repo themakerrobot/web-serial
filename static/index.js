@@ -40,7 +40,7 @@ window.onload = function() {
     });
     
     stop.addEventListener('click', async () => {
-      await writer.write('###EXIT###');
+      await writer.write('###END###');
       //writer.releaseLock();
     });
 
