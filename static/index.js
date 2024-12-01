@@ -250,6 +250,7 @@ const workspace = Blockly.inject("blocklyDiv", {
   }),
 });
 
+Blockly.Python.init(workspace);
 Blockly.Python.nameDB_.getName = function(name, type) {
   const enc_name = Blockly.Names.prototype.getName.call(this, name, type);
 
