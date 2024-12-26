@@ -13,36 +13,68 @@ window.onload = function() {
 
 
 
-// 맨 위에 선언된 부분 중, 기존 버튼 캐싱하는 부분에 추가
+// 업로드 버튼
 const uploadBtn = document.getElementById('upload_bt');
 
-uploadBtn.addEventListener('click', async () => {
-  // 파일 선택 input 생성
+// 시리얼 Writer (이미 연결된 상황이어야 함)
+let writer; 
+// 실제로는 connect 버튼 클릭 시에: writer = textEncoder.writable.getWriter(); 와 같이 얻은 Writer를 전역 변수 등에 저장해두어야 함.
+
+uploadBtn.addEventListener('click', () => {
   const fileInput = document.createElement('input');
   fileInput.type = 'file';
-  
-  // 파일 선택이 끝나면
+
   fileInput.addEventListener('change', async (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
-    // 파일을 텍스트로 읽음
+    // (1) ArrayBuffer 로 읽기
     const reader = new FileReader();
     reader.onload = async (e) => {
-      // 파일 내용
-      const fileContent = e.target.result;
+      const arrayBuffer = e.target.result; // ArrayBuffer
 
-      // 시리얼로 보내기: 구분자로 ###UPLOAD### 붙임
-      // \n을 꼭 붙여 주어야 python 측에서 readline() 등으로 끊어서 처리 가능
-      await writer.write('###UPLOAD###' + fileContent + '\n');
-      
-      // 로그 출력
-      console.log("파일 업로드 요청:", file.name, fileContent.length, "bytes");
+      // (2) base64 인코딩 (Chunk 전송)
+      const base64String = arrayBufferToBase64(arrayBuffer);
+
+      // 원하는 Chunk 크기(문자열 길이). 너무 크지 않은 값으로 (예: 2000)
+      const CHUNK_SIZE = 2000; 
+
+      // 업로드 시작 알림
+      // 예: "###UPLOAD_START### <파일이름>"
+      await writer.write("###UPLOAD_START###" + file.name + "\n");
+
+      for (let i = 0; i < base64String.length; i += CHUNK_SIZE) {
+        const chunk = base64String.substring(i, i + CHUNK_SIZE);
+        // 예: "###UPLOAD_CHUNK### <base64조각>"
+        await writer.write("###UPLOAD_CHUNK###" + chunk + "\n");
+      }
+
+      // 업로드 끝 알림
+      // 예: "###UPLOAD_END###"
+      await writer.write("###UPLOAD_END###\n");
+
+      console.log("파일 업로드 요청:", file.name, file.size, "bytes");
     };
-    reader.readAsText(file); // 텍스트로 처리. 필요 시 readAsArrayBuffer 등도 가능
+
+    reader.readAsArrayBuffer(file);
   });
+
   fileInput.click();
 });
+
+/**
+ * ArrayBuffer -> Base64 문자열 변환 함수
+ */
+function arrayBufferToBase64(buffer) {
+  let binary = '';
+  const bytes = new Uint8Array(buffer);
+  const len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary); // base64 인코딩
+}
+
 
 
 
