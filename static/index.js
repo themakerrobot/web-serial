@@ -10,68 +10,7 @@ window.onload = function() {
     const stop = document.getElementById('stop');
     const disp_init = document.getElementById('disp_init');
     const output = document.getElementById("output");
-// 업로드 버튼
-const uploadBtn = document.getElementById('upload_bt');
 
-uploadBtn.addEventListener('click', () => {
-  const fileInput = document.createElement('input');
-  fileInput.type = 'file';
-
-  fileInput.addEventListener('change', async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    // (1) ArrayBuffer 로 읽기
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      const arrayBuffer = e.target.result; // ArrayBuffer
-
-      // (2) base64 인코딩 (Chunk 전송)
-      const base64String = arrayBufferToBase64(arrayBuffer);
-
-      // 원하는 Chunk 크기(문자열 길이). 너무 크지 않은 값으로 (예: 2000)
-      const CHUNK_SIZE = 2000; 
-
-      // 업로드 시작 알림
-      // 예: "###UPLOAD_START### <파일이름>"
-      await writer.write("###UPLOAD_START###" + file.name + "\n");
-
-      for (let i = 0; i < base64String.length; i += CHUNK_SIZE) {
-        const chunk = base64String.substring(i, i + CHUNK_SIZE);
-        // 예: "###UPLOAD_CHUNK### <base64조각>"
-        await writer.write("###UPLOAD_CHUNK###" + chunk + "\n");
-      }
-
-      // 업로드 끝 알림
-      // 예: "###UPLOAD_END###"
-      await writer.write("###UPLOAD_END###\n");
-
-      console.log("파일 업로드 요청:", file.name, file.size, "bytes");
-    };
-
-    reader.readAsArrayBuffer(file);
-  });
-
-  fileInput.click();
-});
-
-/**
- * ArrayBuffer -> Base64 문자열 변환 함수
- */
-function arrayBufferToBase64(buffer) {
-  let binary = '';
-  const bytes = new Uint8Array(buffer);
-  const len = bytes.byteLength;
-  for (let i = 0; i < len; i++) {
-    binary += String.fromCharCode(bytes[i]);
-  }
-  return btoa(binary); // base64 인코딩
-}
-
-
-
-
-    
     let editor = CodeMirror(document.getElementById("python-code"), {
       mode: "python",
       theme: "monokai",
