@@ -10,15 +10,8 @@ window.onload = function() {
     const stop = document.getElementById('stop');
     const disp_init = document.getElementById('disp_init');
     const output = document.getElementById("output");
-
-
-
 // 업로드 버튼
 const uploadBtn = document.getElementById('upload_bt');
-
-// 시리얼 Writer (이미 연결된 상황이어야 함)
-let writer; 
-// 실제로는 connect 버튼 클릭 시에: writer = textEncoder.writable.getWriter(); 와 같이 얻은 Writer를 전역 변수 등에 저장해두어야 함.
 
 uploadBtn.addEventListener('click', () => {
   const fileInput = document.createElement('input');
