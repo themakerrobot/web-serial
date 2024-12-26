@@ -12,6 +12,41 @@ window.onload = function() {
     const output = document.getElementById("output");
 
 
+
+// 맨 위에 선언된 부분 중, 기존 버튼 캐싱하는 부분에 추가
+const uploadBtn = document.getElementById('upload_bt');
+
+uploadBtn.addEventListener('click', async () => {
+  // 파일 선택 input 생성
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  
+  // 파일 선택이 끝나면
+  fileInput.addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // 파일을 텍스트로 읽음
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      // 파일 내용
+      const fileContent = e.target.result;
+
+      // 시리얼로 보내기: 구분자로 ###UPLOAD### 붙임
+      // \n을 꼭 붙여 주어야 python 측에서 readline() 등으로 끊어서 처리 가능
+      await writer.write('###UPLOAD###' + fileContent + '\n');
+      
+      // 로그 출력
+      console.log("파일 업로드 요청:", file.name, fileContent.length, "bytes");
+    };
+    reader.readAsText(file); // 텍스트로 처리. 필요 시 readAsArrayBuffer 등도 가능
+  });
+  fileInput.click();
+});
+
+
+
+    
     let editor = CodeMirror(document.getElementById("python-code"), {
       mode: "python",
       theme: "monokai",
