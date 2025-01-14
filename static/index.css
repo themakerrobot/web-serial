@@ -112,6 +112,7 @@ button:active {
 
 #output, #python-code {
     width: calc(50vw-50px);
+    height:calc(100vh - 130px);
     background: #f8f8f8;
     padding: 10px;
     border: 1px solid #ddd;
