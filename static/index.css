@@ -108,7 +108,6 @@ button:active {
 }
 
 .blocklyDiv {
-  width: 60vw;
   height:calc(100vh - 130px);
   /* display: none; hide the element by default */
 }
