@@ -133,10 +133,12 @@ button:active {
 } */
 .CodeMirror {
     flex: 1;
+    width: 99% !important;
     height: 99% !important;
     border: 1px solid #ddd;
     border-radius: 4px;
-    overflow: auto; /* Add scrollbars if content overflows */
+    overflow-y: auto; /* Vertical scroll */
+    overflow-x: auto; /* Horizontal scroll */
 }
 .blocklyDiv {
   height:calc(100vh - 130px);
