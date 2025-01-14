@@ -1,5 +1,11 @@
+html:lang(ko) {
+  font-family: Helvetica, "맑은 고딕", "malgun gothic", "Apple SD Gothic Neo",
+    "Apple SD 산돌고딕 Neo", "Microsoft NeoGothic", "Droid sans", sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Helvetica, "맑은 고딕", "malgun gothic", "Apple SD Gothic Neo",
+    "Apple SD 산돌고딕 Neo", "Microsoft NeoGothic", "Droid sans", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,6 +85,7 @@ button {
     cursor: pointer;
     font-size: 15px;
     color:#333;
+    box-shadow: 0 4px #6c6c6c;
 }
 
 button:hover {
