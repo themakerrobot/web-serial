@@ -127,14 +127,6 @@ button:hover {
     border-radius: 4px;
 }
 
-/* 블록코딩 영역 */
-.blocklyDiv {
-    width: 100%;
-    height: calc(100% - 50px);
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-}
-
 /* Blockly 툴박스 스타일 */
 .blocklyToolboxDiv {
     background-color: whitesmoke;
