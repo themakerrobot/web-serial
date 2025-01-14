@@ -1,55 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./static/icon.png?ver=240719v1" type="image/x-icon" />    
-    <link rel="stylesheet" href="./static/index.css?ver=240719v26">
-    <link rel="stylesheet" href="./static/all.min.css" type="text/css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="./static/ko2en.js?ver=240719v1"></script>
-    <script src="./static/blockly_compressed.js?ver=240719v1"></script>
-    <script src="./static/blocks_compressed.js?ver=240719v1"></script>
-    <script src="./static/python_compressed.js?ver=240719v1"></script>
-    <script src="./static/customblock.js?ver=240809v1"></script>
-    <script src="./static/customblock_callback.js?ver=240719v1"></script>
-    <script src="./static/customblock_toolbox.js?ver=240719v1"></script>
-    <script src="./static/jquery-3.1.1.min.js?ver=240719v1"></script>
+  <!-- 파비콘/기타 CSS (필요 시 유지 또는 제거) -->
+  <link rel="shortcut icon" href="./static/icon.png?ver=240719v1" type="image/x-icon" />
+  <link rel="stylesheet" href="./static/all.min.css" type="text/css" />
+  <link rel="stylesheet" href="./static/index.css?ver=240719v25" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/monokai.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
-    <script src="./static/disable-top-blocks.js?ver=240319v1"></script>
-    <script src="./static/index.js?ver=240809v14"></script>
-    <script src="./static/ko.js?ver=240719v1"></script>
-    <title>piBrain Maker</title>
+  <!-- 자체 스타일 (레이아웃, 디자인) -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Blockly 관련 JS -->
+  <script src="./static/blockly_compressed.js?ver=240719v1"></script>
+  <script src="./static/blocks_compressed.js?ver=240719v1"></script>
+  <script src="./static/python_compressed.js?ver=240719v1"></script>
+  <script src="./static/customblock.js?ver=240809v1"></script>
+  <script src="./static/customblock_callback.js?ver=240719v1"></script>
+  <script src="./static/customblock_toolbox.js?ver=240719v1"></script>
+
+  <!-- 기타 JS -->
+  <script src="./static/ko2en.js?ver=240719v1"></script>
+  <script src="./static/jquery-3.1.1.min.js?ver=240719v1"></script>
+  <script src="./static/disable-top-blocks.js?ver=240319v1"></script>
+  <script src="./static/index.js?ver=240809v14"></script>
+  <script src="./static/ko.js?ver=240719v1"></script>
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/monokai.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+
+  <title>piBrain Maker</title>
 </head>
 <body>
-    <div class="wrapper">
-        <h1><i class="fas fa-cubes"></i> 블록코딩 (for piBrain)</h1>    
-        <div class="container">
-            <div class="editor-container">
-                <div class="controls">
-                    <button id="connect" title="기기 연결"><i class="fas fa-plug"></i>연결</button> :
-                    <button id="send" title="실행"><i class="fas fa-flag"></i>실행</button>
-                    <button id="stop" title="정지"><i class="fas fa-stop"></i>정지</button>
-                    <button id="disp_init" title="화면지움"><i class="fas fa-eraser"></i>화면지움</button>
-                    <button id="view" title="코드확인"><i class="fas fa-eye"></i>코드변환</button> :
-                    <button id="import_bt" title="불러오기"><i class="fas fa-file-import"></i>불러오기</button>
-                    <button id="export_bt" title="내보내기"><i class="fas fa-file-export"></i>내보내기</button>
-                <div id="blocklyDiv" class="blocklyDiv"></div>
-            </div>
-            </div>
-            <div class="output-container">
-                <div id="output-title"><i class="fa fa-solid fa-file-lines"></i>실행 결과</div>
-                <div id="output">
-                    <div id="output-content"></div>
-                </div>
-                <div id="output-title"><i class="fab fa-python"></i>파이썬 코드</div>
-                <div id="python-code"></div>
-            </div>
+  <div class="wrapper">
+    <h1><i class="fas fa-cubes"></i> 블록코딩 (for piBrain)</h1>
+    <div class="container">
+      <!-- 좌측: 블록 에디터 영역 -->
+      <div class="editor-container">
+        <div class="controls">
+          <button id="connect" title="기기 연결"><i class="fas fa-plug"></i>연결</button> :
+          <button id="send" title="실행"><i class="fas fa-flag"></i>실행</button>
+          <button id="stop" title="정지"><i class="fas fa-stop"></i>정지</button>
+          <button id="disp_init" title="화면지움"><i class="fas fa-eraser"></i>화면지움</button>
+          <button id="view" title="코드확인"><i class="fas fa-eye"></i>코드변환</button> :
+          <button id="import_bt" title="불러오기"><i class="fas fa-file-import"></i>불러오기</button>
+          <button id="export_bt" title="내보내기"><i class="fas fa-file-export"></i>내보내기</button>
         </div>
+        <div id="blocklyDiv" class="blocklyDiv"></div>
+      </div>
+
+      <!-- 우측: 실행 결과 / 파이썬 코드 -->
+      <div class="output-container">
+        <!-- 위쪽(실행 결과) : 4 비율 -->
+        <div class="top-section">
+          <div class="section-title">
+            <i class="fa fa-solid fa-file-lines"></i> 실행 결과
+          </div>
+          <div id="output">
+            <div id="output-content"></div>
+          </div>
+        </div>
+
+        <!-- 아래쪽(파이썬 코드) : 6 비율 -->
+        <div class="bottom-section">
+          <div class="section-title">
+            <i class="fab fa-python"></i> 파이썬 코드
+          </div>
+          <div id="python-code"></div>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 </html>
