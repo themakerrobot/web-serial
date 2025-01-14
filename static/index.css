@@ -129,8 +129,7 @@ button:active {
     height: 99% !important;
     border: 1px solid #ddd;
     border-radius: 4px;
-    overflow-y: auto; /* Vertical scroll */
-    overflow-x: auto; /* Horizontal scroll */
+    overflow: auto !important;
 }
 .blocklyDiv {
   height:calc(100vh - 130px);
