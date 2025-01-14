@@ -288,7 +288,6 @@ workspace.addChangeListener ((event)=>{
         newBlock.dispose(); // 새로 추가된 블록 삭제
       }
     }
-  }
   if (event.type == Blockly.Events.BLOCK_CHANGE) {
     if (event.element == 'field' && event.name == 'dir') {
       folderValue = workspace.getBlockById(event.blockId).getFieldValue('dir');
