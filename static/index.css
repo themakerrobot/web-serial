@@ -134,7 +134,6 @@ button:hover {
 }
 
 /* ========== 반응형 처리 (옵션) ========== */
-/*
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -144,7 +143,6 @@ button:hover {
     min-width: auto;
   }
 }
-*/
 
 /* Blockly area */
 .blocklyDiv {
