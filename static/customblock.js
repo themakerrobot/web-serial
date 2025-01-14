@@ -1,4 +1,5 @@
 const color_type={
+  "event":    "#F4D85A",
   "audio":    "#7dc37D",
   "collect":  "#7d7db3",
   "device":   "#d3b28d",
@@ -11,6 +12,26 @@ const color_type={
 
 Blockly.defineBlocksWithJsonArray(
   [
+    {
+      type: "flag_event",
+      message0: '%{BKY_FLAG_EVENT}',
+      args0:
+      [
+        {
+          "type": "field_image",
+          "src": "svg/flag-solid.svg",
+          "width": 27,
+          "height": 27,
+          "alt": "flag",
+          "flip_rtl": true
+        },
+      ],
+      "inputsInline": true,
+      "nextStatement": null,
+      colour: color_type["event"],
+      tooltip: '%{BKY_FLAG_EVENT_TOOLTIP}',
+      helpUrl: ""   
+    },
     {
       type: 'audio_play_dynamic',
       message0: '%{BKY_AUDIO_PLAY_DYNAMIC}',
@@ -28,11 +49,11 @@ Blockly.defineBlocksWithJsonArray(
               [ '%{BKY_FOLDER_SELECT}', ''],
               // [ 'code', '/home/pi/code/' ],
               // [ 'myaudio', '/home/pi/myaudio/' ],
-              [ 'audio/animal/', '/home/pi/openpibo-files/audio/animal/'],
-              [ 'audio/effect/', '/home/pi/openpibo-files/audio/effect/'],
-              [ 'audio/music/', '/home/pi/openpibo-files/audio/music/'],
-              [ 'audio/voice/', '/home/pi/openpibo-files/audio/voice/'],
-              [ 'audio/piano/', '/home/pi/openpibo-files/audio/piano/']
+              [ '%{BKY_AUDIO_ANIMAL}', '/home/pi/openpibo-files/audio/animal/'],
+              [ '%{BKY_AUDIO_EFFECT}', '/home/pi/openpibo-files/audio/effect/'],
+              [ '%{BKY_AUDIO_MUSIC}', '/home/pi/openpibo-files/audio/music/'],
+              [ '%{BKY_AUDIO_VOICE}', '/home/pi/openpibo-files/audio/voice/'],
+              [ '%{BKY_AUDIO_PIANO}', '/home/pi/openpibo-files/audio/piano/']
             ]
           },
           {
@@ -66,11 +87,11 @@ Blockly.defineBlocksWithJsonArray(
               [ '%{BKY_FOLDER_SELECT}', ''],
               [ 'code', '/home/pi/code/' ],
               [ 'myaudio', '/home/pi/myaudio/' ],
-              [ 'audio/animal/', '/home/pi/openpibo-files/audio/animal/'],
-              [ 'audio/effect/', '/home/pi/openpibo-files/audio/effect/'],
-              [ 'audio/music/', '/home/pi/openpibo-files/audio/music/'],
-              [ 'audio/voice/', '/home/pi/openpibo-files/audio/voice/'],
-              [ 'audio/piano/', '/home/pi/openpibo-files/audio/piano/']
+              [ '%{BKY_AUDIO_ANIMAL}', '/home/pi/openpibo-files/audio/animal/'],
+              [ '%{BKY_AUDIO_EFFECT}', '/home/pi/openpibo-files/audio/effect/'],
+              [ '%{BKY_AUDIO_MUSIC}', '/home/pi/openpibo-files/audio/music/'],
+              [ '%{BKY_AUDIO_VOICE}', '/home/pi/openpibo-files/audio/voice/'],
+              [ '%{BKY_AUDIO_PIANO}', '/home/pi/openpibo-files/audio/piano/']
             ]
           },
           {"type": "input_value", "name": "filename", "check":"String"},
@@ -523,7 +544,8 @@ Blockly.defineBlocksWithJsonArray(
             "options":[
             [ 'SW1', '4' ],
             [ 'SW2', '17' ],
-            [ 'SW3', '27' ]
+            [ 'SW3', '27' ],
+            [ 'SW4', '26' ],
           ]
           }
         ],
@@ -533,7 +555,71 @@ Blockly.defineBlocksWithJsonArray(
       tooltip: '%{BKY_DEVICE_HAT_BUTTON_TOOLTIP}',
       helpUrl: ''
     },
+    {
+      type: 'device_hat_led_on',
+      message0: '%{BKY_DEVICE_HAT_LED_ON}',
+      args0:
+        [
+          {
+            "type": "field_image",
+            "src": "svg/eye-solid.svg",
+            "width": 27,
+            "height": 27
+          },
+          {"type":"input_dummy"},
+          {"type": "input_value", "name": "val0", "check":"Number"},
+          {"type": "input_value", "name": "val1", "check":"Number"},
+          {"type": "input_value", "name": "val2", "check":"Number"},
+        ],
+      nextStatement: true,
+      previousStatement: true,
+      inputsInline: true,
+      colour: color_type["device"],
+      tooltip: '%{BKY_DEVICE_HAT_LED_ON_TOOLTIP}',
+      helpUrl: ''
+    },
+    {
+      type: 'device_hat_led_colour_on',
+      message0: '%{BKY_DEVICE_HAT_LED_COLOUR_ON}',
+      args0:
+        [
+          {
+            "type": "field_image",
+            "src": "svg/eye-solid.svg",
+            "width": 27,
+            "height": 27
+          },
+          {"type":"input_dummy"},
+          {"type": "input_value", "name": "color", "check":"Colour"},
+        ],
+      nextStatement: true,
+      previousStatement: true,
+      inputsInline: true,
+      colour: color_type["device"],
+      tooltip: '%{BKY_DEVICE_HAT_LED_COLOUR_ON_TOOLTIP}',
+      helpUrl: ''
+    },
 
+    {
+      type: 'device_hat_led_off',
+      message0: '%{BKY_DEVICE_HAT_LED_OFF}',
+      args0:
+        [
+          {
+            "type": "field_image",
+            "src": "svg/eye-slash-solid.svg",
+            "width": 27,
+            "height": 27
+          },
+          {"type":"input_dummy"}
+        ],
+      nextStatement: true,
+      previousStatement: true,
+      inputsInline: true,
+      colour: color_type["device"],
+      tooltip: '%{BKY_DEVICE_HAT_LED_OFF_TOOLTIP}',
+      helpUrl: ''
+    },
     // motion
     {
       type: 'motion_get_motion',
@@ -871,21 +957,21 @@ Blockly.defineBlocksWithJsonArray(
               [ '%{BKY_FOLDER_SELECT}', ''],
               // [ 'code', '/home/pi/code/' ],
               // [ 'myimage', '/home/pi/myimage/' ],
-              [ 'image/animal', '/home/pi/openpibo-files/image/animal/' ],
-              [ 'image/expression',  '/home/pi/openpibo-files/image/expression/' ],
-              [ 'image/family',  '/home/pi/openpibo-files/image/family/' ],
-              [ 'image/food',  '/home/pi/openpibo-files/image/food/' ],
-              [ 'image/furniture',  '/home/pi/openpibo-files/image/furniture/' ],
-              [ 'image/game',  '/home/pi/openpibo-files/image/game/' ],
-              [ 'image/goods',  '/home/pi/openpibo-files/image/goods/' ],
-              [ 'image/kitchen',  '/home/pi/openpibo-files/image/kitchen/' ],
-              [ 'image/machine',  '/home/pi/openpibo-files/image/machine/' ],
-              [ 'image/recycle',  '/home/pi/openpibo-files/image/recycle/' ],
-              [ 'image/sport',  '/home/pi/openpibo-files/image/sport/' ],
-              [ 'image/transport',  '/home/pi/openpibo-files/image/transport/' ],
-              [ 'image/weather',  '/home/pi/openpibo-files/image/weather/' ],
-              [ 'image/etc',  '/home/pi/openpibo-files/image/etc/' ],
-              [ 'image/sample',  '/home/pi/openpibo-files/image/sample/' ]
+              [ '%{BKY_IMAEG_ANIMAL}', '/home/pi/openpibo-files/image/animal/' ],
+              [ '%{BKY_IMAEG_EXPRESSION}',  '/home/pi/openpibo-files/image/expression/' ],
+              [ '%{BKY_IMAEG_FAMILY}',  '/home/pi/openpibo-files/image/family/' ],
+              [ '%{BKY_IMAEG_FOOD}',  '/home/pi/openpibo-files/image/food/' ],
+              [ '%{BKY_IMAEG_FURNITURE}',  '/home/pi/openpibo-files/image/furniture/' ],
+              [ '%{BKY_IMAEG_GAME}',  '/home/pi/openpibo-files/image/game/' ],
+              [ '%{BKY_IMAEG_GOODS}',  '/home/pi/openpibo-files/image/goods/' ],
+              [ '%{BKY_IMAEG_KITCHEN}',  '/home/pi/openpibo-files/image/kitchen/' ],
+              [ '%{BKY_IMAEG_MACHINE}',  '/home/pi/openpibo-files/image/machine/' ],
+              [ '%{BKY_IMAEG_RECYCLE}',  '/home/pi/openpibo-files/image/recycle/' ],
+              [ '%{BKY_IMAEG_SPORT}',  '/home/pi/openpibo-files/image/sport/' ],
+              [ '%{BKY_IMAEG_TRANSPORT}',  '/home/pi/openpibo-files/image/transport/' ],
+              [ '%{BKY_IMAEG_WEATHER}',  '/home/pi/openpibo-files/image/weather/' ],
+              [ '%{BKY_IMAEG_ETC}',  '/home/pi/openpibo-files/image/etc/' ],
+              [ '%{BKY_IMAEG_SAMPLE}',  '/home/pi/openpibo-files/image/sample/' ]
             ]
           },
           {
@@ -918,21 +1004,21 @@ Blockly.defineBlocksWithJsonArray(
               [ '%{BKY_FOLDER_SELECT}', ''],
               [ 'code', '/home/pi/code/' ],
               [ 'myimage', '/home/pi/myimage/' ],
-              [ 'image/animal', '/home/pi/openpibo-files/image/animal/' ],
-              [ 'image/expression',  '/home/pi/openpibo-files/image/expression/' ],
-              [ 'image/family',  '/home/pi/openpibo-files/image/family/' ],
-              [ 'image/food',  '/home/pi/openpibo-files/image/food/' ],
-              [ 'image/furniture',  '/home/pi/openpibo-files/image/furniture/' ],
-              [ 'image/game',  '/home/pi/openpibo-files/image/game/' ],
-              [ 'image/goods',  '/home/pi/openpibo-files/image/goods/' ],
-              [ 'image/kitchen',  '/home/pi/openpibo-files/image/kitchen/' ],
-              [ 'image/machine',  '/home/pi/openpibo-files/image/machine/' ],
-              [ 'image/recycle',  '/home/pi/openpibo-files/image/recycle/' ],
-              [ 'image/sport',  '/home/pi/openpibo-files/image/sport/' ],
-              [ 'image/transport',  '/home/pi/openpibo-files/image/transport/' ],
-              [ 'image/weather',  '/home/pi/openpibo-files/image/weather/' ],
-              [ 'image/etc',  '/home/pi/openpibo-files/image/etc/' ],
-              [ 'image/sample',  '/home/pi/openpibo-files/image/sample/' ]
+              [ '%{BKY_IMAEG_ANIMAL}', '/home/pi/openpibo-files/image/animal/' ],
+              [ '%{BKY_IMAEG_EXPRESSION}',  '/home/pi/openpibo-files/image/expression/' ],
+              [ '%{BKY_IMAEG_FAMILY}',  '/home/pi/openpibo-files/image/family/' ],
+              [ '%{BKY_IMAEG_FOOD}',  '/home/pi/openpibo-files/image/food/' ],
+              [ '%{BKY_IMAEG_FURNITURE}',  '/home/pi/openpibo-files/image/furniture/' ],
+              [ '%{BKY_IMAEG_GAME}',  '/home/pi/openpibo-files/image/game/' ],
+              [ '%{BKY_IMAEG_GOODS}',  '/home/pi/openpibo-files/image/goods/' ],
+              [ '%{BKY_IMAEG_KITCHEN}',  '/home/pi/openpibo-files/image/kitchen/' ],
+              [ '%{BKY_IMAEG_MACHINE}',  '/home/pi/openpibo-files/image/machine/' ],
+              [ '%{BKY_IMAEG_RECYCLE}',  '/home/pi/openpibo-files/image/recycle/' ],
+              [ '%{BKY_IMAEG_SPORT}',  '/home/pi/openpibo-files/image/sport/' ],
+              [ '%{BKY_IMAEG_TRANSPORT}',  '/home/pi/openpibo-files/image/transport/' ],
+              [ '%{BKY_IMAEG_WEATHER}',  '/home/pi/openpibo-files/image/weather/' ],
+              [ '%{BKY_IMAEG_ETC}',  '/home/pi/openpibo-files/image/etc/' ],
+              [ '%{BKY_IMAEG_SAMPLE}',  '/home/pi/openpibo-files/image/sample/' ]
             ]
           },
           {"type": "input_value", "name": "filename", "check":"String"},
@@ -1168,12 +1254,12 @@ Blockly.defineBlocksWithJsonArray(
           {
             "type": "field_dropdown",
             "name": "extension",
-            "options": [['mp3', '.mp3'], ['-', '']]
+            "options": [['mp3', '.mp3'], ['wav', '.wav'],['-', '']]
           },
           {"type": "field_dropdown", "name":"voice",
            "options":[
-              ['main','main'],['man','man1'],['woman','woman1'],
-              ['boy','boy'],['girl','girl'],['espeak','espeak'], ['gtts', 'gtts']
+              ['main','main'],['man','man1'],['woman','woman1'],['boy','boy'],['girl','girl'],
+              ['gtts', 'gtts'],['espeak','espeak'],['ondevice', 'ondevice']
             ]
           },
         ],
@@ -1229,7 +1315,8 @@ Blockly.defineBlocksWithJsonArray(
               ['%{BKY_LANG_RU}','ru'],
               ['%{BKY_LANG_AR}','ar'],
               ['%{BKY_LANG_HI}','hi'],
-              ['%{BKY_LANG_LA}','la']
+              ['%{BKY_LANG_LA}','la'],
+              ['%{BKY_LANG_MS}','ms']
             ]
           },
         ],
@@ -1272,7 +1359,8 @@ Blockly.defineBlocksWithJsonArray(
               ['%{BKY_LANG_RU}','ru'],
               ['%{BKY_LANG_AR}','ar'],
               ['%{BKY_LANG_HI}','hi'],
-              ['%{BKY_LANG_LA}','la']
+              ['%{BKY_LANG_LA}','la'],
+              ['%{BKY_LANG_MS}','ms']
             ]
          },
         ],
@@ -1387,21 +1475,21 @@ Blockly.defineBlocksWithJsonArray(
               [ '%{BKY_FOLDER_SELECT}', ''],
               // [ 'code', '/home/pi/code/' ],
               // [ 'myimage', '/home/pi/myimage/' ],
-              [ 'image/animal', '/home/pi/openpibo-files/image/animal/' ],
-              [ 'image/expression',  '/home/pi/openpibo-files/image/expression/' ],
-              [ 'image/family',  '/home/pi/openpibo-files/image/family/' ],
-              [ 'image/food',  '/home/pi/openpibo-files/image/food/' ],
-              [ 'image/furniture',  '/home/pi/openpibo-files/image/furniture/' ],
-              [ 'image/game',  '/home/pi/openpibo-files/image/game/' ],
-              [ 'image/goods',  '/home/pi/openpibo-files/image/goods/' ],
-              [ 'image/kitchen',  '/home/pi/openpibo-files/image/kitchen/' ],
-              [ 'image/machine',  '/home/pi/openpibo-files/image/machine/' ],
-              [ 'image/recycle',  '/home/pi/openpibo-files/image/recycle/' ],
-              [ 'image/sport',  '/home/pi/openpibo-files/image/sport/' ],
-              [ 'image/transport',  '/home/pi/openpibo-files/image/transport/' ],
-              [ 'image/weather',  '/home/pi/openpibo-files/image/weather/' ],
-              [ 'image/etc',  '/home/pi/openpibo-files/image/etc/' ],
-              [ 'image/sample',  '/home/pi/openpibo-files/image/sample/' ]
+              [ '%{BKY_IMAEG_ANIMAL}', '/home/pi/openpibo-files/image/animal/' ],
+              [ '%{BKY_IMAEG_EXPRESSION}',  '/home/pi/openpibo-files/image/expression/' ],
+              [ '%{BKY_IMAEG_FAMILY}',  '/home/pi/openpibo-files/image/family/' ],
+              [ '%{BKY_IMAEG_FOOD}',  '/home/pi/openpibo-files/image/food/' ],
+              [ '%{BKY_IMAEG_FURNITURE}',  '/home/pi/openpibo-files/image/furniture/' ],
+              [ '%{BKY_IMAEG_GAME}',  '/home/pi/openpibo-files/image/game/' ],
+              [ '%{BKY_IMAEG_GOODS}',  '/home/pi/openpibo-files/image/goods/' ],
+              [ '%{BKY_IMAEG_KITCHEN}',  '/home/pi/openpibo-files/image/kitchen/' ],
+              [ '%{BKY_IMAEG_MACHINE}',  '/home/pi/openpibo-files/image/machine/' ],
+              [ '%{BKY_IMAEG_RECYCLE}',  '/home/pi/openpibo-files/image/recycle/' ],
+              [ '%{BKY_IMAEG_SPORT}',  '/home/pi/openpibo-files/image/sport/' ],
+              [ '%{BKY_IMAEG_TRANSPORT}',  '/home/pi/openpibo-files/image/transport/' ],
+              [ '%{BKY_IMAEG_WEATHER}',  '/home/pi/openpibo-files/image/weather/' ],
+              [ '%{BKY_IMAEG_ETC}',  '/home/pi/openpibo-files/image/etc/' ],
+              [ '%{BKY_IMAEG_SAMPLE}',  '/home/pi/openpibo-files/image/sample/' ]
             ]
           },
           {
@@ -1433,21 +1521,21 @@ Blockly.defineBlocksWithJsonArray(
               [ '%{BKY_FOLDER_SELECT}', ''],
               [ 'code', '/home/pi/code/' ],
               [ 'myimage', '/home/pi/myimage/' ],
-              [ 'image/animal', '/home/pi/openpibo-files/image/animal/' ],
-              [ 'image/expression',  '/home/pi/openpibo-files/image/expression/' ],
-              [ 'image/family',  '/home/pi/openpibo-files/image/family/' ],
-              [ 'image/food',  '/home/pi/openpibo-files/image/food/' ],
-              [ 'image/furniture',  '/home/pi/openpibo-files/image/furniture/' ],
-              [ 'image/game',  '/home/pi/openpibo-files/image/game/' ],
-              [ 'image/goods',  '/home/pi/openpibo-files/image/goods/' ],
-              [ 'image/kitchen',  '/home/pi/openpibo-files/image/kitchen/' ],
-              [ 'image/machine',  '/home/pi/openpibo-files/image/machine/' ],
-              [ 'image/recycle',  '/home/pi/openpibo-files/image/recycle/' ],
-              [ 'image/sport',  '/home/pi/openpibo-files/image/sport/' ],
-              [ 'image/transport',  '/home/pi/openpibo-files/image/transport/' ],
-              [ 'image/weather',  '/home/pi/openpibo-files/image/weather/' ],
-              [ 'image/etc',  '/home/pi/openpibo-files/image/etc/' ],
-              [ 'image/sample',  '/home/pi/openpibo-files/image/sample/' ]
+              [ '%{BKY_IMAEG_ANIMAL}', '/home/pi/openpibo-files/image/animal/' ],
+              [ '%{BKY_IMAEG_EXPRESSION}',  '/home/pi/openpibo-files/image/expression/' ],
+              [ '%{BKY_IMAEG_FAMILY}',  '/home/pi/openpibo-files/image/family/' ],
+              [ '%{BKY_IMAEG_FOOD}',  '/home/pi/openpibo-files/image/food/' ],
+              [ '%{BKY_IMAEG_FURNITURE}',  '/home/pi/openpibo-files/image/furniture/' ],
+              [ '%{BKY_IMAEG_GAME}',  '/home/pi/openpibo-files/image/game/' ],
+              [ '%{BKY_IMAEG_GOODS}',  '/home/pi/openpibo-files/image/goods/' ],
+              [ '%{BKY_IMAEG_KITCHEN}',  '/home/pi/openpibo-files/image/kitchen/' ],
+              [ '%{BKY_IMAEG_MACHINE}',  '/home/pi/openpibo-files/image/machine/' ],
+              [ '%{BKY_IMAEG_RECYCLE}',  '/home/pi/openpibo-files/image/recycle/' ],
+              [ '%{BKY_IMAEG_SPORT}',  '/home/pi/openpibo-files/image/sport/' ],
+              [ '%{BKY_IMAEG_TRANSPORT}',  '/home/pi/openpibo-files/image/transport/' ],
+              [ '%{BKY_IMAEG_WEATHER}',  '/home/pi/openpibo-files/image/weather/' ],
+              [ '%{BKY_IMAEG_ETC}',  '/home/pi/openpibo-files/image/etc/' ],
+              [ '%{BKY_IMAEG_SAMPLE}',  '/home/pi/openpibo-files/image/sample/' ]
             ]
           },
           {"type": "input_value", "name": "filename", "check":"String"},
@@ -1514,21 +1602,21 @@ Blockly.defineBlocksWithJsonArray(
               [ '%{BKY_FOLDER_SELECT}', ''],
               [ 'code', '/home/pi/code/' ],
               [ 'myimage', '/home/pi/myimage/' ],
-              [ 'image/animal', '/home/pi/openpibo-files/image/animal/' ],
-              [ 'image/expression',  '/home/pi/openpibo-files/image/expression/' ],
-              [ 'image/family',  '/home/pi/openpibo-files/image/family/' ],
-              [ 'image/food',  '/home/pi/openpibo-files/image/food/' ],
-              [ 'image/furniture',  '/home/pi/openpibo-files/image/furniture/' ],
-              [ 'image/game',  '/home/pi/openpibo-files/image/game/' ],
-              [ 'image/goods',  '/home/pi/openpibo-files/image/goods/' ],
-              [ 'image/kitchen',  '/home/pi/openpibo-files/image/kitchen/' ],
-              [ 'image/machine',  '/home/pi/openpibo-files/image/machine/' ],
-              [ 'image/recycle',  '/home/pi/openpibo-files/image/recycle/' ],
-              [ 'image/sport',  '/home/pi/openpibo-files/image/sport/' ],
-              [ 'image/transport',  '/home/pi/openpibo-files/image/transport/' ],
-              [ 'image/weather',  '/home/pi/openpibo-files/image/weather/' ],
-              [ 'image/etc',  '/home/pi/openpibo-files/image/etc/' ],
-              [ 'image/sample',  '/home/pi/openpibo-files/image/sample/' ]
+              [ '%{BKY_IMAEG_ANIMAL}', '/home/pi/openpibo-files/image/animal/' ],
+              [ '%{BKY_IMAEG_EXPRESSION}',  '/home/pi/openpibo-files/image/expression/' ],
+              [ '%{BKY_IMAEG_FAMILY}',  '/home/pi/openpibo-files/image/family/' ],
+              [ '%{BKY_IMAEG_FOOD}',  '/home/pi/openpibo-files/image/food/' ],
+              [ '%{BKY_IMAEG_FURNITURE}',  '/home/pi/openpibo-files/image/furniture/' ],
+              [ '%{BKY_IMAEG_GAME}',  '/home/pi/openpibo-files/image/game/' ],
+              [ '%{BKY_IMAEG_GOODS}',  '/home/pi/openpibo-files/image/goods/' ],
+              [ '%{BKY_IMAEG_KITCHEN}',  '/home/pi/openpibo-files/image/kitchen/' ],
+              [ '%{BKY_IMAEG_MACHINE}',  '/home/pi/openpibo-files/image/machine/' ],
+              [ '%{BKY_IMAEG_RECYCLE}',  '/home/pi/openpibo-files/image/recycle/' ],
+              [ '%{BKY_IMAEG_SPORT}',  '/home/pi/openpibo-files/image/sport/' ],
+              [ '%{BKY_IMAEG_TRANSPORT}',  '/home/pi/openpibo-files/image/transport/' ],
+              [ '%{BKY_IMAEG_WEATHER}',  '/home/pi/openpibo-files/image/weather/' ],
+              [ '%{BKY_IMAEG_ETC}',  '/home/pi/openpibo-files/image/etc/' ],
+              [ '%{BKY_IMAEG_SAMPLE}',  '/home/pi/openpibo-files/image/sample/' ]
             ]
           },
           {"type": "input_value", "name": "filename", "check":"String"},
@@ -1593,6 +1681,31 @@ Blockly.defineBlocksWithJsonArray(
       tooltip: '%{BKY_VISION_RECTANGLE_TOOLTIP}',
       helpUrl: ''
     },
+    {
+      type: 'vision_rectangle_point',
+      message0: '%{BKY_VISION_RECTANGLE_POINT}',
+      args0:
+        [
+          {
+            "type": "field_image",
+            "src": "svg/draw-polygon-solid.svg",
+            "width": 27,
+            "height": 27
+          },
+          {"type":"input_dummy"},
+          {"type": "input_value", "name": "img", "check":"Array"},
+          {"type": "input_value", "name": "point", "check":"Array"},
+          {"type": "input_value", "name": "color", "check":"Colour"},
+          {"type": "input_value", "name": "tickness", "check":"Number"},
+        ],
+      nextStatement: true,
+      previousStatement: true,
+      inputsInline: true,
+      colour: color_type["vision"],
+      tooltip: '%{BKY_VISION_RECTANGLE_POINT_TOOLTIP}',
+      helpUrl: ''
+    },
+
     {
       type: 'vision_circle',
       message0: '%{BKY_VISION_CIRCLE}',
@@ -1743,9 +1856,9 @@ Blockly.defineBlocksWithJsonArray(
       output: null,
       inputsInline: true,
       colour: color_type["vision"],
-      tooltip: '%{BKY_VISION_RESIZE_TOOLTIP}',
+      tooltip: '%{BKY_VISION_FLIP_TOOLTIP}',
       helpUrl: ''
-    },
+    },    
     {
       type: 'vision_face',
       message0: '%{BKY_VISION_FACE}',
@@ -1824,6 +1937,26 @@ Blockly.defineBlocksWithJsonArray(
       tooltip: '%{BKY_VISION_FACE_GENDER_TOOLTIP}',
       helpUrl: ''
     },
+    {
+      type: 'vision_face_emotion',
+      message0: '%{BKY_VISION_FACE_EMOTION}',
+      "args0": [
+        {
+          "type": "field_image",
+          "src": "svg/face-smile-solid.svg",
+          "width": 27,
+          "height": 27
+        },
+        {"type":"input_dummy"},
+        {"type": "input_value", "name": "img", "check":"Array"},
+        {"type": "input_value", "name": "v", "check":"Array"}
+      ],
+      output: null,
+      inputsInline: true,
+      colour: color_type["vision"],
+      tooltip: '%{BKY_VISION_FACE_EMOTION_TOOLTIP}',
+      helpUrl: ''
+    },    
     {
       type: 'vision_facedb_train',
       message0: '%{BKY_VISION_FACEDB_TRAIN}',
@@ -1960,6 +2093,51 @@ Blockly.defineBlocksWithJsonArray(
       helpUrl: ''
     },
     {
+      type: 'vision_object_detail',
+      message0: '%{BKY_VISION_OBJECT_DETAIL}',
+      "args0": [
+        {
+          "type": "field_image",
+          "src": "svg/object-group-solid.svg",
+          "width": 27,
+          "height": 27
+        },
+        {"type":"input_dummy"},
+        {"type": "input_value", "name": "img", "check":"Array"}
+      ],
+      output: null,
+      inputsInline: true,
+      colour: color_type["vision"],
+      tooltip: '%{BKY_VISION_OBJECT_DETAIL_TOOLTIP}',
+      helpUrl: ''
+    },    
+    {
+      type: 'vision_analyze_object',
+      message0: '%{BKY_VISION_ANALYZE_OBJECT}',
+      "args0": [
+        {
+          "type": "field_image",
+          "src": "svg/object-group-solid.svg",
+          "width": 27,
+          "height": 27
+        },
+        {"type":"input_dummy"},
+        {"type": "input_value", "name": "val"},
+        {"type": "field_dropdown", "name":"type",
+          "options":[
+            [ '%{BKY_VISION_NAME}', 'name' ],
+            [ '%{BKY_VISION_POSITION}', 'position'],
+            [ '%{BKY_VISION_ACC}', 'acc']
+          ]
+        }
+      ],
+      output: null,
+      inputsInline: true,
+      colour: color_type["vision"],
+      tooltip: '%{BKY_VISION_ANALYZE_OBJECT_TOOLTIP}',
+      helpUrl: ''
+    },
+    {
       type: 'vision_qr',
       message0: '%{BKY_VISION_QR}',
       "args0": [
@@ -1976,6 +2154,51 @@ Blockly.defineBlocksWithJsonArray(
       inputsInline: true,
       colour: color_type["vision"],
       tooltip: '%{BKY_VISION_QR_TOOLTIP}',
+      helpUrl: ''
+    },
+    {
+      type: 'vision_qr_detail',
+      message0: '%{BKY_VISION_QR_DETAIL}',
+      "args0": [
+        {
+          "type": "field_image",
+          "src": "svg/qrcode-solid.svg",
+          "width": 27,
+          "height": 27
+        },
+        {"type":"input_dummy"},
+        {"type": "input_value", "name": "img", "check":"Array"}
+      ],
+      output: null,
+      inputsInline: true,
+      colour: color_type["vision"],
+      tooltip: '%{BKY_VISION_QR_DETAILTOOLTIP}',
+      helpUrl: ''
+    },
+    {
+      type: 'vision_analyze_qt',
+      message0: '%{BKY_VISION_ANALYZE_QR}',
+      "args0": [
+        {
+          "type": "field_image",
+          "src": "svg/qrcode-solid.svg",
+          "width": 27,
+          "height": 27
+        },
+        {"type":"input_dummy"},
+        {"type": "input_value", "name": "val"},
+        {"type": "field_dropdown", "name":"type",
+          "options":[
+            [ '%{BKY_VISION_DATA}', 'data' ],
+            [ '%{BKY_VISION_TYPE}', 'type'],
+            [ '%{BKY_VISION_POSITION}', 'position']
+          ]
+        }
+      ],
+      output: null,
+      inputsInline: true,
+      colour: color_type["vision"],
+      tooltip: '%{BKY_VISION_ANALYZE_OBJECT_TOOLTIP}',
       helpUrl: ''
     },
     {
@@ -2014,7 +2237,7 @@ Blockly.defineBlocksWithJsonArray(
             [ '%{BKY_VISION_POSE_MOTION}', 'motion' ],
             [ '%{BKY_VISION_POSE_POSITION}', 'pose'],
             [ '%{BKY_VISION_POSE_PERSON}', 'person' ],
-            [ '%{BKY_VISION_POSE_ACC}', 'acc']
+            [ '%{BKY_VISION_ACC}', 'acc']
           ]
         }
       ],
@@ -2397,7 +2620,8 @@ Blockly.defineBlocksWithJsonArray(
           },
           {"type":"input_dummy"},
         ],
-        output: null,
+        nextStatement: true,
+        previousStatement: true,
         inputsInline: true,
         colour: color_type["utils"],
         tooltip: '%{BKY_UTILS_DICT_CREATE_TOOLTIP}',
@@ -2416,11 +2640,11 @@ Blockly.defineBlocksWithJsonArray(
           },
           {"type":"input_dummy"},
           {"type": "input_value", "name": "arr", "check":"Array"},
-          {"type": "input_value", "name": "y1",  "check":"Number"},
-          {"type": "input_value", "name": "y2",  "check":"Number"},
-          {"type": "input_value", "name": "x1",  "check":"Number"},
-          {"type": "input_value", "name": "x2",  "check":"Number"},
-          {"type": "input_value", "name": "value", "check":"Array"}
+          {"type": "input_value", "name": "y1", "check":"Number"},
+          {"type": "input_value", "name": "y2", "check":"Number"},
+          {"type": "input_value", "name": "x1", "check":"Number"},
+          {"type": "input_value", "name": "x2", "check":"Number"},
+          {"type": "input_value", "name": "value"},
         ],
         nextStatement: true,
         previousStatement: true,
@@ -2428,7 +2652,7 @@ Blockly.defineBlocksWithJsonArray(
         colour: color_type["utils"],
         tooltip: '%{BKY_UTILS_ARRAY_SLICE_SET_TOOLTIP}',
         helpUrl: ''
-    },
+    },    
     {
       type: 'utils_check_path',
       message0: '%{BKY_UTILS_CHECK_PATH}',
@@ -2520,48 +2744,17 @@ function updateSecondDropdown(folderValue, fileValue) {
   }
 }
 
-
-
-const openpibofiledata = {
-  "/home/pi/openpibo-files/audio/animal/":["cat.mp3","chick.mp3","cock.mp3","cow.mp3","dog.mp3","duck.mp3","horse.mp3","lion.mp3","pig.mp3","sheep.mp3"],
-  "/home/pi/openpibo-files/audio/effect/":["Jingle_Bells.mp3","car_key.mp3","car_lock.mp3","clapping.mp3","closing.mp3","despair.mp3","disappointment.mp3","drinking.mp3","fart.mp3","frustration.mp3","hungry.mp3","kid_happy.mp3","kid_laugh.mp3","kid_surprised.mp3","male_clearing_throat.mp3","male_crying.mp3","nop.mp3","opening.mp3","peekaboo.mp3","ridiculous.mp3","sleeping.mp3","sneeze.mp3","space_ship.mp3","stop.mp3","surprised.mp3","ugh.mp3","woman_sigh.mp3","woman_wow.mp3"],
-  "/home/pi/openpibo-files/audio/music/":["ballad.mp3","classic.mp3","exercise.mp3","funk.mp3","nature.mp3","rock.mp3","trot.mp3"],
-  "/home/pi/openpibo-files/audio/voice/":["궁금하다_저건_뭐지.mp3","기분이_참_좋아.mp3","나는_오늘.mp3","너랑_친하게_지내고_싶어.mp3","너무너무_배고파.mp3","너무너무_재미있어_즐거워.mp3","너와_장난_치고_싶어.mp3","당황스러워.mp3","매우_잘했어요.mp3","뭐라고_ 정말_화가_나네.mp3","반짝반짝_청소하고_싶어.mp3","빨리_놀고_싶어.mp3","숙제를_다해서_개운해.mp3","시무룩한_날이야.mp3","아이_기분이_찝찝해.mp3","아이_부끄러워.mp3","안녕하세요.mp3","예쁘고_멋지게_꾸미고_싶어.mp3","으앙_너무_슬퍼.mp3","잘자.mp3","정말_행복한날이야.mp3","정말축하해요.mp3","좀_예민해.mp3","참_상쾌하다.mp3","파이보는_오늘.mp3","힘들지만_재미있어.mp3"],
-  "/home/pi/openpibo-files/audio/piano/":["do.mp3","do2.mp3","fa.mp3","la.mp3","mi.mp3","re.mp3","si.mp3","sol.mp3"],
-  "/home/pi/openpibo-files/image/animal/": ["bear.jpg","bird.jpg","cat.jpg","cow.jpg","dog.jpg","elephant.jpg","giraffe.jpg","horse.jpg","sheep.jpg","zebra.jpg"],
-  "/home/pi/openpibo-files/image/expression/":["angry.jpg","angry2.jpg","delight.jpg","funny.jpg","happy.jpg","happy2.jpg","heart.jpg","joke.jpg","notfunny.jpg","sad.jpg","sad2.jpg","smile.jpg","what.jpg"],
-  "/home/pi/openpibo-files/image/family/":["boy1.jpg","boy2.jpg","family.jpg","father.jpg","girl1.jpg","girl2.jpg","grandfather.jpg","grandmother.jpg","mother.jpg"],
-  "/home/pi/openpibo-files/image/food/":["apple.jpg","banana.jpg","broccoli.jpg","cake.jpg","carrot.jpg","donut.jpg","hotdog.jpg","orange.jpg","pizza.jpg","rice.jpg","sandwich.jpg","tea.jpg"],
-  "/home/pi/openpibo-files/image/furniture/":["bed.jpg","bench.jpg","chair.jpg","couch.jpg","diningtable.jpg","toilet.jpg"],
-  "/home/pi/openpibo-files/image/game/":["paper.jpg","rock.jpg","scissors.jpg"],
-  "/home/pi/openpibo-files/image/goods/":["backpack.jpg","handbag.jpg","sink.jpg","suitcase.jpg","teddybear.jpg","tie.jpg","umbrella.jpg"],
-  "/home/pi/openpibo-files/image/kitchen/":["bottle.jpg","bowl.jpg","cup.jpg","fork.jpg","knife.jpg","spoon.jpg","wineglass.jpg"],
-  "/home/pi/openpibo-files/image/machine/":["cellphone.jpg","clock.jpg","hairdrier.jpg","keyboard.jpg","laptop.jpg","microwave.jpg","mouse.jpg","oven.jpg","refrigerator.jpg","remote.jpg","scissors.jpg","toaster.jpg","tv.jpg"],
-  "/home/pi/openpibo-files/image/recycle/":["can.jpg","glass.jpg","paper.jpg","plastic.jpg","trash.jpg","vinyl.jpg"],
-  "/home/pi/openpibo-files/image/sport/":["baseballbat.jpg","baseballglove.jpg","bicycle.jpg","frisbee.jpg","skateboard.jpg","skis.jpg","snowboard.jpg","sportsball.jpg","surfboard.jpg","tennisracket.jpg"],
-  "/home/pi/openpibo-files/image/transport/":["airplane.jpg","boat.jpg","bus.jpg","car.jpg","motorcycle.jpg","parkingmeter.jpg","road.jpg","stop.jpg","trafficlight.jpg","train.jpg","truck.jpg"],
-  "/home/pi/openpibo-files/image/weather/":["cloud.jpg","lighting.jpg","rain.jpg","snow.jpg","sun.jpg","wind.jpg"],
-  "/home/pi/openpibo-files/image/etc/":["background.jpg","book.jpg","christmas.jpg","direction.jpg","firehydrant.jpg","forest.jpg","heart.jpg","home.jpg","idea.jpg","kite.jpg","none.jpg","nourish.jpg","people.jpg","person.jpg","pibo.jpg","piboface.jpg","pottedplant.jpg","shake_hands.jpg","sprout.jpg","star.jpg","vase.jpg","watch.jpg"],
-  "/home/pi/openpibo-files/image/sample/":["butterfly.jpg","cow.jpg","dove.jpg","earth.jpg","flower.jpg","korea.jpg","livingroom.jpg","mars.jpg","number.jpg","qrcode.png","whale.jpg"]
-}
-
 function getFilesForFolder(folderValue) {
   return new Promise((resolve, reject) => {
-    resolve(openpibofiledata[folderValue]);
+    $.ajax({
+      url: `http://${location.hostname}:50000/dir?folderName=${folderValue}`,
+      method: 'GET',
+      success: function(data) {
+        resolve(data); // AJAX 요청 성공 시, 데이터를 resolve로 반환
+      },
+      error: function(xhr, status, error) {
+        reject(error); // AJAX 요청 실패 시, 에러를 reject로 반환
+      }
+    });
   });
 }
-
-// function getFilesForFolder(folderValue) {
-//   return new Promise((resolve, reject) => {
-//     $.ajax({
-//       url: `http://${location.hostname}:50000/dir?folderName=${folderValue}`,
-//       method: 'GET',
-//       success: function(data) {
-//         resolve(data); // AJAX 요청 성공 시, 데이터를 resolve로 반환
-//       },
-//       error: function(xhr, status, error) {
-//         reject(error); // AJAX 요청 실패 시, 에러를 reject로 반환
-//       }
-//     });
-//   });
-// }
