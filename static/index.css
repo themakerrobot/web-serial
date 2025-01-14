@@ -1,30 +1,34 @@
-/* Body 전체 스타일 */
+/* Reset and body setup */
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
-    background-color: #f7f7f7;
     margin: 0;
     padding: 0;
+    background-color: #f4d85a; /* 노란색 배경 */
     box-sizing: border-box;
 }
 
-/* Wrapper */
+/* Wrapper setup */
 .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 100%;
-    height: 100%;
+    width: 90%; /* 흰색 컨테이너 너비 */
+    max-width: 1200px; /* 최대 너비 제한 */
+    height: 90%; /* 컨테이너 높이 */
+    background-color: white; /* 흰색 배경 */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
     box-sizing: border-box;
-    background-color: #f4d85a;
-    box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 제목 스타일 */
+/* Title setup */
 h1 {
     text-align: center;
     margin: 20px 0;
@@ -33,47 +37,42 @@ h1 {
     color: #333;
 }
 
-/* 메인 컨테이너 */
+/* Container setup */
 .container {
     display: flex;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 95%;
-    max-width: 1200px; /* 최대 너비 제한 */
-    height: calc(100% - 80px); /* 상단 제목 및 여백 반영 */
-    overflow: hidden;
-    gap: 20px;
+    gap: 20px; /* 에디터와 출력 간격 */
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%; /* 전체 너비 */
+    height: 100%; /* 부모 높이에 맞게 */
 }
 
-/* 에디터 컨테이너 */
+/* Editor setup */
 .editor-container {
     flex: 1;
     display: flex;
     flex-direction: column;
+    border-right: 1px solid #ddd; /* 구분선 */
     padding: 20px;
     box-sizing: border-box;
-    border-right: 1px solid #ddd; /* 에디터와 출력 구분선 */
-    overflow: hidden;
 }
 
-/* 출력 컨테이너 */
+/* Output setup */
 .output-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
-    height: 100%;
-    overflow: hidden;
 }
 
-/* 상단 버튼 컨트롤 */
+/* Controls styling */
 .controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .controls div {
@@ -82,39 +81,7 @@ h1 {
     gap: 10px; /* 버튼 간격 */
 }
 
-/* CodeMirror 스타일 */
-.CodeMirror {
-    flex: 1;
-    height: 100%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-}
-
-/* 버튼 스타일 */
-button {
-    background-color: #f4de3d;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #333;
-    transition: background-color 0.2s, box-shadow 0.2s;
-}
-
-button:hover {
-    background-color: #f4d85a;
-    font-weight: bold;
-}
-
-button:active {
-    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
-    position: relative;
-    top: 2px;
-}
-
-/* 출력 제목 */
+/* Output titles */
 #output-title {
     font-weight: bold;
     margin-bottom: 10px;
@@ -122,7 +89,7 @@ button:active {
     color: #333;
 }
 
-/* 출력 및 코드 창 스타일 */
+/* Editor and Python code areas */
 #output, #python-code {
     flex: 1;
     background: #f8f8f8;
@@ -133,6 +100,15 @@ button:active {
     overflow-y: auto;
     overflow-x: auto;
     white-space: pre-wrap; /* 줄바꿈 처리 */
+}
+
+/* Blockly area */
+.blocklyDiv {
+    width: 100%;
+    height: 100%;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 /* 블록코딩 영역 */
