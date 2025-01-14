@@ -14,8 +14,7 @@ window.onload = function() {
     let editor = CodeMirror(document.getElementById("python-code"), {
       mode: "python",
       theme: "monokai",
-      lineNumbers: true,
-      lineWrapping: false,
+      lineNumbers: "true",
       readOnly: true
     });
     editor.getWrapperElement().style.fontSize = "16px";
