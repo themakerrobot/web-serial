@@ -8,7 +8,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-color:#eee;
+    color:#333;
 }
 
 .wrapper {
@@ -78,6 +78,7 @@ button {
     border-radius: 7px;
     cursor: pointer;
     font-size: 15px;
+    color:#333;
 }
 
 button:hover {
