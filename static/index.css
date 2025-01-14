@@ -28,8 +28,11 @@ h1 {
 
 .container {
     display: flex;
-    flex-direction: row;
-    height: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: calc(100% - 80px); /* Adjusted height to account for the title and padding */
 }
 
 .editor-container {
