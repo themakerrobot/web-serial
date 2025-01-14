@@ -102,7 +102,6 @@ button:active {
     flex: 1;
     overflow-y: auto;
     margin-top: 10px;
-    overflow-x: auto; /* 가로 스크롤 활성화 */
 }
 
 .blocklyDiv {
