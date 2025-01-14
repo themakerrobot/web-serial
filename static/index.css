@@ -1,70 +1,67 @@
+/* 전체 배경 흰색, 마진/패딩 제거 */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #ffffff; /* 배경색 흰색 */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #fff; /* 전체 배경 흰색 */
+    font-family: Arial, sans-serif;
 }
 
+/* 화면 전체를 감싸는 컨테이너 */
 .wrapper {
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
     box-sizing: border-box;
-    background-color: #ffffff; /* 배경색 흰색 */
 }
 
+/* 상단 제목 */
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
+/* 내부 컨테이너 (블록리 / 결과+파이썬 코드) */
 .container {
     display: flex;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: calc(100% - 80px); /* 제목과 여백을 뺀 높이 */
-    width: 90%; /* 전체 화면에서 90% 너비 */
+    /* 상단 제목 높이 60px + 여백 등 고려 */
+    height: calc(100% - 60px); 
+    background: #fff;        /* 내부도 흰색으로 */
 }
 
+/* 블록리 편집기 영역: 가로 60% */
 .editor-container {
-    flex: 6; /* 가로 60% 비율 */
+    flex: 6; /* 6:4 -> 60% */
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
-    background-color: #f4f4f4; /* 약간의 대비 */
-    border-right: 1px solid #ddd; /* 구분선 */
 }
 
+/* 실행 결과 + 파이썬 코드 영역: 가로 40% */
 .output-container {
-    flex: 4; /* 가로 40% 비율 */
+    flex: 4; /* 6:4 -> 40% */
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
 }
 
-#output, #python-code {
-    background: #f8f8f8;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    flex: 1;
-    margin-top: 10px;
-    overflow-y: auto; /* 세로 스크롤 */
-    overflow-x: auto; /* 가로 스크롤 */
-    white-space: pre; /* 텍스트 줄바꿈 방지 */
-    word-wrap: normal; /* 텍스트가 줄바꿈되지 않음 */
+/* 상단 버튼 영역 */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
+.controls div {
+    display: flex;
+    align-items: center;
+}
+
+/* 버튼 스타일 */
 button {
     background-color: #f4de3d;
     border: none;
@@ -81,7 +78,63 @@ button:hover {
 }
 
 button:active {
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
     position: relative;
     top: 2px;
+}
+
+/* 결과/코드 구역 제목 스타일 */
+#output-title {
+    font-weight: bold;
+    text-align: left;
+    margin: 0;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* 실행 결과, 파이썬 코드 영역 공통 스타일 */
+/* 내용이 가로/세로로 길어지면 스크롤로 처리하고, 레이아웃은 변하지 않음 */
+#output, #python-code {
+    background: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1;                 /* 남은 공간을 채움 */
+    margin-top: 10px;
+    overflow-y: auto;        /* 세로 스크롤 */
+    overflow-x: auto;        /* 가로 스크롤 */
+    white-space: pre;        /* 줄바꿈 방지 (가로로 긴 텍스트 스크롤) */
+    word-wrap: normal;       /* 단어 단위로 자동 줄바꿈하지 않음 */
+}
+
+/* 블록리 영역 높이 설정 (제목, 버튼 등을 제외한 남은 공간) */
+.blocklyDiv {
+    height: calc(100vh - 160px); 
+    /* 필요에 따라 높이 조정 (상단 h1, margin, controls 높이에 맞춰 변경) */
+}
+
+/* Blockly 툴박스 색상 수정 */
+.blocklyTreeLabel {
+    color: black;
+}
+.blocklyToolboxDiv {
+    background-color: whitesmoke;
+}
+.blocklyTreeRow {
+    padding: 2px;
+    margin: 0.1em;
+    height: 28px;
+    background-color: whitesmoke;
+}
+.customIcon {
+    margin: 0.1em;
+    padding: 2px;
+    color: black;
+}
+.blocklyTreeRowContentContainer {
+    display: flex;
+    align-items: center;
+}
+.blocklyTreeSelected .customIcon {
+    filter: invert(1);
 }
