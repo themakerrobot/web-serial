@@ -1,54 +1,48 @@
-/* ===== 1. 기본 페이지 스타일 ===== */
-html, body {
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #fff; /* 전체 페이지 흰색 배경 */
 }
 
-/* 화면 전체 래퍼 */
 .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
     box-sizing: border-box;
+    background-color: #f4d85a;
+    box-shadow: 0 -3px 3px -3px #333;
 }
 
-/* 상단 제목 (블록코딩 for piBrain) */
 h1 {
-    margin: 20px 0 0 0;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-/* ===== 2. 메인 컨테이너 (블록코딩, 결과+코드) ===== */
 .container {
     display: flex;
-    height: calc(100% - 60px); /* 위쪽 h1(제목) 높이 등 감안 */
-    background: #fff;          /* 내부도 흰색 */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: calc(100% - 80px); /* Adjusted height to account for the title and padding */
 }
 
-/* 블록 편집기: 가로 60% */
-.editor-container {
-    flex: 6;  /* 6 : 4 -> 60% */
+.editor-container, .output-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
 }
 
-/* 결과+파이썬 코드: 가로 40% */
-.output-container {
-    flex: 4;  /* 6 : 4 -> 40% */
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* ===== 3. 버튼 컨트롤 ===== */
 .controls {
     display: flex;
     justify-content: space-between;
@@ -59,6 +53,13 @@ h1 {
 .controls div {
     display: flex;
     align-items: center;
+}
+
+.CodeMirror {
+    flex: 1;
+    height: 99% !important;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 button {
@@ -77,78 +78,75 @@ button:hover {
 }
 
 button:active {
-    box-shadow: 1px 1px 0 rgba(0,0,0,0.5);
-    position: relative;
-    top: 2px;
+  box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+  position: relative;
+  top:2px;
 }
 
-/* ===== 4. 결과/코드 제목 ===== */
+#font-size-container label {
+    margin-right: 10px;
+}
+
 #output-title {
     font-weight: bold;
     text-align: left;
-    margin: 10px 0 0 0;
+    margin: 0;
     font-size: 20px;
 }
 
-/* ===== 5. 실행 결과, 파이썬 코드 영역 ===== */
-
-/*
-  기존에 배경, 테두리, border-radius 등이 있었는데,
-  CodeMirror의 테마(monokai)와 겹치거나 디자인이 바뀔 수 있으므로
-  최소화하는 방식으로 변경.
-*/
 #output, #python-code {
-    flex: 1;             /* 남는 공간을 균등하게 차지 */
+    background: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1;
+    overflow-y: auto;
     margin-top: 10px;
-    overflow: auto;      /* 내용이 넘치면 스크롤 */
-    /* 필요하면 배경색이나 테두리만 간단히 줄 수도 있음 */
-    /* background: #fafafa; 
-       border: 1px solid #ddd;
-       border-radius: 4px; 
-    */
+    overflow-x: auto; /* 가로 스크롤 활성화 */
 }
 
-/* ===== 6. Blockly 영역(높이 등) ===== */
 .blocklyDiv {
-    height: calc(100vh - 160px); 
-    /* 필요 시 조정 (위쪽 h1, buttons, padding 감안) */
+  height:calc(100vh - 130px);
+  /* display: none; hide the element by default */
 }
 
-/*
-  CodeMirror는 자체 스타일링이 있으므로,
-  .CodeMirror에 width/height 100%만 주고, overflow도 CodeMirror가 관리하도록 설정.
-*/
-.CodeMirror {
-    width: 100% !important;
-    height: 100% !important;
-    overflow: auto !important;  /* 긴 내용 -> 스크롤 */
-    box-sizing: border-box;
-    /* monokai 테마가 적용되어 있을 것이므로 
-       배경, 폰트 컬러 등은 테마에 의해 설정됨 */
-}
-
-/* ===== 7. Blockly 툴박스/카테고리 색상 예시 ===== */
+/* Makes our label white. */
 .blocklyTreeLabel {
-    color: black;
+  color:black;
 }
 .blocklyToolboxDiv {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
 }
+/* Adds padding around the group of categories and separators. */
+/* .blocklyToolboxContents {
+  padding: 0.5em;
+} */
+/* Adds space between the categories, rounds the corners and adds space around the label. */
 .blocklyTreeRow {
-    padding: 2px;
-    margin: 0.1em;
-    height: 28px;
-    background-color: whitesmoke;
+  padding: 2px;
+  margin: 0.1em;
+  /* border-radius: 15px; */
+  /* width: 100px; */
+  height: 28px;
+  /* height: initial; */
+  background-color: whitesmoke;
 }
+
+/* Changes color of the icon to white. */
 .customIcon {
-    margin: 0.1em;
-    padding: 2px;
-    color: black;
+  margin: 0.1em 0.1em 0.1em 0.1em;
+  padding: 2px;
+  color:black;
+  /* width: 30px; */
+  /* color:rgb(0, 0, 0); */
 }
+/* Stacks the icon on top of the label. */
 .blocklyTreeRowContentContainer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
 }
+
 .blocklyTreeSelected .customIcon {
-    filter: invert(1);
+   filter: invert(1);
 }
