@@ -157,9 +157,9 @@ const workspace = Blockly.inject("blocklyDiv", {
     'base': Blockly.Themes.Classic,
     startHats: true,
     fontStyle: {
-      'family': null,
-      'weight': null,
-      'size': 16,
+      family: null,
+      weight: 'bold',
+      size: 16,
     },
     blockStyles: {
       logic_blocks: {
@@ -268,12 +268,27 @@ Blockly.Python.nameDB_.getName = function(name, type) {
   return pythonCompatibleName;
 };
 
+const disableTopBlocks = new DisableTopBlocks(workspace);
+disableTopBlocks.init();
+    
 workspace.addChangeListener ((event)=>{
   update_block();
   if (event.type == Blockly.Events.CREATE) {
     if($("#codepath").html() == '') setTimeout(()=>{alert(translations["confirm_block_file"][lang])},500);
   }
+    const allBlocks = workspace.getAllBlocks();
+    const matchingBlocks = allBlocks.filter(block => block.type === 'flag_event');
 
+    // 동일한 블록이 1개를 초과하면 새로 생성된 블록 삭제
+    if (matchingBlocks.length > 1) {
+      const newBlockId = event.ids[0]; // 새로 생성된 블록의 ID
+      const newBlock = workspace.getBlockById(newBlockId);
+
+      if (newBlock) {
+        newBlock.dispose(); // 새로 추가된 블록 삭제
+      }
+    }
+  }
   if (event.type == Blockly.Events.BLOCK_CHANGE) {
     if (event.element == 'field' && event.name == 'dir') {
       folderValue = workspace.getBlockById(event.blockId).getFieldValue('dir');
