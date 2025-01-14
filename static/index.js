@@ -15,7 +15,7 @@ window.onload = function() {
       mode: "python",
       theme: "monokai",
       lineNumbers: "true",
-      readOnly: true
+      readOnly: "true"
     });
     editor.getWrapperElement().style.fontSize = "16px";
     
