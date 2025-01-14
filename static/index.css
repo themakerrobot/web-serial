@@ -46,6 +46,7 @@ h1 {
 .output-container {
     flex: 1;
     display: flex;
+    height: 100%;
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
