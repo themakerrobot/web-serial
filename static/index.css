@@ -71,8 +71,7 @@ h2 {
 }
 
 .CodeMirror {
-/*     flex: 1; */
-    overflow:auto !important;
+    flex: 1;
     height: 99% !important;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -113,12 +112,11 @@ button:active {
 
 #output, #python-code {
     width: calc(50vw-50px);
-    height:calc(100vh - 130px);
     background: #f8f8f8;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-/*     flex: 1; */
+    flex: 1;
     overflow-y: auto;
     margin-top: 10px;
     overflow-x: auto;
