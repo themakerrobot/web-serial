@@ -1,3 +1,123 @@
+/* 전체 감싸는 래퍼 */
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+/* 상단 타이틀 스타일 */
+.wrapper h1 {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+/* 컨테이너: 좌우 6:4 레이아웃을 위해 플렉스 사용 */
+.container {
+  display: flex;
+  flex-wrap: wrap; /* 창이 너무 작아지면 아래로 내려가도록 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 블록에디터 영역 (좌측) */
+.editor-container {
+  flex: 6 1 0;  /* 6:4 레이아웃 중 6 부분 */
+  min-width: 320px; /* 너무 작아지지 않게 최소 크기 */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/* 블록 에디터 내부 컨트롤 영역 */
+.editor-container .controls {
+  margin-bottom: 10px;
+}
+
+/* blocklyDiv 영역 크기 지정 */
+#blocklyDiv.blocklyDiv {
+  flex: 1; /* 남은 공간 전부 사용 */
+  min-height: 400px; /* 최소 높이 */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* 우측 출력영역 (6:4 레이아웃 중 4 부분) */
+.output-container {
+  flex: 4 1 0;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/* 실행 결과와 파이썬 코드 영역 타이틀 */
+#output-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+/* 실행 결과 영역 */
+#output {
+  flex: 1; /* 남은 공간 전부 차지 */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow-y: auto; /* 실행결과가 길어지면 스크롤 */
+  padding: 10px;
+  background-color: #fafafa;
+}
+
+/* 실행 결과 내부 컨텐츠 */
+#output-content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* 파이썬 코드 영역 */
+#python-code {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #272822; /* 모노카이 테마 컬러와 비슷 */
+  /* 
+     CodeMirror가 내부적으로 자체 스크롤바를 가지므로 
+     직접 #python-code에 overflow 설정은 선택사항
+     필요하다면 아래처럼 설정 
+  */
+  overflow-x: auto; 
+  min-height: 200px;
+}
+
+/* 버튼 스타일(선택사항) */
+button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+button:hover {
+  background-color: #bbb;
+}
+
+/* 반응형 세부 조정 (필요 시 사용) */
+@media (max-width: 768px) {
+  .editor-container, .output-container {
+    flex: 1 1 100%;
+  }
+}
+
+
 /* Blockly area */
 .blocklyDiv {
     width: 100%;
