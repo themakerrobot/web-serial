@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-color:#eee;
 }
 
 .wrapper {
@@ -29,7 +30,7 @@ h1 {
 .container {
     display: flex;
     background: white;
-    border-radius: 8px;
+    border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     height: calc(100% - 100px); /* Adjusted height to account for the title and padding */
