@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #ffffff; /* 배경색 흰색 */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,8 +17,7 @@ body {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    background-color: #f4d85a;
-    box-shadow: 0 -3px 3px -3px #333;
+    background-color: #ffffff; /* 배경색 흰색 */
 }
 
 h1 {
@@ -31,43 +30,39 @@ h1 {
     background: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: calc(100% - 80px); /* Adjusted height to account for the title and padding */
+    height: calc(100% - 80px); /* 제목과 여백을 뺀 높이 */
+    width: 90%; /* 전체 화면에서 90% 너비 */
 }
 
 .editor-container {
-    flex: 6; /* 60% of the width */
+    flex: 6; /* 가로 60% 비율 */
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
+    background-color: #f4f4f4; /* 약간의 대비 */
+    border-right: 1px solid #ddd; /* 구분선 */
 }
 
 .output-container {
-    flex: 4; /* 40% of the width */
+    flex: 4; /* 가로 40% 비율 */
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
 }
 
-/* .editor-container, .output-container {
+#output, #python-code {
+    background: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
-} */
-
-.controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.controls div {
-    display: flex;
-    align-items: center;
+    margin-top: 10px;
+    overflow-y: auto; /* 세로 스크롤 */
+    overflow-x: auto; /* 가로 스크롤 */
+    white-space: pre; /* 텍스트 줄바꿈 방지 */
+    word-wrap: normal; /* 텍스트가 줄바꿈되지 않음 */
 }
 
 button {
@@ -86,93 +81,7 @@ button:hover {
 }
 
 button:active {
-  box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
-  position: relative;
-  top:2px;
-}
-
-#font-size-container label {
-    margin-right: 10px;
-}
-
-#output-title {
-    font-weight: bold;
-    text-align: left;
-    margin: 0;
-    font-size: 20px;
-}
-#output, #python-code {
-    background: #f8f8f8;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    flex: 1;
-    margin-top: 10px;
-    overflow-y: auto; /* Vertical scroll */
-    overflow-x: auto; /* Horizontal scroll */
-    white-space: pre; /* Prevent text wrapping */
-    word-wrap: normal; /* Prevent breaking words */
-}
-/* #output, #python-code {
-    background: #f8f8f8;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    flex: 1;
-    margin-top: 10px;
-    overflow-y: scroll;
-    overflow-x: scroll; 
-} */
-/* .CodeMirror {
-    flex: 1;
-    width: 99% !important;
-    height: 99% !important;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: auto !important;
-} */
-.blocklyDiv {
-  height:calc(100vh - 130px);
-  /* display: none; hide the element by default */
-}
-
-/* Makes our label white. */
-.blocklyTreeLabel {
-  color:black;
-}
-.blocklyToolboxDiv {
-  background-color: whitesmoke;
-}
-/* Adds padding around the group of categories and separators. */
-/* .blocklyToolboxContents {
-  padding: 0.5em;
-} */
-/* Adds space between the categories, rounds the corners and adds space around the label. */
-.blocklyTreeRow {
-  padding: 2px;
-  margin: 0.1em;
-  /* border-radius: 15px; */
-  /* width: 100px; */
-  height: 28px;
-  /* height: initial; */
-  background-color: whitesmoke;
-}
-
-/* Changes color of the icon to white. */
-.customIcon {
-  margin: 0.1em 0.1em 0.1em 0.1em;
-  padding: 2px;
-  color:black;
-  /* width: 30px; */
-  /* color:rgb(0, 0, 0); */
-}
-/* Stacks the icon on top of the label. */
-.blocklyTreeRowContentContainer {
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-}
-
-.blocklyTreeSelected .customIcon {
-   filter: invert(1);
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
 }
