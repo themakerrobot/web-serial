@@ -28,6 +28,40 @@ h1 {
 
 .container {
     display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.editor-container {
+    flex: 6; /* 60% 비율 */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.output-container {
+    flex: 4; /* 40% 비율 */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#output, #python-code {
+    background: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 10px;
+    white-space: pre; /* 줄바꿈 방지 */
+    overflow-x: auto; /* 가로 스크롤 활성화 */
+}
+
+/* .container {
+    display: flex;
     background: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -41,7 +75,7 @@ h1 {
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
-}
+} */
 
 .controls {
     display: flex;
