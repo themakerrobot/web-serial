@@ -102,6 +102,8 @@ button:active {
     flex: 1;
     overflow-y: auto;
     margin-top: 10px;
+    overflow-x: auto;
+    white-space: pre;
 }
 
 .blocklyDiv {
