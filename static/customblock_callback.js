@@ -1,3 +1,7 @@
+Blockly.Python.forBlock['flag_event'] = function (block) {
+  return '';
+};
+
 // audio
 Blockly.Python.forBlock['audio_play_dynamic'] = function(block) {
   Blockly.Python.definitions_['from_audio_import_Audio'] = 'from openpibo.audio import Audio';
@@ -141,14 +145,34 @@ Blockly.Python.forBlock['device_get_button'] = function(block) {
   return ["device.get_button()", Blockly.Python.ORDER_ATOMIC];
 }
 Blockly.Python.forBlock['device_hat_button'] = function(block) {
-  const num = block.getFieldValue("num");
-  Blockly.Python.definitions_['import_RPi_GPIO_as_GPIO'] = 'import RPi.GPIO as GPIO';
-  Blockly.Python.definitions_['GPIO_setwarnings_False'] = 'GPIO.setwarnings(False)';
-  // Blockly.Python.definitions_['GPIO_cleanup'] = 'GPIO.cleanup()';
-  Blockly.Python.definitions_['setmode_gpio_bcm'] = 'GPIO.setmode(GPIO.BCM)';
-  Blockly.Python.definitions_[`setup_${num}_gpio_in_pud_down`] = `GPIO.setup(${num} ,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)`;
+  Blockly.Python.definitions_['from_device_import_DeviceHat'] = 'from openpibo.device import DeviceHat';
+  Blockly.Python.definitions_['assign_devicehat'] = 'devicehat = DeviceHat()';
 
-  return [`'on' if GPIO.input(${num}) else 'off'`, Blockly.Python.ORDER_ATOMIC];
+  const num = block.getFieldValue("num");
+  return [`devicehat.get_button(${num})`, Blockly.Python.ORDER_ATOMIC];
+}
+Blockly.Python.forBlock['device_hat_led_on'] = function(block) {
+  Blockly.Python.definitions_['from_device_import_DeviceHat'] = 'from openpibo.device import DeviceHat';
+  Blockly.Python.definitions_['assign_devicehat'] = 'devicehat = DeviceHat()';
+  
+  const val0 = Blockly.Python.valueToCode(block, 'val0', Blockly.Python.ORDER_ATOMIC);
+  const val1 = Blockly.Python.valueToCode(block, 'val1', Blockly.Python.ORDER_ATOMIC);
+  const val2 = Blockly.Python.valueToCode(block, 'val2', Blockly.Python.ORDER_ATOMIC);
+
+  return `devicehat.led_on(${val0}, ${val1}, ${val2})\n`
+}
+Blockly.Python.forBlock['device_hat_led_colour_on'] = function(block) {
+  Blockly.Python.definitions_['from_device_import_DeviceHat'] = 'from openpibo.device import DeviceHat';
+  Blockly.Python.definitions_['assign_devicehat'] = 'devicehat = DeviceHat()';
+
+  const c = Blockly.Python.valueToCode(block, 'color', Blockly.Python.ORDER_ATOMIC);
+
+  return `devicehat.led_on_s(${c})\n`
+}
+Blockly.Python.forBlock['device_hat_led_off'] = function(block) {
+  Blockly.Python.definitions_['from_device_import_DeviceHat'] = 'from openpibo.device import DeviceHat';
+  Blockly.Python.definitions_['assign_devicehat'] = 'devicehat = DeviceHat()';
+  return 'devicehat.led_off()\n'
 }
 
 // motion
@@ -337,7 +361,7 @@ Blockly.Python.forBlock['speech_tts'] = function(block) {
   const filename = Blockly.Python.valueToCode(block, 'filename', Blockly.Python.ORDER_ATOMIC);
   const extension = block.getFieldValue("extension");
   const voice = block.getFieldValue("voice");
-  return `speech.tts(string=${text}, filename='${dir}'+${filename}+'${extension}', voice='${voice}')\n`;
+  return `speech.tts(string=${text}, filename='${dir}'+${filename}+'${extension}', voice='${voice}')\naudio.play('${dir}'+${filename}+'${extension}', 70)\n`;
 }
 Blockly.Python.forBlock['speech_gtts'] = function(block) {
   Blockly.Python.definitions_['from_speech_import_Speech'] = 'from openpibo.speech import Speech';
@@ -442,6 +466,17 @@ Blockly.Python.forBlock['vision_rectangle'] = function(block) {
   const tickness = Blockly.Python.valueToCode(block, 'tickness', Blockly.Python.ORDER_ATOMIC);
 
   return `${img} = camera.rectangle(${img}, (${x1},${y1}), (${x2},${y2}), ${color}, ${tickness})\n`;
+}
+Blockly.Python.forBlock['vision_rectangle_point'] = function(block) {
+  Blockly.Python.definitions_['from_vision_import_Camera'] = 'from openpibo.vision import Camera';
+  Blockly.Python.definitions_['assign_camera'] = 'camera = Camera()';
+
+  const img = Blockly.Python.valueToCode(block, 'img', Blockly.Python.ORDER_ATOMIC);
+  const point = Blockly.Python.valueToCode(block, 'point', Blockly.Python.ORDER_ATOMIC);
+  const color = Blockly.Python.valueToCode(block, 'color', Blockly.Python.ORDER_ATOMIC);
+  const tickness = Blockly.Python.valueToCode(block, 'tickness', Blockly.Python.ORDER_ATOMIC);
+
+  return `${img} = camera.rectangle(${img}, (${point}[0],${point}[1]), (${point}[2],${point}[3]), ${color}, ${tickness})\n`;
 }
 Blockly.Python.forBlock['vision_circle'] = function(block) {
   Blockly.Python.definitions_['from_vision_import_Camera'] = 'from openpibo.vision import Camera';
@@ -557,6 +592,15 @@ Blockly.Python.forBlock['vision_face_gender'] = function(block) {
   
   return [`_face.get_gender(${img}, ${v})[0]`, Blockly.Python.ORDER_ATOMIC];
 }
+Blockly.Python.forBlock['vision_face_emotion'] = function(block) {
+  Blockly.Python.definitions_['from_vision_import_Face'] = 'from openpibo.vision import Face';
+  Blockly.Python.definitions_['assign_face'] = '_face = Face()';
+
+  const img = Blockly.Python.valueToCode(block, 'img', Blockly.Python.ORDER_ATOMIC);
+  const v = Blockly.Python.valueToCode(block, 'v', Blockly.Python.ORDER_ATOMIC);
+  
+  return [`_face.get_emotion(${img}, ${v})[0]`, Blockly.Python.ORDER_ATOMIC];
+}
 Blockly.Python.forBlock['vision_facedb_train'] = function(block) {
   Blockly.Python.definitions_['from_vision_import_Face'] = 'from openpibo.vision import Face';
   Blockly.Python.definitions_['assign_face'] = '_face = Face()';
@@ -608,13 +652,70 @@ Blockly.Python.forBlock['vision_object'] = function(block) {
   const img = Blockly.Python.valueToCode(block, 'img', Blockly.Python.ORDER_ATOMIC);
   return [`[ item['name'] for item in detect.detect_object(${img})]`, Blockly.Python.ORDER_ATOMIC];
 }
+Blockly.Python.forBlock['vision_object_detail'] = function(block) {
+  Blockly.Python.definitions_['from_vision_import_Detect'] = 'from openpibo.vision import Detect';
+  Blockly.Python.definitions_['assign_detect'] = 'detect = Detect()';
+
+  const img = Blockly.Python.valueToCode(block, 'img', Blockly.Python.ORDER_ATOMIC);
+  return [`detect.detect_object(${img})`, Blockly.Python.ORDER_ATOMIC];
+}
+Blockly.Python.forBlock['vision_analyze_object'] = function(block) {
+  Blockly.Python.definitions_['from_vision_import_Detect'] = 'from openpibo.vision import Detect';
+  Blockly.Python.definitions_['assign_detect'] = 'detect = Detect()';
+
+  const val = Blockly.Python.valueToCode(block, 'val', Blockly.Python.ORDER_ATOMIC);
+  const type = block.getFieldValue("type");
+  let res = '';
+
+  switch (type) {
+    case 'name':
+      res = `[ item['name'] for item in ${val}]`;
+      break;
+    case 'position':
+      res = `[ item['position'] for item in ${val}]`
+      break;
+    case 'acc':
+      res = `[ item['score'] for item in ${val}]`
+      break;
+  }
+  return [res, Blockly.Python.ORDER_ATOMIC];
+}
 Blockly.Python.forBlock['vision_qr'] = function(block) {
   Blockly.Python.definitions_['from_vision_import_Detect'] = 'from openpibo.vision import Detect';
   Blockly.Python.definitions_['assign_detect'] = 'detect = Detect()';
 
   const img = Blockly.Python.valueToCode(block, 'img', Blockly.Python.ORDER_ATOMIC);
-  return [`detect.detect_qr(${img})['data']`, Blockly.Python.ORDER_ATOMIC];
+  return [`detect.detect_qr(${img})[0]['data']`, Blockly.Python.ORDER_ATOMIC];
 }
+Blockly.Python.forBlock['vision_qr_detail'] = function(block) {
+  Blockly.Python.definitions_['from_vision_import_Detect'] = 'from openpibo.vision import Detect';
+  Blockly.Python.definitions_['assign_detect'] = 'detect = Detect()';
+
+  const img = Blockly.Python.valueToCode(block, 'img', Blockly.Python.ORDER_ATOMIC);
+  return [`detect.detect_qr(${img})`, Blockly.Python.ORDER_ATOMIC];
+}
+Blockly.Python.forBlock['vision_analyze_qr'] = function(block) {
+  Blockly.Python.definitions_['from_vision_import_Detect'] = 'from openpibo.vision import Detect';
+  Blockly.Python.definitions_['assign_detect'] = 'detect = Detect()';
+
+  const val = Blockly.Python.valueToCode(block, 'val', Blockly.Python.ORDER_ATOMIC);
+  const type = block.getFieldValue("type");
+  let res = '';
+
+  switch (type) {
+    case 'data':
+      res = `${val}[0]['data']`;
+      break;
+    case 'type':
+      res = `${val}[0]['type']`;
+      break;
+    case 'position':
+      res = `${val}[0]['position']`;
+      break;
+  }
+  return [res, Blockly.Python.ORDER_ATOMIC];
+}
+
 Blockly.Python.forBlock['vision_pose'] = function(block) {
   Blockly.Python.definitions_['from_vision_import_Detect'] = 'from openpibo.vision import Detect';
   Blockly.Python.definitions_['assign_detect'] = 'detect = Detect()';
