@@ -95,6 +95,7 @@ button:active {
 }
 
 #output, #python-code {
+    width: 40vw;
     background: #f8f8f8;
     padding: 10px;
     border: 1px solid #ddd;
@@ -107,6 +108,7 @@ button:active {
 }
 
 .blocklyDiv {
+  width: 60vw;
   height:calc(100vh - 130px);
   /* display: none; hide the element by default */
 }
