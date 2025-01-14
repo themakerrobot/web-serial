@@ -361,7 +361,7 @@ Blockly.Python.forBlock['speech_tts'] = function(block) {
   const filename = Blockly.Python.valueToCode(block, 'filename', Blockly.Python.ORDER_ATOMIC);
   const extension = block.getFieldValue("extension");
   const voice = block.getFieldValue("voice");
-  return `speech.tts(string=${text}, filename='${dir}'+${filename}+'${extension}', voice='${voice}')\naudio.play('${dir}'+${filename}+'${extension}', 70)\n`;
+  return `speech.tts(string=${text}, filename='${dir}'+${filename}+'${extension}', voice='${voice}')\n`;
 }
 Blockly.Python.forBlock['speech_gtts'] = function(block) {
   Blockly.Python.definitions_['from_speech_import_Speech'] = 'from openpibo.speech import Speech';
