@@ -144,13 +144,13 @@ button:hover {
 }
 
 /* blocklyDiv는 남은 공간 가득 - 최소 높이 문제 방지 */
-/* #blocklyDiv.blocklyDiv {
+#blocklyDiv.blocklyDiv {
   flex: 1;
   border: 1px solid #ccc;
   border-radius: 4px;
   min-height: 0;
   overflow: auto; /* blockly 내부 스크롤(선택) */
-} */
+}
 
 
 /* Blockly area */
