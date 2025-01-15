@@ -206,67 +206,65 @@ button:hover {
 
 
 
-
-/* ==============================
-   Visual Studio Dark Theme 추가
-   (기존 소스 맨 뒤에 붙이기)
-============================== */
+/* ==============================================
+   밝고 화사한 어린이용(파스텔) 테마
+   (기존 스타일의 맨 뒤에 추가로 넣기)
+============================================== */
 
 /* 상단 타이틀 (h1) */
 .wrapper h1 {
-  background-color: #2D2D2D !important; /* 다크 바(Visual Studio 상단 바) */
-  color: #D4D4D4 !important;            /* 텍스트는 밝은 그레이 */
-  border-bottom: 1px solid #3C3C3C !important;
+  background-color: #FFD9E8 !important; /* 연한 핑크톤 */
+  color: #333333 !important;            /* 진한 회색(가독성) */
+  border-bottom: 1px solid #FFC2E2 !important;
 }
 
 /* 전체 컨테이너 배경 (에디터 주변) */
 .container {
-  background-color: #1E1E1E !important;
+  background-color: #FFF6FB !important; /* 아주 옅은 분홍 */
 }
 
 /* 좌측 블록에디터 영역 배경 */
 .editor-container {
-  background-color: #1E1E1E !important;
+  background-color: #FFF6FB !important; /* 통일 */
 }
 
 /* Blockly 경계(테두리) */
 #blocklyDiv {
-  border: 1px solid #3C3C3C !important;
+  border: 1px solid #FFC2E2 !important; /* 밝은 핑크색 경계 */
 }
 
 /* 우측 결과/코드 영역 배경 */
 .output-container {
-  background-color: #1E1E1E !important;
+  background-color: #FFF6FB !important;
 }
 
 /* 섹션 타이틀 ( “실행 결과”, “파이썬 코드” ) */
 .section-title {
-  color: #D4D4D4 !important;
+  color: #333333 !important; /* 가독성 */
 }
 
 /* 실행 결과 영역 */
 #output {
-  background-color: #1E1E1E !important;
-  color: #D4D4D4 !important;
-  border: 1px solid #3C3C3C !important;
+  background-color: #FFEAF6 !important; /* 좀 더 분홍 기운 */
+  color: #333333 !important;
+  border: 1px solid #FFC2E2 !important;
 }
 
-/* 파이썬 코드 영역 배경 */
+/* 파이썬 코드 영역 */
 #python-code {
-  border: 1px solid #3C3C3C !important;
-  background-color: #1E1E1E !important;
-  color: #D4D4D4 !important; /* 읽기 전용 텍스트 컬러 */
+  border: 1px solid #FFC2E2 !important;
+  background-color: #FFEAF6 !important;
+  color: #333333 !important; /* 코드 텍스트색 (읽기전용) */
 }
 
 /* 버튼 색상 */
 button {
-  background-color: #3C3C3C !important;
-  color: #D4D4D4 !important;
+  background-color: #FFC2E2 !important; /* 파스텔 핑크 */
+  color: #333333 !important;
   border: none !important;
 }
-
 button:hover {
-  background-color: #444444 !important;
+  background-color: #FFB0D8 !important; /* 살짝 진해짐 */
 }
 
 /* (옵션) 스크롤바 스타일 - 브라우저별 지원 상이 */
@@ -274,8 +272,8 @@ button:hover {
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #666666;
+  background-color: #FFB0D8; /* 스크롤바 핸들 */
 }
 ::-webkit-scrollbar-track {
-  background-color: #2D2D2D;
+  background-color: #FFEAF6; /* 스크롤바 트랙 */
 }
