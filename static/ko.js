@@ -453,7 +453,7 @@ Blockly.Msg['LANG_HI'] = "힌디어";
 Blockly.Msg['LANG_LA'] = "라틴어";
 Blockly.Msg['LANG_MS'] = "말레이어";
 
-Blockly.Msg["FLAG_EVENT"] = "[%1실행] 클릭했을때";
+Blockly.Msg["FLAG_EVENT"] = "%1클릭했을때";
 Blockly.Msg["FLAG_EVENT_TOOLTIP"] = "코드를 실행합니다.";
 
 Blockly.Msg["AUDIO_MYAUDIO"] = "내오디오";
