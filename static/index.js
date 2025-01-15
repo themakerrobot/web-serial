@@ -19,6 +19,7 @@ window.onload = function() {
     });
     editor.getWrapperElement().style.fontSize = "16px";
     editor.setSize("100%", "100%");
+    
     view.addEventListener('click', async () => {
       const code = Blockly.Python.workspaceToCode(workspace);
       console.log(code);
