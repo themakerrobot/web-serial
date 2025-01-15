@@ -12,7 +12,6 @@ html, body {
   box-sizing: inherit;
 }
 
-/* ========== 상위 래퍼 .wrapper - 세로 방향 레이아웃 ========== */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -20,7 +19,6 @@ html, body {
   height: 100%; /* 부모(body)가 100%이므로 전체 차지 */
 }
 
-/* 상단 타이틀 */
 .wrapper h1 {
   margin: 0;
   padding: 12px 20px;
@@ -31,7 +29,6 @@ html, body {
   align-items: center;
 }
 
-/* ========== .container: 좌우 분할 ========== */
 .container {
   flex: 1;           /* 남은 공간 전부 차지 */
   display: flex;
@@ -40,7 +37,6 @@ html, body {
   min-height: 0;     /* 자식 flex에 높이 계산 문제 방지 */
 }
 
-/* --- 좌측 에디터 컨테이너 (flex:6) --- */
 .editor-container {
   flex: 6;
   display: flex;
@@ -50,7 +46,6 @@ html, body {
   min-height: 0;    /* flex 자식의 높이 계산 문제 방지 */
 }
 
-/* 버튼 컨트롤 영역 */
 .editor-container .controls {
   margin-bottom: 10px;
 }
@@ -64,7 +59,6 @@ html, body {
   overflow: auto; /* blockly 내부 스크롤(선택) */
 }
 
-/* --- 우측 결과/코드 컨테이너 (flex:4) --- */
 .output-container {
   flex: 4;
   display: flex;
@@ -74,7 +68,6 @@ html, body {
   min-height: 0;    
 }
 
-/* ===== 우측 내부: 위(top)4 : 아래(bottom)6 ===== */
 .top-section {
   flex: 4;
   display: flex;
