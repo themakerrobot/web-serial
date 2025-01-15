@@ -778,7 +778,7 @@ let toolbox = (lang) => {
             "type": "flag_event",
           },
         ],
-        "colour": "#e4c049",
+        "colour": "#EFC042",
         "cssConfig": {
           "icon": "customIcon fa-solid fa-flag"
         }
