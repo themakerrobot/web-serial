@@ -115,7 +115,7 @@ html, body {
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #272822;
-  overflow: auto; /* 코드가 길어질 경우 가로/세로 스크롤 */
+  overflow: hidden; /* 코드가 길어질 경우 가로/세로 스크롤 */
   padding: 0 10px;  
   min-height: 0;
 }
