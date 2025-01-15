@@ -220,12 +220,12 @@ button:hover {
 
 /* 전체 컨테이너 배경 (에디터 주변) */
 .container {
-  background-color: #FFF6FB !important; /* 아주 옅은 분홍 */
+  background-color: #edf5e0 !important; /* 아주 옅은 분홍 */
 }
 
 /* 좌측 블록에디터 영역 배경 */
 .editor-container {
-  background-color: #FFF6FB !important; /* 통일 */
+  background-color: #edf5e0 !important; /* 통일 */
 }
 
 /* Blockly 경계(테두리) */
@@ -235,7 +235,7 @@ button:hover {
 
 /* 우측 결과/코드 영역 배경 */
 .output-container {
-  background-color: #FFF6FB !important;
+  background-color: #edf5e0 !important;
 }
 
 /* 섹션 타이틀 ( “실행 결과”, “파이썬 코드” ) */
@@ -245,15 +245,15 @@ button:hover {
 
 /* 실행 결과 영역 */
 #output {
-  background-color: #FFEAF6 !important; /* 좀 더 분홍 기운 */
+  background-color: #edf5e0 !important; /* 좀 더 분홍 기운 */
   color: #333333 !important;
-  border: 1px solid #FFC2E2 !important;
+  border: 1px solid #f4de3d !important;
 }
 
 /* 파이썬 코드 영역 */
 #python-code {
   border: 1px solid #f4de3d !important;
-  background-color: #FFEAF6 !important;
+  background-color: #edf5e0 !important;
   color: #333333 !important; /* 코드 텍스트색 (읽기전용) */
 }
 
@@ -264,7 +264,7 @@ button {
   border: none !important;
 }
 button:hover {
-  background-color: #FFB0D8 !important; /* 살짝 진해짐 */
+  background-color: #f4d85a !important; /* 살짝 진해짐 */
 }
 
 /* (옵션) 스크롤바 스타일 - 브라우저별 지원 상이 */
@@ -272,8 +272,8 @@ button:hover {
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #FFB0D8; /* 스크롤바 핸들 */
+  background-color: #f4d85a; /* 스크롤바 핸들 */
 }
 ::-webkit-scrollbar-track {
-  background-color: #FFEAF6; /* 스크롤바 트랙 */
+  background-color: #edf5e0; /* 스크롤바 트랙 */
 }
