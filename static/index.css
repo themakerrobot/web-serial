@@ -203,3 +203,79 @@ button:hover {
 .blocklyWidgetDiv {
     z-index: 1000;
 }
+
+
+
+
+/* ==============================
+   Visual Studio Dark Theme 추가
+   (기존 소스 맨 뒤에 붙이기)
+============================== */
+
+/* 상단 타이틀 (h1) */
+.wrapper h1 {
+  background-color: #2D2D2D !important; /* 다크 바(Visual Studio 상단 바) */
+  color: #D4D4D4 !important;            /* 텍스트는 밝은 그레이 */
+  border-bottom: 1px solid #3C3C3C !important;
+}
+
+/* 전체 컨테이너 배경 (에디터 주변) */
+.container {
+  background-color: #1E1E1E !important;
+}
+
+/* 좌측 블록에디터 영역 배경 */
+.editor-container {
+  background-color: #1E1E1E !important;
+}
+
+/* Blockly 경계(테두리) */
+#blocklyDiv {
+  border: 1px solid #3C3C3C !important;
+}
+
+/* 우측 결과/코드 영역 배경 */
+.output-container {
+  background-color: #1E1E1E !important;
+}
+
+/* 섹션 타이틀 ( “실행 결과”, “파이썬 코드” ) */
+.section-title {
+  color: #D4D4D4 !important;
+}
+
+/* 실행 결과 영역 */
+#output {
+  background-color: #1E1E1E !important;
+  color: #D4D4D4 !important;
+  border: 1px solid #3C3C3C !important;
+}
+
+/* 파이썬 코드 영역 배경 */
+#python-code {
+  border: 1px solid #3C3C3C !important;
+  background-color: #1E1E1E !important;
+  color: #D4D4D4 !important; /* 읽기 전용 텍스트 컬러 */
+}
+
+/* 버튼 색상 */
+button {
+  background-color: #3C3C3C !important;
+  color: #D4D4D4 !important;
+  border: none !important;
+}
+
+button:hover {
+  background-color: #444444 !important;
+}
+
+/* (옵션) 스크롤바 스타일 - 브라우저별 지원 상이 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #666666;
+}
+::-webkit-scrollbar-track {
+  background-color: #2D2D2D;
+}
