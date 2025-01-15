@@ -204,8 +204,3 @@ button:hover {
 .blocklyWidgetDiv {
     z-index: 1000;
 }
-
-/* (옵션) 스크롤바 스타일 - 브라우저별 지원 상이 */
-::-webkit-scrollbar {
-  width: 8px;
-}
