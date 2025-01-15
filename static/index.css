@@ -113,7 +113,7 @@ html, body {
   border-radius: 4px;
   background-color: #272822;
   overflow: hidden; /* 코드가 길어질 경우 가로/세로 스크롤 */
-  padding: 0 10px;  
+  padding: 0;  
   min-height: 0;
 }
 
