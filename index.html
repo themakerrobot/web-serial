@@ -28,16 +28,6 @@
 <body>
   <div class="wrapper">
     <h1><i class="fas fa-cubes"></i> 블록코딩 (for piBrain)</h1>
-
-
-<div class="sidebar">
-  <button id="block_mode" class="mode-button active">블록 코딩</button>
-  <button id="python_mode" class="mode-button">파이썬 코딩</button>
-</div>
-
-
-
-      
     <div class="container">
       <!-- 좌측: 블록 에디터 영역 -->
       <div class="editor-container">
@@ -51,10 +41,7 @@
           <button id="export_bt" title="내보내기"><i class="fas fa-file-export"></i>내보내기</button>
         </div>
         <div id="blocklyDiv" class="blocklyDiv"></div>
-           <!-- 파이썬 코딩 영역 -->
-  <div id="pythonEditor" class="hidden"></div>
       </div>
-
       <!-- 우측: 실행 결과 / 파이썬 코드 -->
       <div class="output-container">
         <!-- 위쪽(실행 결과) : 4 비율 -->
@@ -66,7 +53,6 @@
             <div id="output-content"></div>
           </div>
         </div>
-
         <!-- 아래쪽(파이썬 코드) : 6 비율 -->
         <div class="bottom-section">
           <div class="section-title">
@@ -77,18 +63,5 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-  <style>
-    .hidden { display: none; }
-    .active { background-color: #4CAF50; color: white; }
-    .mode-button { margin: 5px; padding: 10px; border: none; cursor: pointer; }
-  </style>
-
-
-    
 </body>
 </html>
