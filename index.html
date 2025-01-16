@@ -28,6 +28,16 @@
 <body>
   <div class="wrapper">
     <h1><i class="fas fa-cubes"></i> 블록코딩 (for piBrain)</h1>
+
+
+<div class="sidebar">
+  <button id="block_mode" class="mode-button active">블록 코딩</button>
+  <button id="python_mode" class="mode-button">파이썬 코딩</button>
+</div>
+
+
+
+      
     <div class="container">
       <!-- 좌측: 블록 에디터 영역 -->
       <div class="editor-container">
@@ -65,5 +75,18 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+  <style>
+    .hidden { display: none; }
+    .active { background-color: #4CAF50; color: white; }
+    .mode-button { margin: 5px; padding: 10px; border: none; cursor: pointer; }
+  </style>
+
+
+    
 </body>
 </html>
