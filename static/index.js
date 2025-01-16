@@ -47,7 +47,7 @@ window.onload = function() {
     
     let editor = CodeMirror(document.getElementById("python-code"), {
       mode: "python",
-      theme: "monokai",
+      theme: "base16-light",
       lineNumbers: "true",
       readOnly: "true"
     });
