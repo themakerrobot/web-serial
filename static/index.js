@@ -13,7 +13,7 @@ window.onload = function() {
 
     let editor = CodeMirror(document.getElementById("python-code"), {
       mode: "python",
-      theme: "base16-light",
+      theme: "eclipse",
       lineNumbers: "true",
       readOnly: "true"
     });
