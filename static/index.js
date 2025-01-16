@@ -11,40 +11,6 @@ window.onload = function() {
     const disp_init = document.getElementById('disp_init');
     const output = document.getElementById("output");
 
-
-
-
-
-    
-  const blockModeButton = document.getElementById('block_mode');
-  const pythonModeButton = document.getElementById('python_mode');
-  const blocklyDiv = document.getElementById('blocklyDiv');
-  const pythonEditorDiv = document.getElementById('pythonEditor');
-  // CodeMirror 에디터 초기화
-  const pythonEditor = CodeMirror(pythonEditorDiv, {
-    mode: "python",
-    theme: "monokai",
-    lineNumbers: true
-  });
-
-  // 블록 코딩 모드 전환
-  blockModeButton.addEventListener('click', () => {
-    blockModeButton.classList.add('active');
-    pythonModeButton.classList.remove('active');
-    blocklyDiv.classList.remove('hidden');
-    pythonEditorDiv.classList.add('hidden');
-  });
-
-  // 파이썬 코딩 모드 전환
-  pythonModeButton.addEventListener('click', () => {
-    pythonModeButton.classList.add('active');
-    blockModeButton.classList.remove('active');
-    blocklyDiv.classList.add('hidden');
-    pythonEditorDiv.classList.remove('hidden');
-  });
-
-
-    
     let editor = CodeMirror(document.getElementById("python-code"), {
       mode: "python",
       theme: "base16-light",
@@ -60,47 +26,19 @@ window.onload = function() {
       editor.setValue(code);
     });
 
-    // send.addEventListener('click', async () => {
-    //   codetext = Blockly.Python.workspaceToCode(workspace);
-    //   console.log(codetext)
-    //   editor.setValue(codetext);
-    //   await writer.write(codetext);
-    //   send.disabled = true;
-    //   output.innerText = new Date().toString() + '\n\n';
+    send.addEventListener('click', async () => {
+      codetext = Blockly.Python.workspaceToCode(workspace);
+      console.log(codetext)
+      editor.setValue(codetext);
+      await writer.write(codetext);
+      send.disabled = true;
+      output.innerText = new Date().toString() + '\n\n';
             
-    //   setTimeout(()=> {
-    //     send.disabled = false;
-    //   }, 3000);
-    // });
-
-send.addEventListener('click', async () => {
-  let codetext;
-
-  // 블록 코딩 모드일 때
-  if (!blocklyDiv.classList.contains('hidden')) {
-    codetext = Blockly.Python.workspaceToCode(workspace);
-    editor.setValue(codetext);
-  } 
-  // 파이썬 코딩 모드일 때
-  else {
-    codetext = pythonEditor.getValue();
-  }
-
-  console.log(codetext);
-  await writer.write(codetext);
-  send.disabled = true;
-  output.innerText = new Date().toString() + '\n\n';
-
-  setTimeout(() => {
-    send.disabled = false;
-  }, 3000);
-});
-
-
-
-
-
-    
+      setTimeout(()=> {
+        send.disabled = false;
+      }, 3000);
+    });
+   
     stop.addEventListener('click', async () => {
       await writer.write('###END###');
       //writer.releaseLock();
