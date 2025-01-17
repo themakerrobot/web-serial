@@ -51,26 +51,25 @@ window.onload = function() {
     });
     
     send.addEventListener('click', async () => {
-    if (!blocklyDiv.classList.contains('hidden')) {
-      // 블록 코딩 모드
-      codetext = Blockly.Python.workspaceToCode(workspace);
-      console.log(codetext)
-      textcode.setValue(codetext);
-      await writer.write(codetext);
-      send.disabled = true;
-      output.innerText = new Date().toString() + '\n\n';
-            
-      setTimeout(()=> {
-        send.disabled = false;
-      }, 3000);
-    } else {
-      // 파이썬 코딩 모드
-      const pythonCode = pythonEditor.getValue();
-      console.log(pythonCode);
-      await writer.write(pythonCode);
-    }
-    });
-    };
+        if (!blocklyDiv.classList.contains('hidden')) {
+          // 블록 코딩 모드
+          codetext = Blockly.Python.workspaceToCode(workspace);
+          console.log(codetext)
+          textcode.setValue(codetext);
+          await writer.write(codetext);
+          send.disabled = true;
+          output.innerText = new Date().toString() + '\n\n';
+                
+          setTimeout(()=> {
+            send.disabled = false;
+          }, 3000);
+        } else {
+          // 파이썬 코딩 모드
+          const pythonCode = pythonEditor.getValue();
+          console.log(pythonCode);
+          await writer.write(pythonCode);
+        }
+    );
 
     textcode.getWrapperElement().style.fontSize = "16px";
     textcode.setSize("100%", "100%");
