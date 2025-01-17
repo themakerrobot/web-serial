@@ -236,10 +236,6 @@ button:active {
     z-index: 1000;
 }
 
-
-
-  .hidden { display: none; }
-  .active { background-color: #4CAF50; color: white; }
   .mode-button { margin: 5px; padding: 10px; border: none; cursor: pointer; }
         .mode-toggle {
             display: flex;
@@ -254,9 +250,10 @@ button:active {
             border: 1px solid #ccc;
             border-radius: 5px;
             cursor: pointer;
-/*             background-color: #f4f4f4; */
+            background-color: #f4d85a;
             transition: background-color 0.3s, color 0.3s;
         }
         .mode-toggle input[type="radio"]:checked + label {
           font-weight:bolder;
+          background-color: #f4f4f4;
         }
