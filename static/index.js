@@ -23,7 +23,7 @@ window.onload = function() {
     const pythonEditor = CodeMirror(pythonEditorDiv, {
         mode: "python",
         theme: "monokai",
-        lineNumbers: true
+        lineNumbers: "true"
     });
     pythonEditor.getWrapperElement().style.fontSize = "16px";
     pythonEditor.setSize("100%", "100%");
