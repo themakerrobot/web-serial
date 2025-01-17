@@ -108,14 +108,14 @@ html, body {
 }
 
 /* 파이썬 코드 영역 */
-#text-code {
+/* #text-code {
   flex: 1;
   border: 1px solid #ccc;
   border-radius: 4px;
   overflow: hidden; /* 코드가 길어질 경우 가로/세로 스크롤 */
   padding: 0;  
   min-height: 0;
-}
+} */
 
 /* ========== 버튼 스타일 ========== */
 button {
