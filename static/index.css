@@ -169,26 +169,6 @@ button:active {
 
 
 
-
-
-.pythonEditorDiv {
-  display: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* blocklyDiv는 남은 공간 가득 - 최소 높이 문제 방지 */
 #blocklyDiv.blocklyDiv {
   flex: 1;
