@@ -241,3 +241,23 @@ button:active {
   .hidden { display: none; }
   .active { background-color: #4CAF50; color: white; }
   .mode-button { margin: 5px; padding: 10px; border: none; cursor: pointer; }
+        .mode-toggle {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .mode-toggle input[type="radio"] {
+            display: none;
+        }
+        .mode-toggle label {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #f4f4f4;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .mode-toggle input[type="radio"]:checked + label {
+            background-color: #007bff;
+            color: #fff;
+        }
