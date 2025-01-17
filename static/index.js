@@ -14,8 +14,8 @@ window.onload = function() {
 
 
 
-    const blockModeButton = document.getElementById('block_mode');
-    const pythonModeButton = document.getElementById('python_mode');
+    const blockModeRadio = document.getElementById('block_mode');
+    const pythonModeRadio = document.getElementById('python_mode');
     const blocklyDiv = document.getElementById('blocklyDiv');
     const pythonEditorDiv = document.getElementById('pythonEditorDiv');
 
