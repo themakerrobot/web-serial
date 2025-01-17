@@ -222,3 +222,9 @@ button:active {
 .blocklyWidgetDiv {
     z-index: 1000;
 }
+
+
+
+  .hidden { display: none; }
+  .active { background-color: #4CAF50; color: white; }
+  .mode-button { margin: 5px; padding: 10px; border: none; cursor: pointer; }
