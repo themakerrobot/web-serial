@@ -102,13 +102,13 @@ html, body {
 }
 
 /* CodeMirror 최상위 요소를 부모 높이에 맞춰서 전체 차지 */
-#python-code .CodeMirror {
+#text-code .CodeMirror {
   height: 100% !important;   /* 부모 높이를 꽉 채움 */
   width: 100% !important;
 }
 
 /* 파이썬 코드 영역 */
-#python-code {
+#text-code {
   flex: 1;
   border: 1px solid #ccc;
   border-radius: 4px;
