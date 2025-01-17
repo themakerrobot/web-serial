@@ -25,6 +25,8 @@ window.onload = function() {
         theme: "monokai",
         lineNumbers: true
     });
+    pythonEditor.getWrapperElement().style.fontSize = "16px";
+    pythonEditor.setSize("100%", "100%");
 
     // 블록 코딩 모드 전환
     blockModeButton.addEventListener('click', () => {
