@@ -46,7 +46,7 @@ h1 {
 }
 
 .mode-toggle input[type="radio"]:checked + label {
-    background-color: #007bff;
+    background-color: #f4d85a;
     color: #fff;
 }
 
