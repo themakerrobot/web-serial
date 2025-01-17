@@ -466,4 +466,3 @@ const setLanguage = (langCode) => {
 
  setLanguage('ko');
 }
-}
