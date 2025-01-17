@@ -11,25 +11,66 @@ window.onload = function() {
     const disp_init = document.getElementById('disp_init');
     const output = document.getElementById("output");
 
-    let editor = CodeMirror(document.getElementById("python-code"), {
+
+
+
+  const blockModeButton = document.getElementById('block_mode');
+  const pythonModeButton = document.getElementById('python_mode');
+  const blocklyDiv = document.getElementById('blocklyDiv');
+  const pythonEditorDiv = document.getElementById('pythonEditorDiv');
+
+  // CodeMirror 에디터 초기화
+  const pythonEditor = CodeMirror(pythonEditorDiv, {
+    mode: "python",
+    theme: "monokai",
+    lineNumbers: true
+  });
+
+  // 블록 코딩 모드 전환
+  blockModeButton.addEventListener('click', () => {
+    blockModeButton.classList.add('active');
+    pythonModeButton.classList.remove('active');
+    blocklyDiv.classList.remove('hidden');
+    pythonEditorDiv.classList.add('hidden');
+  });
+
+  // 파이썬 코딩 모드 전환
+  pythonModeButton.addEventListener('click', () => {
+    pythonModeButton.classList.add('active');
+    blockModeButton.classList.remove('active');
+    blocklyDiv.classList.add('hidden');
+    pythonEditorDiv.classList.remove('hidden');
+  });
+
+
+
+
+
+
+
+
+
+
+    
+    let textcode = CodeMirror(document.getElementById("text-code"), {
       mode: "python",
       theme: "monokai",
       lineNumbers: "true",
       readOnly: "true"
     });
-    editor.getWrapperElement().style.fontSize = "16px";
-    editor.setSize("100%", "100%");
+    textcode.getWrapperElement().style.fontSize = "16px";
+    textcode.setSize("100%", "100%");
     
     view.addEventListener('click', async () => {
       const code = Blockly.Python.workspaceToCode(workspace);
       console.log(code);
-      editor.setValue(code);
+      textcode.setValue(code);
     });
 
     send.addEventListener('click', async () => {
       codetext = Blockly.Python.workspaceToCode(workspace);
       console.log(codetext)
-      editor.setValue(codetext);
+      textcode.setValue(codetext);
       await writer.write(codetext);
       send.disabled = true;
       output.innerText = new Date().toString() + '\n\n';
