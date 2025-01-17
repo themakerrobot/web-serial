@@ -28,18 +28,13 @@ window.onload = function() {
     pythonEditor.getWrapperElement().style.fontSize = "16px";
     pythonEditor.setSize("100%", "100%");
 
-    // 블록 코딩 모드 전환
-    blockModeButton.addEventListener('click', () => {
-        blockModeButton.classList.add('active');
-        pythonModeButton.classList.remove('active');
+    // 모드 변경 이벤트
+    blockModeRadio.addEventListener('change', () => {
         blocklyDiv.classList.remove('hidden');
         pythonEditorDiv.classList.add('hidden');
     });
 
-    // 파이썬 코딩 모드 전환
-    pythonModeButton.addEventListener('click', () => {
-        pythonModeButton.classList.add('active');
-        blockModeButton.classList.remove('active');
+    pythonModeRadio.addEventListener('change', () => {
         blocklyDiv.classList.add('hidden');
         pythonEditorDiv.classList.remove('hidden');
     });
