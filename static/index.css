@@ -20,7 +20,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
-    background-color: #007bff;
+    background-color: #f4d85a;
     color: #fff;
     font-size: 1.5rem;
     margin: 0;
@@ -83,14 +83,15 @@ h1 {
     padding: 0.3rem 0.6rem;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: #f4de3d;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .controls button:hover {
-    background-color: #0056b3;
+    background-color: #f4d85a;
+    font-weight:bolder;
 }
 
 .blocklyDiv, .pythonEditorDiv {
