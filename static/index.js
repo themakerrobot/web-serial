@@ -7,7 +7,7 @@ window.onload = function() {
     const view = document.getElementById('view');
     const stop = document.getElementById('stop');
     const disp_init = document.getElementById('disp_init');
-    const output = document.getElementById("output");
+    const output = document.getElementById("output-content");
 
 
 
