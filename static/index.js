@@ -62,7 +62,7 @@ window.onload = function() {
     view.addEventListener('click', async () => {
       const code = Blockly.Python.workspaceToCode(workspace);
       console.log(code);
-      result.setValue(code);
+      output.innerText = code;
     });
 
     // send.addEventListener('click', async () => {
