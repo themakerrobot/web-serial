@@ -3,7 +3,6 @@ window.onload = function() {
     const textDecoder = new TextDecoderStream();
     const reader = textDecoder.readable.getReader();
     const writer = textEncoder.writable.getWriter();
-    const command = document.getElementById('command');
     const send = document.getElementById('send');
     const view = document.getElementById('view');
     const stop = document.getElementById('stop');
