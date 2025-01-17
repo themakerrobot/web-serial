@@ -69,7 +69,7 @@ window.onload = function() {
           console.log(pythonCode);
           await writer.write(pythonCode);
         }
-    );
+    });
 
     textcode.getWrapperElement().style.fontSize = "16px";
     textcode.setSize("100%", "100%");
