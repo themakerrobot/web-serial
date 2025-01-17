@@ -4,7 +4,6 @@ window.onload = function() {
     const reader = textDecoder.readable.getReader();
     const writer = textEncoder.writable.getWriter();
     const command = document.getElementById('command');
-    const result = document.getElementById('result');
     const send = document.getElementById('send');
     const view = document.getElementById('view');
     const stop = document.getElementById('stop');
