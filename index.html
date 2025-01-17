@@ -28,13 +28,18 @@
 <body>
   <div class="wrapper">
     <h1>
-      <div class="mode-toggle">
+
+      
+      <div class="mode-toggle"> <!-- 블록 /  파이썬 둘 중 하나 선택하는 기능 -->
         <input type="radio" id="block_mode" name="mode" value="block" checked>
         <label for="block_mode"><i class="fas fa-cubes"></i> 블록</label>
         <input type="radio" id="python_mode" name="mode" value="python">
         <label for="python_mode"><i class="fab fa-python"></i> 파이썬</label>
       </div>
     </h1>
+
+
+<!-- editor-container,  output-container 는 가로 비율을 6:4 세로는 100% 쓸 수 있도록 -->
       
     <div class="container">
       <!-- 좌측: 블록 에디터 영역 -->
@@ -44,10 +49,11 @@
           <button id="send" title="실행"><i class="fas fa-flag"></i>실행</button>
           <button id="stop" title="정지"><i class="fas fa-stop"></i>정지</button>
           <button id="disp_init" title="화면지움"><i class="fas fa-eraser"></i>화면지움</button>
-          <button id="view" title="코드확인"><i class="fas fa-eye"></i>코드변환</button> :
+          <button id="view" title="코드확인"><i class="fas fa-eye"></i>코드</button> :
           <button id="import_bt" title="불러오기"><i class="fas fa-file-import"></i>불러오기</button>
           <button id="export_bt" title="내보내기"><i class="fas fa-file-export"></i>내보내기</button>
         </div>
+        <!-- 해당 역역에 둘 중 하나 표시/ 나머지는 hidden blocklyDiv, pythonEditorDiv  --> 
         <div id="blocklyDiv" class="blocklyDiv"></div>
         <div id="pythonEditorDiv" class="pythonEditorDiv hidden"></div>
       </div>
@@ -56,7 +62,7 @@
           <div class="section-title">
             <i class="fa fa-solid fa-file-lines"></i> 실행 결과
           </div>
-          <div id="output-content"></div>
+          <div id="output-content"></div> <!-- text code 나 로그 표시 됨. 가로 / 세로 길어지면 스크롤 -->
       </div>
     </div>
   </div>
