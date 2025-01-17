@@ -38,21 +38,12 @@ window.onload = function() {
         blocklyDiv.classList.add('hidden');
         pythonEditorDiv.classList.remove('hidden');
     });
-
-
-    let textcode = CodeMirror(document.getElementById("text-code"), {
-      mode: "python",
-      theme: "monokai",
-      lineNumbers: "true",
-      readOnly: "true"
-    });
-    
+   
     send.addEventListener('click', async () => {
         if (!blocklyDiv.classList.contains('hidden')) {
           // 블록 코딩 모드
           codetext = Blockly.Python.workspaceToCode(workspace);
           console.log(codetext)
-          textcode.setValue(codetext);
           await writer.write(codetext);
           send.disabled = true;
           output.innerText = new Date().toString() + '\n\n';
@@ -67,14 +58,11 @@ window.onload = function() {
           await writer.write(pythonCode);
         }
     });
-
-    textcode.getWrapperElement().style.fontSize = "16px";
-    textcode.setSize("100%", "100%");
     
     view.addEventListener('click', async () => {
       const code = Blockly.Python.workspaceToCode(workspace);
       console.log(code);
-      textcode.setValue(code);
+      result.setValue(code);
     });
 
     // send.addEventListener('click', async () => {
