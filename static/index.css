@@ -102,7 +102,7 @@ html, body {
 }
 
 /* CodeMirror 최상위 요소를 부모 높이에 맞춰서 전체 차지 */
-#text-code.CodeMirror {
+#text-code.CodeMirror{
   height: 100% !important;   /* 부모 높이를 꽉 채움 */
   width: 100% !important;
 }
@@ -163,7 +163,10 @@ button:active {
 }
 
 
-
+#pythonEditorDiv.CodeMirror{
+  height: 100% !important;   /* 부모 높이를 꽉 채움 */
+  width: 100% !important;
+}
 #pythonEditorDiv.pythonEditorDiv {
   flex: 1;
   border: 1px solid #ccc;
