@@ -38,25 +38,23 @@ h1 {
 }
 
 .mode-toggle input[type="radio"] {
+    padding: 0.6rem 1.2rem; /* 크기 조정 */
     display: none;
+    background-color: #f4d85a; /* 노란색 계열 */
 }
 
 .mode-toggle label {
-    padding: 0.6rem 1.2rem; /* 크기 조정 */
-    border: 1px solid #ccc;
-    border-radius: 5px;
     cursor: pointer;
-    background-color: #f4e28a; /* 노란색 계열 */
     color: #333; /* 텍스트 어두운 색 */
-    font-size: 1rem;
-    font-weight: bold; /* 굵게 */
     transition: background-color 0.3s, opacity 0.3s;
     opacity: 0.3; /* 기본 상태는 투명도 낮춤 */
 }
 
 .mode-toggle input[type="radio"]:checked + label {
-    background-color: #f4d85a; /* 선택된 상태의 색상 */
-    opacity: 1; /* 선택된 상태는 불투명 */
+    border: 1px solid #eee;
+    color: #eee;
+    font-size: 1rem;
+    font-weight: bold; /* 굵게 */
 }
 
 /* 컨테이너 */
