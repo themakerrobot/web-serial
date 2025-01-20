@@ -51,7 +51,7 @@ h1 {
     font-size: 1rem;
     font-weight: bold; /* 굵게 */
     transition: background-color 0.3s, opacity 0.3s;
-    opacity: 0.6; /* 기본 상태는 투명도 낮춤 */
+    opacity: 0.3; /* 기본 상태는 투명도 낮춤 */
 }
 
 .mode-toggle input[type="radio"]:checked + label {
