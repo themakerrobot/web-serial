@@ -390,12 +390,18 @@ window.onload = function() {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     try {
-                        const json = JSON.parse(e.target.result);
-                        Blockly.serialization.workspaces.load(json, workspace);
-                        if(e.target.result != "{}" && 'blocks' in json) {
-                          for(jdata of json["blocks"]["blocks"]) {
-                            findBlocks({block:jdata})
-                          }
+                        if (!blocklyDiv.classList.contains('hidden')) {
+                            const json = JSON.parse(e.target.result);
+                            Blockly.serialization.workspaces.load(json, workspace);
+                            if(e.target.result != "{}" && 'blocks' in json) {
+                              for(jdata of json["blocks"]["blocks"]) {
+                                findBlocks({block:jdata})
+                              }
+                            }
+                        }
+                        else {
+                            console.log(e.target.result);
+                            pythonEditor.setValue(e.target.result);
                         }
                     } catch (error) {
                         alert('파일이 정상적으로 로드되지 않았습니다.');
@@ -408,15 +414,29 @@ window.onload = function() {
     });
     
     exportBtn.addEventListener('click', () => {
-        const fileName = prompt('저장할 파일 이름을 입력하세요:', 'out.json');
-        if (fileName) {
-            const json = Blockly.serialization.workspaces.save(workspace);
-            const blob = new Blob([JSON.stringify(json, null, 2)], {type: 'application/json'});
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = fileName.endsWith('.json') ? fileName : `${fileName}.json`;
-            a.click();
-            URL.revokeObjectURL(a.href);
+        if (!blocklyDiv.classList.contains('hidden')) {
+            const fileName = prompt('저장할 파일 이름을 입력하세요:', 'out.json');
+            if (fileName) {
+                const json = Blockly.serialization.workspaces.save(workspace);
+                const blob = new Blob([JSON.stringify(json, null, 2)], {type: 'application/json'});
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = fileName.endsWith('.json') ? fileName : `${fileName}.json`;
+                a.click();
+                URL.revokeObjectURL(a.href);
+            }
+        }
+        else {
+            const fileName = prompt('저장할 파일 이름을 입력하세요:', 'out.py');
+            if (fileName) {
+                const text = pythonEditor.getValue();
+                const blob = new Blob([text], { type: 'text/plain' });  // or 'application/x-python-code'
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = fileName.endsWith('.py') ? fileName : `${fileName}.py`;
+                a.click();
+                URL.revokeObjectURL(a.href);
+            }
         }
     });
        
