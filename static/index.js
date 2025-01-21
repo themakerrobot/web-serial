@@ -34,14 +34,14 @@ window.onload = function() {
     });
    
     send.addEventListener('click', async () => {
+        output.innerText = new Date().toString() + '\n\n';
         if (!blocklyDiv.classList.contains('hidden')) {
           // 블록 코딩 모드
           codetext = Blockly.Python.workspaceToCode(workspace);
           console.log(codetext)
           await writer.write(codetext);
           send.disabled = true;
-          output.innerText = new Date().toString() + '\n\n';
-                
+                         
           setTimeout(()=> {
             send.disabled = false;
           }, 3000);
@@ -54,9 +54,14 @@ window.onload = function() {
     });
     
     view.addEventListener('click', async () => {
-      const code = Blockly.Python.workspaceToCode(workspace);
-      console.log(code);
-      output.innerText = code;
+        if (!blocklyDiv.classList.contains('hidden')) {
+          const code = Blockly.Python.workspaceToCode(workspace);
+          console.log(code);
+          output.innerText = code;
+        }
+        else {
+            alert("지원하지 않음");
+        }
     });
 
     // send.addEventListener('click', async () => {
