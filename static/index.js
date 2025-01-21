@@ -379,7 +379,7 @@ window.onload = function() {
     importBtn.addEventListener('click', () => {
         const input = document.createElement('input');
         input.type = 'file';
-        input.accept = !blocklyDiv.classList.contains('hidden')? '.json':'.py;
+        input.accept = !blocklyDiv.classList.contains('hidden')? '.json':'.py';
         input.onchange = (event) => {
             const file = event.target.files[0];
             if (file) {
