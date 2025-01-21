@@ -94,7 +94,6 @@ h2 {
     border-radius: 5px;
     background-color: #f4de3d;
     cursor: pointer;
-    font-weight: bold; /* 굵게 */
     transition: background-color 0.3s;
     color: #333; /* 텍스트 어두운 색 */
 }
