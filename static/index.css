@@ -85,7 +85,7 @@ h2 {
 .controls {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
 }
 
 .controls button {
