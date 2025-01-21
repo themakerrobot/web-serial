@@ -1,4 +1,7 @@
 window.onload = function() {
+    if ("serial" in navigator) console.log("Your browser supports Web Serial API!");
+    else document.getElementById("output").innerText = alert("Your browser does not support Web Serial API, the latest version of Google Chrome is recommended!");
+    
     const textEncoder = new TextEncoderStream();
     const textDecoder = new TextDecoderStream();
     const reader = textDecoder.readable.getReader();
@@ -63,20 +66,7 @@ window.onload = function() {
             alert("지원하지 않음");
         }
     });
-
-    // send.addEventListener('click', async () => {
-    //   codetext = Blockly.Python.workspaceToCode(workspace);
-    //   console.log(codetext)
-    //   textcode.setValue(codetext);
-    //   await writer.write(codetext);
-    //   send.disabled = true;
-    //   output.innerText = new Date().toString() + '\n\n';
-            
-    //   setTimeout(()=> {
-    //     send.disabled = false;
-    //   }, 3000);
-    // });
-   
+  
     stop.addEventListener('click', async () => {
       await writer.write('###END###');
       //writer.releaseLock();
@@ -87,47 +77,44 @@ window.onload = function() {
       //writer.releaseLock();
     });
     document.getElementById('connect').addEventListener('click', async () => {
-    /*
-     const filters = [
-      { usbVendorId: 0x2341, usbProductId: 0x0043 },
-      { usbVendorId: 0x2341, usbProductId: 0x0001 }
-    ];
-    const port = await navigator.serial.requestPort({ filters });
-    */
-    const port = await navigator.serial.requestPort();
-    const { productId, vendorId } = port.getInfo();
-    console.log('Machine:', productId, vendorId);
-
-    await port.open({ baudRate: 1000000  });
-    const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-    const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+        /*
+         const filters = [
+          { usbVendorId: 0x2341, usbProductId: 0x0043 },
+          { usbVendorId: 0x2341, usbProductId: 0x0001 }
+        ];
+        const port = await navigator.serial.requestPort({ filters });
+        */
+        const port = await navigator.serial.requestPort();
+        const { productId, vendorId } = port.getInfo();
+        console.log('Machine:', productId, vendorId);
     
-    try {
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) {
-          // 스트림이 끝났을 때
-          console.log("Serial port closed");
-          break;
+        await port.open({ baudRate: 1000000  });
+        const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
+        const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+        
+        try {
+          while (true) {
+            const { value, done } = await reader.read();
+            if (done) {
+              // 스트림이 끝났을 때
+              console.log("Serial port closed");
+              break;
+            }
+            // 받은 데이터 처리
+            if (value) {
+              output.innerText += value;
+              output.scrollTop = output.scrollHeight;
+              console.log("Received:", value);
+            }
+          }
+        } catch (error) {
+          console.error("Error reading from serial port:", error);
+        } finally {
+          reader.releaseLock();
+          writer.releaseLock();
+          await port.close();
         }
-        // 받은 데이터 처리
-        if (value) {
-          output.innerText += value;
-          output.scrollTop = output.scrollHeight;
-          console.log("Received:", value);
-        }
-      }
-    } catch (error) {
-      console.error("Error reading from serial port:", error);
-    } finally {
-      reader.releaseLock();
-      writer.releaseLock();
-      await port.close();
-    }  
-  });
-
-    if ("serial" in navigator) console.log("Your browser supports Web Serial API!");
-    else document.getElementById("output").innerText = alert("Your browser does not support Web Serial API, the latest version of Google Chrome is recommended!");
+    );
     
     let CURRENT_DIR;
     let CODE_PATH = '';
