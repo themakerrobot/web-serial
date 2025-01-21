@@ -18,13 +18,13 @@ body, html {
 }
 
 /* 헤더 스타일 */
-h1 {
+h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
     background-color: #f4d85a;
-    font-size: 1.8rem; /* 글씨 크기 증가 */
+    font-size: 1.5rem; /* 글씨 크기 증가 */
     font-weight: bold; /* 굵게 */
     margin: 0;
     color: #333; /* 헤더 텍스트는 더 어두운 색 */
