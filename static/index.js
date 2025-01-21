@@ -15,6 +15,12 @@ window.onload = function() {
     const pythonModeRadio = document.getElementById('python_mode');
     const blocklyDiv = document.getElementById('blocklyDiv');
     const pythonEditorDiv = document.getElementById('pythonEditorDiv');
+    
+    let CURRENT_DIR;
+    let CODE_PATH = '';
+    let BLOCK_PATH = '';
+    let saveCode = "";
+    let saveBlock = "{}";
 
     // CodeMirror 에디터 초기화
     const pythonEditor = CodeMirror(pythonEditorDiv, {
@@ -115,12 +121,6 @@ window.onload = function() {
           await port.close();
         }
     );
-    
-    let CURRENT_DIR;
-    let CODE_PATH = '';
-    let BLOCK_PATH = '';
-    let saveCode = "";
-    let saveBlock = "{}";
 
     function findBlocks(data) {
       if (data && typeof data === 'object') {
@@ -221,14 +221,8 @@ window.onload = function() {
           variable_blocks: {
             colourPrimary: '#EF9A9A',
             colourSecondary: '#EF9A9A',
-            //colourSecondary: '#FFEBEE',
             colorTertiary: '#EF5350',
           },
-          // variable_dynamic_blocks: {
-          //   colourPrimary: '#EF9A9A',
-          //   colourSecondary: '#FFEBEE',
-          //   colorTertiary: '#EF5350',
-          // },
           procedure_blocks: {
             colourPrimary: '#C7BCB8',
             colourSecondary: '#EFEBE9',
@@ -236,33 +230,6 @@ window.onload = function() {
           },
         },
         categoryStyles: {
-          // logic_category: {
-          //   colour: '#D1C4E9'
-          // },
-          // loop_category: {
-          //   colour: '#A5D6A7'
-          // },
-          // math_category: {
-          //   colour: '#2196F3'
-          // },
-          // text_category: {
-          //   colour: '#FFCA28'
-          // },
-          // list_category: {
-          //   colour: '#4DB6AC'
-          // },
-          // colour_category: {
-          //   colour: '#FFCDD2'
-          // },
-          // variable_category: {
-          //   colour: '#EF9A9A'
-          // },
-          // // variable_dynamic_category: {
-          // //   colour: '#EF9A9A'
-          // // },
-          // procedure_category: {
-          //   colour: '#D7CCC8'
-          // }
         },
         componentStyles: {
           'flyoutOpacity': 0.5,
