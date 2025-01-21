@@ -45,15 +45,14 @@ h1 {
 
 .mode-toggle label {
     cursor: pointer;
-    color: #333; /* 텍스트 어두운 색 */
+    color: #eee; /* 텍스트 어두운 색 */
     transition: background-color 0.3s, opacity 0.3s;
     opacity: 0.3; /* 기본 상태는 투명도 낮춤 */
 }
 
 .mode-toggle input[type="radio"]:checked + label {
     border: 1px solid #eee;
-    color: #eee;
-    font-size: 1rem;
+    color: #333;
     font-weight: bold; /* 굵게 */
 }
 
