@@ -102,6 +102,7 @@ h2 {
 .controls button:hover {
     background-color: #f4d85a;
     font-weight: bolder;
+    box-shadow: 1px 4px 0 rgb(0,0,0,0.5);
 }
 
 /* Blockly 및 PythonEditor 스타일 */
