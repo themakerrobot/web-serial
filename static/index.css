@@ -85,7 +85,7 @@ h1 {
 .controls {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
 }
 
 .controls button {
@@ -133,6 +133,10 @@ h1 {
     white-space: pre-wrap;
     word-wrap: break-word;
     color: #ccc; /* 전체 글씨 색상 반영 */
+}
+
+.section-title {
+    margin-bottom: 0.5rem;
 }
 
 /* Blockly 툴박스 스타일 */
