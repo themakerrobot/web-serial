@@ -45,7 +45,7 @@ h1 {
 
 .mode-toggle label {
     cursor: pointer;
-    color: #eee; /* 텍스트 어두운 색 */
+    color: #333; /* 텍스트 어두운 색 */
     transition: background-color 0.3s, opacity 0.3s;
     opacity: 0.3; /* 기본 상태는 투명도 낮춤 */
 }
@@ -54,6 +54,7 @@ h1 {
     border: 1px solid #eee;
     color: #333;
     font-weight: bold; /* 굵게 */
+    opacity: 1; /* 기본 상태는 투명도 낮춤 */
 }
 
 /* 컨테이너 */
