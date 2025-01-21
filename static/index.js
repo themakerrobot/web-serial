@@ -120,7 +120,7 @@ window.onload = function() {
           writer.releaseLock();
           await port.close();
         }
-    );
+    });
 
     function findBlocks(data) {
       if (data && typeof data === 'object') {
