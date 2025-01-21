@@ -8,10 +8,6 @@ window.onload = function() {
     const stop = document.getElementById('stop');
     const disp_init = document.getElementById('disp_init');
     const output = document.getElementById("output");
-
-
-
-
     const blockModeRadio = document.getElementById('block_mode');
     const pythonModeRadio = document.getElementById('python_mode');
     const blocklyDiv = document.getElementById('blocklyDiv');
@@ -383,7 +379,7 @@ window.onload = function() {
     importBtn.addEventListener('click', () => {
         const input = document.createElement('input');
         input.type = 'file';
-        input.accept = '.json';
+        input.accept = !blocklyDiv.classList.contains('hidden')? '.json':'.py;
         input.onchange = (event) => {
             const file = event.target.files[0];
             if (file) {
