@@ -14,9 +14,9 @@
 
 /* PADDING */
 
-.CodeMirror-lines {
+/* .CodeMirror-lines {
   padding: 4px 0; /* Vertical padding around content */
-}
+} */
 .CodeMirror pre.CodeMirror-line,
 .CodeMirror pre.CodeMirror-line-like {
   padding: 0 4px; /* Horizontal padding of content */
@@ -29,6 +29,24 @@
 /* GUTTER */
 
 .CodeMirror-gutters {
+    width: 40px !important;  /* 충분한 너비 확보 */
+    min-width: 40px;
+    border-right: 1px solid #ddd;
+    background-color: #f7f7f7;
+    white-space: nowrap;
+}
+.CodeMirror-linenumber {
+    padding: 0 6px 0 8px;  /* 패딩을 조금 더 확보 */
+    min-width: 30px;        /* 최소 너비를 확보 */
+    text-align: right;      /* 숫자를 오른쪽 정렬 */
+}
+
+.CodeMirror-lines {
+    padding-left: 8px; /* 코드가 라인 넘버와 겹치지 않도록 왼쪽 패딩 추가 */
+}
+
+
+/* .CodeMirror-gutters {
   border-right: 1px solid #ddd;
   background-color: #f7f7f7;
   white-space: nowrap;
@@ -39,7 +57,7 @@
   text-align: right;
   color: #999;
   white-space: nowrap;
-}
+} */
 
 .CodeMirror-guttermarker { color: black; }
 .CodeMirror-guttermarker-subtle { color: #999; }
