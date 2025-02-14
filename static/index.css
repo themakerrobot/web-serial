@@ -178,22 +178,3 @@ h2 {
 .blocklyWidgetDiv {
     z-index: 1000;
 }
-
-.CodeMirror {
-  /* Set height, width, borders, and global font properties here */
-  /* Added by yjlee - START */
-  font-family: Consolas, 'Courier New', monospace;
-  font-size: 14px;
-/*   height:calc(100vh - 130px); */
-  border-radius: 2px;
-  /* Added by yjlee - END */
-  color: black;
-  direction: ltr;
-}
-.CodeMirror-linenumber {
-  padding: 0 3px 0 5px;
-  min-width: 20px;
-  text-align: right;
-  color: #999;
-  white-space: nowrap;
-}
