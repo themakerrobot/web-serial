@@ -3,8 +3,8 @@ window.onload = function() {
     let fullscreen = false;
     $('#fullscreen_txt').html(
       fullscreen?
-      '<i class="fa-solid fa-minimize fa-xl"></i>':
-      '<i class="fa-solid fa-maximize fa-xl"></i>'
+      '<i class="fa-solid fa-minimize"></i>':
+      '<i class="fa-solid fa-maximize"></i>'
     );
     
     $('#fullscreen_bt').on('click', ()=>{
