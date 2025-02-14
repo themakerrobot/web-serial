@@ -48,7 +48,7 @@ window.onload = function() {
     const pythonEditor = CodeMirror(pythonEditorDiv, {
         mode: "python",
         theme: "cobalt",
-        lineNumbers: "true",
+        lineNumbers: true,
         extraKeys: {
           "Ctrl-/": "toggleComment"
         },        
