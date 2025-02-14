@@ -26,7 +26,7 @@ window.onload = function() {
     const pythonEditor = CodeMirror(pythonEditorDiv, {
         mode: "python",
         theme: "monokai",
-        lineNumbers: true,
+        lineNumbers: "true",
         extraKeys: {
           "Ctrl-/": "toggleComment"
         },        
