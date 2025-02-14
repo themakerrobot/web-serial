@@ -178,3 +178,11 @@ h2 {
 .blocklyWidgetDiv {
     z-index: 1000;
 }
+
+.CodeMirror-linenumber {
+  padding: 0 3px 0 5px;
+  min-width: 20px;
+  text-align: right;
+  color: #999;
+  white-space: nowrap;
+}
