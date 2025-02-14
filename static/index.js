@@ -1,4 +1,26 @@
 window.onload = function() {
+
+    let fullscreen = false;
+    $('#fullscreen_txt').html(
+      fullscreen?
+      '<i class="fa-solid fa-minimize fa-xl"></i>':
+      '<i class="fa-solid fa-maximize fa-xl"></i>'
+    );
+    
+    $('#fullscreen_bt').on('click', ()=>{
+      if (!fullscreen && document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+        fullscreen=true;
+        $('#fullscreen_txt').html('<i class="fa-solid fa-minimize fa-xl"></i>');
+      }
+      else if (fullscreen && document.exitFullscreen) {
+        document.exitFullscreen();
+        fullscreen=false;
+        $('#fullscreen_txt').html('<i class="fa-solid fa-maximize fa-xl"></i>');
+      }
+      else {}
+    });
+
     if ("serial" in navigator) console.log("Your browser supports Web Serial API!");
     else document.getElementById("output").innerText = alert("Your browser does not support Web Serial API, the latest version of Google Chrome is recommended!");
     
