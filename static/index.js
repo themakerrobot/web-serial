@@ -25,7 +25,7 @@ window.onload = function() {
     // CodeMirror 에디터 초기화
     const pythonEditor = CodeMirror(pythonEditorDiv, {
         mode: "python",
-        theme: "monokai",
+        theme: "cobalt",
         lineNumbers: "true",
         extraKeys: {
           "Ctrl-/": "toggleComment"
