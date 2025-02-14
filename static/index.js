@@ -32,7 +32,7 @@ window.onload = function() {
         },        
     });
     pythonEditor.getWrapperElement().style.fontSize = "16px";
-    // pythonEditor.setSize("100%", "100%");
+    pythonEditor.setSize("100%", "100%");
 
     // 모드 변경 이벤트
     blockModeRadio.addEventListener('change', () => {
