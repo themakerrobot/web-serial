@@ -3,6 +3,23 @@ let toolbox = (lang) => {
     "kind": "categoryToolbox",
     // "kind": "flyoutToolbox",
     "contents": [
+      { // start
+        "kind": "category",
+        "name": translations['start'][lang],
+        "contents": [
+          {
+            "kind": "block",
+            "type": "flag_event",
+          },
+        ],
+        "colour": color_type['start'],
+        "cssConfig": {
+          "icon": "customIcon fa-solid fa-circle-play"
+        }
+      },     
+      {
+        "kind": "sep",
+      },
       { // Logic
         "kind": "category",
         "colour": '#B098CB',
@@ -770,20 +787,6 @@ let toolbox = (lang) => {
         }
       },
       {
-        "kind": "category",
-        "name": translations['execute'][lang],
-        "contents": [
-          {
-            "kind": "block",
-            "type": "flag_event",
-          },
-        ],
-        "colour": "#EFC042",
-        "cssConfig": {
-          "icon": "customIcon fa-solid fa-flag"
-        }
-      },      
-      {
         "kind": "sep",
       },
       { // Audio
@@ -831,30 +834,30 @@ let toolbox = (lang) => {
             "kind": "block",
             "type": "audio_stop",
           },
-          {
-            "kind": "block",
-            "type": "audio_record",
-            "disabled":"true",
-            "inputs":{
-              "filename":{
-                "shadow": {
-                  "type": "text",
-                  "fields": {
-                    "TEXT": "audio"
-                    // "TEXT": translations['audio_filename'][lang]
-                  }
-                }
-              },
-              "timeout": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "5"
-                  }
-                }
-              }
-            }
-          }
+          // {
+          //   "kind": "block",
+          //   "type": "audio_record",
+          //   "disabled":"true",
+          //   "inputs":{
+          //     "filename":{
+          //       "shadow": {
+          //         "type": "text",
+          //         "fields": {
+          //           "TEXT": "audio"
+          //           // "TEXT": translations['audio_filename'][lang]
+          //         }
+          //       }
+          //     },
+          //     "timeout": {
+          //       "shadow": {
+          //         "type": "math_number",
+          //         "fields": {
+          //           "NUM": "5"
+          //         }
+          //       }
+          //     }
+          //   }
+          // }
         ],
         "colour": color_type["audio"],
         "cssConfig": {
@@ -901,146 +904,116 @@ let toolbox = (lang) => {
         "kind": "category",
         "name": translations['device'][lang],
         "contents": [
+          // {
+          //   "kind": "block",
+          //   "type": "device_eye_on",
+          //   "disabled":"true",
+          //   "inputs":{
+          //     "val0": {
+          //       "shadow": {
+          //         "type": "math_number",
+          //         "fields": {
+          //           "NUM": "0"
+          //         }
+          //       }
+          //     },
+          //     "val1": {
+          //       "shadow": {
+          //         "type": "math_number",
+          //         "fields": {
+          //           "NUM": "0"
+          //         }
+          //       }
+          //     },
+          //     "val2": {
+          //       "shadow": {
+          //         "type": "math_number",
+          //         "fields": {
+          //           "NUM": "0"
+          //         }
+          //       }
+          //     },
+          //     "val3": {
+          //       "shadow": {
+          //         "type": "math_number",
+          //         "fields": {
+          //           "NUM": "0"
+          //         }
+          //       }
+          //     },
+          //     "val4": {
+          //       "shadow": {
+          //         "type": "math_number",
+          //         "fields": {
+          //           "NUM": "0"
+          //         }
+          //       }
+          //     },
+          //     "val5": {
+          //       "shadow": {
+          //         "type": "math_number",
+          //         "fields": {
+          //           "NUM": "0"
+          //         }
+          //       }
+          //     }
+          //   }
+          // },
+          // {
+          //   "kind": "block",
+          //   "type": "device_eye_colour_on",
+          //   "disabled":"true",
+          //   "inputs":{
+          //     "left":{
+          //       "shadow": {
+          //         "type": "variables_get",
+          //       }
+          //     },
+          //     "right":{
+          //       "shadow": {
+          //         "type": "variables_get",
+          //       }
+          //     }
+          //   }
+          // },
+          // {
+          //   "kind": "block",
+          //   "type": "device_get_dc",
+          //   "disabled":"true",
+          // },
+          // {
+          //   "kind": "block",
+          //   "type": "device_get_battery",
+          //   "disabled":"true",
+          // },
+          // {
+          //   "kind": "block",
+          //   "type": "device_get_system",
+          //   "disabled":"true",
+          // },
+          // {
+          //   "kind": "block",
+          //   "type": "device_get_pir",
+          //   "disabled":"true",
+          // },
+          // {
+          //   "kind": "block",
+          //   "type": "device_get_touch",
+          //   "disabled":"true",
+          // },
+          // {
+          //   "kind": "block",
+          //   "type": "device_get_button",
+          //   "disabled":"true",
+          // },
           {
             "kind": "block",
-            "type": "device_eye_on",
-            "disabled":"true",
-            "inputs":{
-              "val0": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "0"
-                  }
-                }
-              },
-              "val1": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "0"
-                  }
-                }
-              },
-              "val2": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "0"
-                  }
-                }
-              },
-              "val3": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "0"
-                  }
-                }
-              },
-              "val4": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "0"
-                  }
-                }
-              },
-              "val5": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "0"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "device_eye_colour_on",
-            "disabled":"true",
-            "inputs":{
-              "left":{
-                "shadow": {
-                  "type": "variables_get",
-                }
-              },
-              "right":{
-                "shadow": {
-                  "type": "variables_get",
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "device_eye_fade",
-            "disabled":"true",
-            "inputs":{
-              "left":{
-                "shadow": {
-                  "type": "variables_get",
-                }
-              },
-              "right":{
-                "shadow": {
-                  "type": "variables_get",
-                }
-              },
-              "time": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "5"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "device_eye_off",
-            "disabled":"true",
-          },
-          {
-            "kind": "block",
-            "type": "device_get_dc",
-            "disabled":"true",
-          },
-          {
-            "kind": "block",
-            "type": "device_get_battery",
-            "disabled":"true",
-          },
-          {
-            "kind": "block",
-            "type": "device_get_system",
-            "disabled":"true",
-          },
-          {
-            "kind": "block",
-            "type": "device_get_pir",
-            "disabled":"true",
-          },
-          {
-            "kind": "block",
-            "type": "device_get_touch",
-            "disabled":"true",
-          },
-          {
-            "kind": "block",
-            "type": "device_get_button",
-            "disabled":"true",
-          },
-          {
-            "kind": "block",
-            "type": "device_hat_button",
+            "type": "device_pibrain_button",
             //"disabled":"true",
           },
           {
             "kind": "block",
-            "type": "device_hat_led_on",
+            "type": "device_pibrain_led_on",
             //"disabled":"true",
             "inputs":{
               "val0": {
@@ -1071,7 +1044,7 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
-            "type": "device_hat_led_colour_on",
+            "type": "device_pibrain_led_colour_on",
             //"disabled":"true",
             "inputs":{
               "color":{
@@ -1083,8 +1056,30 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
-            "type": "device_hat_led_off",
-            //"disabled":"true",
+            "type": "device_pibrain_led_off",
+          },
+          {
+            "kind": "block",
+            "type": "device_pibrain_uart_init",
+          },
+          {
+            "kind": "block",
+            "type": "device_pibrain_uart_send",
+            "inputs":{
+              "command":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": ""
+                    // "TEXT": translations['image_filename'][lang]
+                  }
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "device_pibrain_uart_close",
           },
         ],
         "colour": color_type["device"],
@@ -1092,151 +1087,151 @@ let toolbox = (lang) => {
           "icon": "customIcon fa-solid fa-walkie-talkie"
         }
       },
-      { // Motion
-        "kind": "category",
-        "name": translations['motion'][lang],
-        "hidden":"true",
-        "contents": [
-          {
-            "kind": "block",
-            "type": "motion_get_motion",
-          },
-          {
-            "kind": "block",
-            "type": "motion_get_mymotion",
-          },
-          {
-            "kind": "block",
-            "type": "motion_set_motion_dropdown",
-            "inputs":{
-              "cycle": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "1"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "motion_set_motion",
-            "inputs":{
-              "name":{
-                "shadow": {
-                  "type": "text",
-                  "fields": {
-                    "TEXT": "wave1"
-                  }
-                }
-              },
-              "cycle": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "1"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "motion_set_mymotion",
-            "inputs":{
-              "name":{
-                "shadow": {
-                  "type": "text",
-                  "fields": {
-                    "TEXT": translations['mymotion'][lang]
-                  }
-                }
-              },
-              "cycle": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "1"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "motion_init_motion",
-          },
-          {
-            "kind": "block",
-            "type": "motion_set_motor",
-            "inputs":{
-              "pos": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "0"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "motion_set_speed",
-            "inputs":{
-              "val": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "40"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "motion_set_acceleration",
-            "inputs":{
-              "val": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "0"
-                  }
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "motion_set_motors",
-            "inputs":{
-              "val_list":{
-                "shadow": {
-                  "type": "text",
-                  "fields": {
-                    "TEXT": "0,0,0,0,0,0,0,0,0,0"
-                  }
-                }
-              },
-              "time": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "1000"
-                  }
-                }
-              }
-            }
-          },
-        ],
-        "colour": color_type["motion"],
-        "cssConfig": {
-          "icon": "customIcon fa-solid fa-person-walking"
-        }
-      },
+      // { // Motion
+      //   "kind": "category",
+      //   "name": translations['motion'][lang],
+      //   "hidden":"true",
+      //   "contents": [
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_get_motion",
+      //     },
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_get_mymotion",
+      //     },
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_set_motion_dropdown",
+      //       "inputs":{
+      //         "cycle": {
+      //           "shadow": {
+      //             "type": "math_number",
+      //             "fields": {
+      //               "NUM": "1"
+      //             }
+      //           }
+      //         }
+      //       }
+      //     },
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_set_motion",
+      //       "inputs":{
+      //         "name":{
+      //           "shadow": {
+      //             "type": "text",
+      //             "fields": {
+      //               "TEXT": "wave1"
+      //             }
+      //           }
+      //         },
+      //         "cycle": {
+      //           "shadow": {
+      //             "type": "math_number",
+      //             "fields": {
+      //               "NUM": "1"
+      //             }
+      //           }
+      //         }
+      //       }
+      //     },
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_set_mymotion",
+      //       "inputs":{
+      //         "name":{
+      //           "shadow": {
+      //             "type": "text",
+      //             "fields": {
+      //               "TEXT": translations['mymotion'][lang]
+      //             }
+      //           }
+      //         },
+      //         "cycle": {
+      //           "shadow": {
+      //             "type": "math_number",
+      //             "fields": {
+      //               "NUM": "1"
+      //             }
+      //           }
+      //         }
+      //       }
+      //     },
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_init_motion",
+      //     },
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_set_motor",
+      //       "inputs":{
+      //         "pos": {
+      //           "shadow": {
+      //             "type": "math_number",
+      //             "fields": {
+      //               "NUM": "0"
+      //             }
+      //           }
+      //         }
+      //       }
+      //     },
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_set_speed",
+      //       "inputs":{
+      //         "val": {
+      //           "shadow": {
+      //             "type": "math_number",
+      //             "fields": {
+      //               "NUM": "40"
+      //             }
+      //           }
+      //         }
+      //       }
+      //     },
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_set_acceleration",
+      //       "inputs":{
+      //         "val": {
+      //           "shadow": {
+      //             "type": "math_number",
+      //             "fields": {
+      //               "NUM": "0"
+      //             }
+      //           }
+      //         }
+      //       }
+      //     },
+      //     {
+      //       "kind": "block",
+      //       "type": "motion_set_motors",
+      //       "inputs":{
+      //         "val_list":{
+      //           "shadow": {
+      //             "type": "text",
+      //             "fields": {
+      //               "TEXT": "0,0,0,0,0,0,0,0,0,0"
+      //             }
+      //           }
+      //         },
+      //         "time": {
+      //           "shadow": {
+      //             "type": "math_number",
+      //             "fields": {
+      //               "NUM": "1000"
+      //             }
+      //           }
+      //         }
+      //       }
+      //     },
+      //   ],
+      //   "colour": color_type["motion"],
+      //   "cssConfig": {
+      //     "icon": "customIcon fa-solid fa-person-walking"
+      //   }
+      // },
       { // Oled
         "kind": "category",
         "name": translations['oled'][lang],
@@ -1491,6 +1486,28 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
+            "type": "speech_tts_play",
+            "inputs":{
+              "text":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": translations['sample_text'][lang]
+                  }
+                }
+              },
+              "volume": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "80"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
             "type": "speech_gtts",
             "inputs":{
               "text":{
@@ -1512,7 +1529,118 @@ let toolbox = (lang) => {
               },
             }
           },
-
+          {
+            "kind": "block",
+            "type": "speech_gtts_play",
+            "inputs":{
+              "text":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": translations['sample_text'][lang]
+                  }
+                }
+              },
+              "volume": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "80"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "speech_otts",
+            "inputs":{
+              "text":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": translations['sample_text'][lang]
+                  }
+                }
+              },
+              "filename":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": "tts"
+                    // "TEXT": translations['audio_filename'][lang]
+                  }
+                }
+              },
+            }
+          },
+          {
+            "kind": "block",
+            "type": "speech_otts_play",
+            "inputs":{
+              "text":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": translations['sample_text'][lang]
+                  }
+                }
+              },
+              "volume": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "80"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "speech_etts",
+            "inputs":{
+              "text":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": translations['sample_text'][lang]
+                  }
+                }
+              },
+              "filename":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": "tts"
+                    // "TEXT": translations['audio_filename'][lang]
+                  }
+                }
+              },
+            }
+          },
+          {
+            "kind": "block",
+            "type": "speech_etts_play",
+            "inputs":{
+              "text":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": translations['sample_text'][lang]
+                  }
+                }
+              },
+              "volume": {
+                "shadow": {
+                  "type": "math_number",
+                  "fields": {
+                    "NUM": "80"
+                  }
+                }
+              }
+            }
+          },
           {
             "kind": "block",
             "type": "speech_translate",
@@ -1560,6 +1688,36 @@ let toolbox = (lang) => {
             "kind": "block",
             "type": "speech_reset_dialog",
           },
+          {
+            "kind": "block",
+            "type": "speech_start_llm",
+          },
+          {
+            "kind": "block",
+            "type": "speech_call_llm",
+            "inputs":{
+              "text":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": translations['sample_text'][lang]
+                  }
+                }
+              },
+              "system_prompt":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": ""
+                  }
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "speech_stop_llm",
+          },
         ],
         "colour": color_type["speech"],
         "cssConfig": {
@@ -1595,6 +1753,17 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
+            "type": "vision_create_matte",
+            "inputs":{
+              "color":{
+                "shadow":{
+                  "type":"variables_get",
+                }
+              },
+            }
+          },
+          {
+            "kind": "block",
             "type": "vision_imwrite",
             "inputs":{
               "filename":{
@@ -1617,21 +1786,6 @@ let toolbox = (lang) => {
             "kind": "block",
             "type": "vision_imshow_to_ide",
             "inputs":{
-              "filename":{
-                "shadow": {
-                  "type": "text",
-                  "fields": {
-                    "TEXT": "image"
-                    // "TEXT": translations["image_filename"][lang]
-                  }
-                }
-              },
-            }
-          },
-          {
-            "kind": "block",
-            "type": "vision_imshow_to_ide_img",
-            "inputs":{
               "img":{
                 "shadow":{
                   "type":"variables_get",
@@ -1639,6 +1793,17 @@ let toolbox = (lang) => {
               }
             }
           },
+          {
+            "kind": "block",
+            "type": "vision_imshow_to_oled",
+            "inputs":{
+              "img":{
+                "shadow":{
+                  "type":"variables_get",
+                }
+              }
+            }
+          },          
           {
             "kind": "block",
             "type": "vision_rectangle",
@@ -1678,35 +1843,6 @@ let toolbox = (lang) => {
                   "fields": {
                     "NUM": "0"
                   }
-                }
-              },
-              "color":{
-                "shadow":{
-                  "type":"variables_get",
-                }
-              },
-              "tickness": {
-                "shadow": {
-                  "type": "math_number",
-                  "fields": {
-                    "NUM": "2"
-                  }
-                }
-              },
-            }
-          },
-          {
-            "kind": "block",
-            "type": "vision_rectangle_point",
-            "inputs":{
-              "img":{
-                "shadow":{
-                  "type":"variables_get",
-                }
-              },
-              "point":{
-                "shadow":{
-                  "type":"variables_get",
                 }
               },
               "color":{
@@ -1889,17 +2025,6 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
-            "type": "vision_flip",
-            "inputs":{
-              "img":{
-                "shadow": {
-                  "type": "variables_get",
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
             "type": "vision_resize",
             "inputs":{
               "img":{
@@ -1924,10 +2049,33 @@ let toolbox = (lang) => {
                 }
               },              
             }
-          },          
+          },
           {
             "kind": "block",
-            "type": "vision_face",
+            "type": "make_bitmap_6x8",
+          },
+          {
+            "kind": "block",
+            "type": "make_bitmap_8x4",
+          },
+          {
+            "kind": "block",
+            "type": "make_bitmap_8x8",
+          },
+
+        ],
+        "colour": color_type["vision"],
+        "cssConfig": {
+          "icon": "customIcon fa-solid fa-camera-retro"
+        }
+      },
+      { // recognition
+        "kind": "category",
+        "name": translations['recognition'][lang],
+        "contents": [
+          {
+            "kind": "block",
+            "type": "vision_face_detect",
             "inputs":{
               "img":{
                 "shadow": {
@@ -1936,6 +2084,54 @@ let toolbox = (lang) => {
               }
             }
           },
+          {
+            "kind": "block",
+            "type": "vision_face_detect_vis",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              },
+              "v":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "vision_face_analyze",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              },
+              "v":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "vision_face_analyze_vis",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              },
+              "v":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },         
           {
             "kind": "block",
             "type": "vision_face_landmark",
@@ -1944,12 +2140,17 @@ let toolbox = (lang) => {
                 "shadow": {
                   "type": "variables_get",
                 }
+              },
+              "v":{
+                "shadow": {
+                  "type": "variables_get",
+                }
               }
             }
           },
           {
             "kind": "block",
-            "type": "vision_face_age",
+            "type": "vision_face_landmark_vis",
             "inputs":{
               "img":{
                 "shadow": {
@@ -1965,35 +2166,7 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
-            "type": "vision_face_gender",
-            "inputs":{
-              "img":{
-                "shadow": {
-                  "type": "variables_get",
-                }
-              },
-              "v":{
-                "shadow": {
-                  "type": "variables_get",
-                }
-              }
-            }
-          },
-          {
-            "kind": "block",
-            "type": "vision_face_emotion",
-            "inputs":{
-              "img":{
-                "shadow": {
-                  "type": "variables_get",
-                }
-              },
-              "v":{
-                "shadow": {
-                  "type": "variables_get",
-                }
-              }
-            }
+            "type": "vision_facedb"
           },          
           {
             "kind": "block",
@@ -2083,6 +2256,47 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
+            "type": "vision_face_mesh",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "vision_face_mesh_vis",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              },
+              "v":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "vision_object_load_ext",
+            "inputs":{
+              "filename":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": "yolo11s"
+                  }
+                }
+              },
+            }
+          }, 
+          {
+            "kind": "block",
             "type": "vision_object",
             "inputs":{
               "img":{
@@ -2094,7 +2308,7 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
-            "type": "vision_object_detail",
+            "type": "vision_object_raw",
             "inputs":{
               "img":{
                 "shadow": {
@@ -2105,9 +2319,14 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
-            "type": "vision_analyze_object",
+            "type": "vision_object_vis",
             "inputs":{
-              "val":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              },
+              "v":{
                 "shadow": {
                   "type": "variables_get",
                 }
@@ -2127,9 +2346,25 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
-            "type": "vision_qr_detail",
+            "type": "vision_qr_raw",
             "inputs":{
               "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "vision_qr_vis",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              },
+              "v":{
                 "shadow": {
                   "type": "variables_get",
                 }
@@ -2149,9 +2384,14 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
-            "type": "vision_analyze_pose",
+            "type": "vision_pose_vis",
             "inputs":{
-              "val":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              },
+              "v":{
                 "shadow": {
                   "type": "variables_get",
                 }
@@ -2160,15 +2400,26 @@ let toolbox = (lang) => {
           },
           {
             "kind": "block",
-            "type": "vision_classification",
+            "type": "vision_analyze_pose",
             "inputs":{
-              "img":{
+              "v":{
                 "shadow": {
                   "type": "variables_get",
                 }
               }
             }
           },
+          // {
+          //   "kind": "block",
+          //   "type": "vision_classification",
+          //   "inputs":{
+          //     "img":{
+          //       "shadow": {
+          //         "type": "variables_get",
+          //       }
+          //     }
+          //   }
+          // },
           {
             "kind": "block",
             "type": "vision_object_tracker_init",
@@ -2216,12 +2467,6 @@ let toolbox = (lang) => {
             "kind": "block",
             "type": "vision_object_track",
             "inputs":{
-              "tracker":{
-                "shadow":{
-                  "type":"variables_get",
-                }
-              },
-
               "img":{
                 "shadow":{
                   "type":"variables_get",
@@ -2229,6 +2474,67 @@ let toolbox = (lang) => {
               },
             }
           },
+          {
+            "kind": "block",
+            "type": "vision_object_track_vis",
+            "inputs":{
+              "img":{
+                "shadow":{
+                  "type":"variables_get",
+                }
+              },
+              "v":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "vision_hand_gesture_load",
+          },
+          {
+            "kind": "block",
+            "type": "vision_hand_gesture_load_ext",
+            "inputs":{
+              "filename":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": "gesture_recognizer"
+                  }
+                }
+              },
+            }
+          },
+          {
+            "kind": "block",
+            "type": "vision_hand_gesture",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },
+          {
+            "kind": "block",
+            "type": "vision_hand_gesture_vis",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              },
+              "v":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },  
           {
             "kind": "block",
             "type": "vision_marker_detect",
@@ -2248,6 +2554,23 @@ let toolbox = (lang) => {
               }
             }
           },
+          {
+            "kind": "block",
+            "type": "vision_marker_detect_vis",
+            "inputs":{
+              "img":{
+                "shadow":{
+                  "type":"variables_get",
+                }
+              },
+              "v":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
+            }
+          },
+          /*
           {
             "kind": "block",
             "type": "vision_load_tm",
@@ -2281,19 +2604,38 @@ let toolbox = (lang) => {
               }
             }
           },
+          */
           {
             "kind": "block",
-            "type": "vision_call_ai",
+            "type": "vision_load_cf",
             "inputs":{
-              "filename":{
+              "modelpath":{
                 "shadow": {
                   "type": "text",
                   "fields": {
-                    "TEXT": "image"
-                    // "TEXT": translations["image_filename"][lang]
+                    "TEXT": "model.keras"
                   }
                 }
               },
+              "labelpath":{
+                "shadow": {
+                  "type": "text",
+                  "fields": {
+                    "TEXT": "labels.txt"
+                  }
+                }
+              },
+            }
+          },
+          {
+            "kind": "block",
+            "type": "vision_predict_cf",
+            "inputs":{
+              "img":{
+                "shadow": {
+                  "type": "variables_get",
+                }
+              }
             }
           },
           {
@@ -2328,9 +2670,9 @@ let toolbox = (lang) => {
             }
           },
         ],
-        "colour": color_type["vision"],
+        "colour": color_type["recognition"],
         "cssConfig": {
-          "icon": "customIcon fa-solid fa-camera-retro"
+          "icon": "customIcon fa-solid fa-magnifying-glass"
         }
       },
       { // Utils
@@ -2496,6 +2838,27 @@ let toolbox = (lang) => {
                 }
               }
             }
+          },
+          {
+            "kind": "block",
+            "type": "utils_calculate_angle",
+            "inputs":{
+              "p1":{
+                "shadow":{
+                  "type":"variables_get",
+                }
+              },
+              "p2":{
+                "shadow":{
+                  "type":"variables_get",
+                }
+              },
+              "p3":{
+                "shadow":{
+                  "type":"variables_get",
+                }
+              }                            
+            }
           }
         ],
         "colour": color_type["utils"],
@@ -2508,12 +2871,12 @@ let toolbox = (lang) => {
 }
 const toolbox_en = toolbox('en');
 const toolbox_ko = toolbox('ko');
-const toolbox_cn = toolbox('cn');
+// const toolbox_cn = toolbox('cn');
 
 const toolbox_dict = {
   "en": toolbox_en,
   "ko": toolbox_ko,
-  "cn": toolbox_cn
+  // "cn": toolbox_cn
 }
 // /**
 //  * @license

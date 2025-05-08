@@ -11,6 +11,19 @@ body, html {
     color: #333; /* 글씨 색상 변경 */
 }
 
+/* 링크 스타일 */
+a:link,
+a:visited {
+  color: #0896d9;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #0896d9;
+  cursor: pointer;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;

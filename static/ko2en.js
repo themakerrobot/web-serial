@@ -198,6 +198,10 @@ const translations = {
     ko: "시각",
     en: "Vision"
   },
+  recognition: {
+    ko: "인식",
+    en: "Rec"
+  },  
   utils: {
     ko: "도구",
     en: "Utils"
@@ -273,5 +277,9 @@ const translations = {
   enter: {
     ko: "입력",
     en: "Enter"
-  }
+  },
+  start: {
+    ko: "시작",
+    en: "Start"
+  },
 };

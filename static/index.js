@@ -1,25 +1,36 @@
 window.onload = function() {
-
-    let fullscreen = false;
-    $('#fullscreen_txt').html(
-      fullscreen?
-      '<i class="fa-solid fa-minimize"></i>':
-      '<i class="fa-solid fa-maximize"></i>'
-    );
+  let fullscreen = false;
     
-    $('#fullscreen_bt').on('click', ()=>{
-      if (!fullscreen && document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-        fullscreen=true;
-        $('#fullscreen_txt').html('<i class="fa-solid fa-minimize fa-xl"></i>');
-      }
-      else if (fullscreen && document.exitFullscreen) {
-        document.exitFullscreen();
-        fullscreen=false;
-        $('#fullscreen_txt').html('<i class="fa-solid fa-maximize fa-xl"></i>');
-      }
-      else {}
-    });
+  const fullscreenTxt = document.getElementById('fullscreen_txt');
+  const fullscreenBt = document.getElementById('fullscreen_bt');
+  
+  const updateIcon = () => {
+    fullscreenTxt.innerHTML = fullscreen 
+      ? '🗗'
+      : '🗖';
+  };
+  
+  updateIcon(); // 초기 아이콘 설정
+  
+  fullscreenBt.addEventListener('click', (e) => {
+    e.preventDefault(); // <a> 태그 기본 동작 방지
+    
+    if (!fullscreen && document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+      fullscreen = true;
+    } else if (fullscreen && document.exitFullscreen) {
+      document.exitFullscreen();
+      fullscreen = false;
+    }
+    
+    updateIcon();
+  });
+  
+  // 사용자가 ESC 등으로 fullscreen 종료했을 때 아이콘 동기화
+  document.addEventListener('fullscreenchange', () => {
+    fullscreen = !!document.fullscreenElement;
+    updateIcon();
+  });
 
     if ("serial" in navigator) console.log("Your browser supports Web Serial API!");
     else document.getElementById("output").innerText = alert("Your browser does not support Web Serial API, the latest version of Google Chrome is recommended!");
@@ -166,7 +177,7 @@ window.onload = function() {
     }
 
     const workspace = Blockly.inject("blocklyDiv", {
-      toolbox: lang=="en"?toolbox_en:toolbox_ko,
+      toolbox: toolbox_dict[lang],
       collapse: true,
       comments: true,
       disable: true,
@@ -428,7 +439,6 @@ window.onload = function() {
               element.textContent = translations[key][langCode];
           }
       });
-    
-     setLanguage('ko');
     }
+     setLanguage('ko');
 }
